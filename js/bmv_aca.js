@@ -1,5 +1,5 @@
 ////////////////////////
-/// (theme_name) js
+/// (bmv_aca) js
 /// ////////////////////
 
 console.log("js start");

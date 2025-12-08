@@ -1,7 +1,7 @@
 <?php
 
 /*
-@package (theme_name)
+@package (bmv_aca)
 =========================
 functions.php
 =========================

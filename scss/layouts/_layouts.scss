@@ -5,14 +5,11 @@
 // container 
 .container {
     max-width: $container-base;
-    padding: 0 $padding-base;
+    padding: 0 $padding-base*1.5;
     margin: 0 auto;
     overflow: hidden;
     @media only screen and (max-width: 992px) { 
-        padding: 15px;
-    }
-    @media only screen and (max-width: 768px) {
-        padding: $padding-base;
+        padding: 0 $padding-base;
     }
 }
 

@@ -1,6 +1,6 @@
 <?php
 /*
-@package (theme_name)
+@package (bmv_aca)
 =========================
 index.php
 

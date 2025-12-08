@@ -1,11 +1,13 @@
 <?php
 /*
-@package (theme_name)
+@package (bmv_aca)
 =========================
 front-page.php
 
 The front page template.
 =========================
+Template Name: Page Home
+Template Post Type: page
 */
 ?>
 <?php get_header(); ?>

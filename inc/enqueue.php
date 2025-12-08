@@ -1,23 +1,28 @@
 <?php
 
 /*
-@package theme_name
+@package bmv_aca
 =========================
 ADMIN ENQUEUE FUNCTIONS
 =========================
 */
 
 /* FRONT-END SCRIPTS */
-function theme_name_script_enqueue()
+function bmv_aca_script_enqueue()
 {
-    // Fonts and icons
-    wp_enqueue_style('playfair_display', 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap', array(), null, 'all');
+    // fonts and icons
+    wp_enqueue_style(
+        'source-sans-3',
+        'https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap',
+        array(),
+        null
+    );
 
-    // CSS
-    wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/theme_name.css', array(), '1.0.0', 'all');
+    // css
+    wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/bmv_aca.css', array(), '1.0.0', 'all');
 
-    // JS
-    wp_enqueue_script('customjs', get_template_directory_uri() . '/js/theme_name.js', array(), '1.0.0', true);
+    // js
+    wp_enqueue_script('customjs', get_template_directory_uri() . '/js/bmv_aca.js', array(), '1.0.0', true);
 }
 
-add_action('wp_enqueue_scripts', 'theme_name_script_enqueue');
+add_action('wp_enqueue_scripts', 'bmv_aca_script_enqueue');

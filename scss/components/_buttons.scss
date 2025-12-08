@@ -3,22 +3,22 @@
 
 // button generic 
 .btn {
-    max-width: 400px;
+    max-width: 20rem;
     border-radius: 8px;
-    font-size: .9rem;
+    font-size: 1rem;
     margin: 1rem 0;
     padding: 0 1rem;
-    font-weight: $font-regular;
+    font-weight: $font-medium;
     display: grid;
     place-items: center;
     font-style: normal;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     text-shadow: none;
     transition: background-color 0.3s ease;
     border: 2px solid transparent;
     @media only screen and (max-width: 768px) {
-        font-size: .9rem;
-        // max-width: 250px;
+        font-size: 0.9rem;
+        max-width: 12rem;
     }
 }
 
@@ -39,7 +39,7 @@
 
 // button empty 
 .btn-empty {
-    width: 300px;
+    width: 20rem;
     color: $color-cta;
     border-color: $color-cta;
     background-color: transparent;
