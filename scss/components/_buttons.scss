@@ -1,0 +1,55 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+// button generic 
+.btn {
+    max-width: 400px;
+    border-radius: 8px;
+    font-size: .9rem;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    font-weight: $font-regular;
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-shadow: none;
+    transition: background-color 0.3s ease;
+    border: 2px solid transparent;
+    @media only screen and (max-width: 768px) {
+        font-size: .9rem;
+        // max-width: 250px;
+    }
+}
+
+// button fill 
+.btn-fill {
+    width: 300px;
+    color: #fff;
+    border-color: $color-cta;
+    background-color: $color-cta;
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
+    &:hover {
+        background-color: $color-cta-hover;
+        border-color: $color-cta-hover;
+    }
+}
+
+// button empty 
+.btn-empty {
+    width: 300px;
+    color: $color-cta;
+    border-color: $color-cta;
+    background-color: transparent;
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
+    &:hover {
+        background-color: $color-cta;
+        border: 2px solid $color-cta;
+        color: $color-txt-light !important;
+        transition: .5s ease-in-out;
+    }
+}

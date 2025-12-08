@@ -1,0 +1,101 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+@use '../components' as *;
+
+// typografy
+
+// body
+body {
+    font-family: $font-body;
+    font-weight: $font-regular;
+    font-size: 1rem;
+    line-height: 24px;
+    color: $color-heading-dark;
+    text-align: justify;
+}
+
+// headings
+h1 {
+    font-family: $font-heading;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color: $color-heading-dark;
+    font-style: regular;
+    text-align: left;
+    @media only screen and (max-width: 992px) { }
+    @media only screen and (max-width: 768px) {
+        font-size: 1.1rem;
+        line-height: 2.1rem;
+    }
+    }
+    
+h2 {
+    font-family: $font-heading;
+    font-weight: $font-medium;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    color: $color-heading-dark;
+    @media only screen and (max-width: 768px) {
+        font-size: .8rem;
+    }
+}
+
+h3 {
+    font-family: $font-body;
+    font-weight: $font-medium;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    color: $color-heading-dark;
+    font-style: normal;
+    padding-bottom: 1rem;
+    @media only screen and (max-width: 768px) {
+        font-size: .8rem;
+        line-height: 30px;
+    }
+}
+
+// paragraphs
+p{
+    font-weight: $font-thin;
+    line-height: 26px;
+    font-style: normal;
+    padding-bottom: 1.75rem;
+    color: $color-txt-dark;
+    letter-spacing: .5px;
+}
+
+strong {
+    font-weight: $font-bold;
+}
+
+// anchor tags 
+a{
+    font-family: $font-body;
+    font-weight: $font-bold;
+    line-height: 35px;
+    color: $color-cta;
+    font-size: inherit;
+    letter-spacing: .5px;
+}
+
+// list items
+ul {
+    display: block;
+}
+
+li {
+    font-weight: $font-thin;
+    line-height: 26px;
+    font-style: normal;
+    list-style-position: inside;
+    list-style-type: disc;
+    color: $color-txt-dark;
+    letter-spacing: .5px;
+}
+
+
+

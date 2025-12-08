@@ -1,0 +1,50 @@
+@use "sass:math";
+//layout
+$container-base: 1400px;
+
+//spacing
+$padding-base: 15px;
+
+// grid 
+$grid-gap: 2rem;
+
+//font-family
+// $font-heading: 'Open Sans', sans-serif;
+// $font-body: 'Open Sans', sans-serif;
+$font-heading:'Open Sans', sans-serif;
+$font-body: 'Open Sans', sans-serif; 
+
+$font-thin: 200;
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 600;
+
+// background color variables
+$color-bg-dark: rgb(56, 50, 44), 1.0; // tone of black
+$color-bg-light: rgba(245, 243, 240, 1.0); //tone of beige
+
+// cta colors
+$color-cta: rgb(183, 145, 109, 1.0); // cta
+$color-cta-hover: rgb(183, 145, 109, 1.5); // cta hover
+
+
+// text colors dark
+$color-heading-dark: rgb(56, 50, 44), 1.0; // tone of black
+$color-txt-dark: rgb(56, 50, 44), 1.0; // tone of black
+
+// text colors light
+$color-heading-light: #ffffff; // heading white 
+$color-txt-light: #ffffff; // paragraph white
+
+//shadow
+$text-shadow: 1px 1px 1.2px $color-txt-dark;
+$box-shadow: 1px 2px 5px 1px rgba(182, 182, 182, 0.49);
+$form-shadow: 1px 2px 5px 1px rgba(182, 182, 182, 0.49); 
+$nav-shadow-bottom: 1px 4px 3px 0px rgba(182, 182, 182, 0.49); 
+$nav-shadow-top: 1px -4px 3px 0px rgba(182, 182, 182, 0.49); 
+
+// z-index 
+$z-bg: -2000;
+$z-cta: 1000;
+$z-nav: 5000;
+$z-modal: 10000; 

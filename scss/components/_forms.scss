@@ -1,0 +1,118 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+// forms
+body img.gform_ajax_spinner {
+	display: none !important;
+}
+
+.gform_fields {
+	input,
+	textarea, {
+		letter-spacing: 1px !important;
+		font-size: 0.8rem !important;
+		padding-left: 0.8rem !important;
+		font-style: italic !important;
+		font-weight: $font-thin !important;
+		margin: 0 !important;
+        box-shadow: $form-shadow;
+	}
+	select {
+		padding-left: 0.8rem !important;
+		margin: 0 !important;
+        box-shadow: $form-shadow;
+	}
+	select {
+		-webkit-appearance: listbox !important;
+		}
+	option {
+		font-style: italic !important;
+		font-weight: $font-thin !important;
+		letter-spacing: 1px !important;
+		font-size: 0.8rem !important;
+	}
+	.gf_placeholder {
+		font-style: italic !important;
+		font-weight: $font-thin !important;
+		letter-spacing: 1px !important;
+		font-size: 0.8rem !important;
+	}
+	input::placeholder {
+		font-style: italic !important;
+		font-weight: $font-thin !important;
+		letter-spacing: 1px !important;
+		font-size: 0.8rem !important;
+	}
+}
+
+body .gform_wrapper .gform_footer input[type="submit"] {
+    text-align: center !important;
+    min-width: 300px !important;
+    max-width: 400px !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    margin: 1rem 0 !important;
+    padding: 0.5rem 2rem !important;
+    font-weight: $font-regular !important;
+    display: grid !important;
+    place-items: center !important;
+    font-style: normal !important;
+    letter-spacing: 1px !important;
+    text-shadow: none !important;
+    transition: background-color 0.3s ease !important;
+    border: 2px solid transparent !important;
+    color: #fff !important;
+    border-color: $color-cta !important;
+    background-color: $color-cta !important;
+    &:hover {
+        background-color: $color-cta-hover;
+        border-color: $color-cta-hover;
+    }
+    @media only screen and (max-width: 768px) {
+        font-size: .9rem;
+    }
+	@media only screen and (max-width: 768px) {
+		padding: 0.5rem 0.5rem;
+		font-size: 0.75rem;
+		width: 100%;
+	}
+}
+
+.gform_wrapper label.gfield_label,
+legend, {
+	letter-spacing: 1px;
+	font-weight: $font-thin !important;
+	font-size: 0.9rem !important;
+}
+
+.gform_wrapper.gravity-theme .gform_footer {
+	justify-content: space-around !important;
+}
+
+.gform_wrapper .gfield_checkbox input[type='checkbox'] {
+    appearance: none; /* Remove default appearance */
+    -webkit-appearance: none; /* For Safari */
+    background: url('unchecked_checkbox_image_url') no-repeat center center;
+    width: 15px; /* Custom width */
+    height: 15px; /* Custom height */
+    background-color: #fff;
+}
+
+.gform_wrapper .gfield_checkbox input[type='checkbox'] {
+    appearance: none; /* Hide default checkbox */
+    -webkit-appearance: none; /* Hide default checkbox for Safari */
+    background-color: #fff; /* Background color of the box */
+    border: 2px solid #ddd; /* Border color of the box */
+    padding: 8px 6px 8px 6px; /* Size of the box */
+    display: inline-block;
+    position: relative;
+}
+
+.gform_wrapper .gfield_checkbox input[type='checkbox']:checked::before {
+    content: '✓'; /* Unicode checkmark symbol */
+    position: absolute;
+    top: -12px; /* Adjust these values based on your specific alignment needs */
+    left: -1px; /* Adjust these values based on your specific alignment needs */
+    color: $color-cta; /* Color of the checkmark */
+    font-size: 30px; /* Size of the checkmark */
+}

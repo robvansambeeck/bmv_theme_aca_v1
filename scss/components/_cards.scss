@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+
+// cards
+
+// card-generic
+.card {
+    overflow: hidden;
+    .card-inner {
+    text-decoration: none; /* Remove the underline */
+    color: inherit; /* Make the link color same as the surrounding text */
+    background-color: transparent; /* Remove any background color */
+    cursor: pointer; /* Ensure it shows as a clickable item */
+    border: none; /* Remove any borders */
+    outline: none; /* Remove focus outline */
+    padding: 0; /* Remove any padding */
+    margin: 0; /* Remove any margin */
+    }
+}

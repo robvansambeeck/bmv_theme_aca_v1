@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+// background-colors 
+
+.bg-light {
+background-color: $color-bg-light;
+}
+.bg-dark {
+    background-color: $color-bg-dark;
+}
+.bg-cta {
+    background-color: $color-cta;
+}

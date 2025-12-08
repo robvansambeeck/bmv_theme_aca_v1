@@ -1,0 +1,479 @@
+@charset "UTF-8";
+/***
+    The new CSS reset - version 1.8.4 (last updated 14.2.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+  all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+  color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+  content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+  all: revert;
+}
+
+.bg-light {
+  background-color: rgb(245, 243, 240);
+}
+
+.bg-dark {
+  background-color: rgb(56, 50, 44), 1;
+}
+
+.bg-cta {
+  background-color: rgb(183, 145, 109);
+}
+
+.btn {
+  max-width: 400px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  font-weight: 400;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-shadow: none;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent;
+}
+@media only screen and (max-width: 768px) {
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+
+.btn-fill {
+  width: 300px;
+  color: #fff;
+  border-color: rgb(183, 145, 109);
+  background-color: rgb(183, 145, 109);
+}
+@media only screen and (max-width: 768px) {
+  .btn-fill {
+    width: 100%;
+  }
+}
+.btn-fill:hover {
+  background-color: rgb(183, 145, 109);
+  border-color: rgb(183, 145, 109);
+}
+
+.btn-empty {
+  width: 300px;
+  color: rgb(183, 145, 109);
+  border-color: rgb(183, 145, 109);
+  background-color: transparent;
+}
+@media only screen and (max-width: 768px) {
+  .btn-empty {
+    width: 100%;
+  }
+}
+.btn-empty:hover {
+  background-color: rgb(183, 145, 109);
+  border: 2px solid rgb(183, 145, 109);
+  color: #ffffff !important;
+  transition: 0.5s ease-in-out;
+}
+
+.card {
+  overflow: hidden;
+}
+.card .card-inner {
+  text-decoration: none; /* Remove the underline */
+  color: inherit; /* Make the link color same as the surrounding text */
+  background-color: transparent; /* Remove any background color */
+  cursor: pointer; /* Ensure it shows as a clickable item */
+  border: none; /* Remove any borders */
+  outline: none; /* Remove focus outline */
+  padding: 0; /* Remove any padding */
+  margin: 0; /* Remove any margin */
+}
+
+body img.gform_ajax_spinner {
+  display: none !important;
+}
+
+.gform_fields input,
+.gform_fields textarea {
+  letter-spacing: 1px !important;
+  font-size: 0.8rem !important;
+  padding-left: 0.8rem !important;
+  font-style: italic !important;
+  font-weight: 200 !important;
+  margin: 0 !important;
+  box-shadow: 1px 2px 5px 1px rgba(182, 182, 182, 0.49);
+}
+.gform_fields select {
+  padding-left: 0.8rem !important;
+  margin: 0 !important;
+  box-shadow: 1px 2px 5px 1px rgba(182, 182, 182, 0.49);
+}
+.gform_fields select {
+  -webkit-appearance: listbox !important;
+}
+.gform_fields option {
+  font-style: italic !important;
+  font-weight: 200 !important;
+  letter-spacing: 1px !important;
+  font-size: 0.8rem !important;
+}
+.gform_fields .gf_placeholder {
+  font-style: italic !important;
+  font-weight: 200 !important;
+  letter-spacing: 1px !important;
+  font-size: 0.8rem !important;
+}
+.gform_fields input::placeholder {
+  font-style: italic !important;
+  font-weight: 200 !important;
+  letter-spacing: 1px !important;
+  font-size: 0.8rem !important;
+}
+
+body .gform_wrapper .gform_footer input[type=submit] {
+  text-align: center !important;
+  min-width: 300px !important;
+  max-width: 400px !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  margin: 1rem 0 !important;
+  padding: 0.5rem 2rem !important;
+  font-weight: 400 !important;
+  display: grid !important;
+  place-items: center !important;
+  font-style: normal !important;
+  letter-spacing: 1px !important;
+  text-shadow: none !important;
+  transition: background-color 0.3s ease !important;
+  border: 2px solid transparent !important;
+  color: #fff !important;
+  border-color: rgb(183, 145, 109) !important;
+  background-color: rgb(183, 145, 109) !important;
+}
+body .gform_wrapper .gform_footer input[type=submit]:hover {
+  background-color: rgb(183, 145, 109);
+  border-color: rgb(183, 145, 109);
+}
+@media only screen and (max-width: 768px) {
+  body .gform_wrapper .gform_footer input[type=submit] {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  body .gform_wrapper .gform_footer input[type=submit] {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+}
+
+.gform_wrapper label.gfield_label,
+legend {
+  letter-spacing: 1px;
+  font-weight: 200 !important;
+  font-size: 0.9rem !important;
+}
+
+.gform_wrapper.gravity-theme .gform_footer {
+  justify-content: space-around !important;
+}
+
+.gform_wrapper .gfield_checkbox input[type=checkbox] {
+  appearance: none; /* Remove default appearance */
+  -webkit-appearance: none; /* For Safari */
+  background: url("unchecked_checkbox_image_url") no-repeat center center;
+  width: 15px; /* Custom width */
+  height: 15px; /* Custom height */
+  background-color: #fff;
+}
+
+.gform_wrapper .gfield_checkbox input[type=checkbox] {
+  appearance: none; /* Hide default checkbox */
+  -webkit-appearance: none; /* Hide default checkbox for Safari */
+  background-color: #fff; /* Background color of the box */
+  border: 2px solid #ddd; /* Border color of the box */
+  padding: 8px 6px 8px 6px; /* Size of the box */
+  display: inline-block;
+  position: relative;
+}
+
+.gform_wrapper .gfield_checkbox input[type=checkbox]:checked::before {
+  content: "✓"; /* Unicode checkmark symbol */
+  position: absolute;
+  top: -12px; /* Adjust these values based on your specific alignment needs */
+  left: -1px; /* Adjust these values based on your specific alignment needs */
+  color: rgb(183, 145, 109); /* Color of the checkmark */
+  font-size: 30px; /* Size of the checkmark */
+}
+
+.container {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+@media only screen and (max-width: 992px) {
+  .container {
+    padding: 15px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+}
+
+.w-10 {
+  max-width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-20 {
+  max-width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-30 {
+  max-width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-40 {
+  max-width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-50 {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-60 {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-70 {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-80 {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-90 {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.w-100 {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 24px;
+  color: rgb(56, 50, 44), 1;
+  text-align: justify;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: rgb(56, 50, 44), 1;
+  font-style: regular;
+  text-align: left;
+}
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.1rem;
+    line-height: 2.1rem;
+  }
+}
+
+h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  color: rgb(56, 50, 44), 1;
+}
+@media only screen and (max-width: 768px) {
+  h2 {
+    font-size: 0.8rem;
+  }
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  color: rgb(56, 50, 44), 1;
+  font-style: normal;
+  padding-bottom: 1rem;
+}
+@media only screen and (max-width: 768px) {
+  h3 {
+    font-size: 0.8rem;
+    line-height: 30px;
+  }
+}
+
+p {
+  font-weight: 200;
+  line-height: 26px;
+  font-style: normal;
+  padding-bottom: 1.75rem;
+  color: rgb(56, 50, 44), 1;
+  letter-spacing: 0.5px;
+}
+
+strong {
+  font-weight: 600;
+}
+
+a {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  line-height: 35px;
+  color: rgb(183, 145, 109);
+  font-size: inherit;
+  letter-spacing: 0.5px;
+}
+
+ul {
+  display: block;
+}
+
+li {
+  font-weight: 200;
+  line-height: 26px;
+  font-style: normal;
+  list-style-position: inside;
+  list-style-type: disc;
+  color: rgb(56, 50, 44), 1;
+  letter-spacing: 0.5px;
+}
+
+/*# sourceMappingURL=theme_name.css.map */

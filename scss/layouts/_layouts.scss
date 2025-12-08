@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+@use '../base' as *;
+@use '../components' as *;
+
+// container 
+.container {
+    max-width: $container-base;
+    padding: 0 $padding-base;
+    margin: 0 auto;
+    overflow: hidden;
+    @media only screen and (max-width: 992px) { 
+        padding: 15px;
+    }
+    @media only screen and (max-width: 768px) {
+        padding: $padding-base;
+    }
+}
+
+// elements and max-width w-10,w-20,w-30 etc...
+@for $i from 1 through 10 {
+    .w-#{$i * 10} {
+        max-width: $i * 10 * 1%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
