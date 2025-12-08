@@ -1,0 +1,44 @@
+@use "sass:math";
+//layout
+$container-base: 1400px;
+
+//spacing
+$padding-base: 1rem;
+
+// grid 
+$grid-gap: 2rem;
+
+//font-family
+$font-heading:"Source Sans 3", sans-serif;
+$font-body: "Source Sans 3", sans-serif;
+
+$font-thin: 200;
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 600;
+
+// background color variables
+$color-bg-dark: rgb(40, 40, 101, 1.0); // tone of black
+$color-bg-light: rgba(245, 245, 245, 1.0); //tone of beige
+
+// cta colors
+$color-cta: rgb(109, 84, 163, 1.0); // cta
+$color-cta-hover: rgb(68, 47, 145, 1.0); // cta hover
+
+
+// text colors dark
+$color-heading-dark: rgb(64, 64, 64), 1.0; // tone of black
+$color-txt-dark: rgb(64, 64, 64), 1.0; // tone of black
+
+// text colors light
+$color-heading-light: #ffffff; // heading white 
+$color-txt-light: #ffffff; // paragraph white
+
+//shadow
+$form-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+
+// z-index 
+$z-bg: -2000;
+$z-cta: 1000;
+$z-nav: 5000;
+$z-modal: 10000; 

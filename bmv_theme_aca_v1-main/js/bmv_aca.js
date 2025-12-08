@@ -1,0 +1,7 @@
+////////////////////////
+/// (bmv_aca) js
+/// ////////////////////
+
+console.log("js start");
+
+console.log("js end");
