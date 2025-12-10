@@ -3,3 +3,8 @@
 @use "sass:math";
 
 // blocks generic
+
+.block {
+    display: block;
+    margin-bottom: $grid-gap;
+}

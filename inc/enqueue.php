@@ -18,11 +18,31 @@ function bmv_aca_script_enqueue()
         null
     );
 
+    // font awesome kit
+    wp_enqueue_script(
+        'fontawesome-kit',
+        'https://kit.fontawesome.com/cbae0e1e01.js',
+        array(),
+        null,
+        true // laad in footer
+    );
+
     // css
-    wp_enqueue_style('customstyle', get_template_directory_uri() . '/css/bmv_aca.css', array(), '1.0.0', 'all');
+    wp_enqueue_style(
+        'customstyle',
+        get_template_directory_uri() . '/css/bmv_aca.css',
+        array(),
+        '1.0.0',
+        'all'
+    );
 
     // js
-    wp_enqueue_script('customjs', get_template_directory_uri() . '/js/bmv_aca.js', array(), '1.0.0', true);
+    wp_enqueue_script(
+        'customjs',
+        get_template_directory_uri() . '/js/bmv_aca.js',
+        array(),
+        '1.0.0',
+        true
+    );
 }
-
 add_action('wp_enqueue_scripts', 'bmv_aca_script_enqueue');

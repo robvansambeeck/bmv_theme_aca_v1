@@ -14,18 +14,15 @@ Template Post Type: page
 
 <?php get_header(); ?>
 <?php get_template_part('parts/nav-main'); ?>
-<main>
-    <?php
-    // Start de WordPress Loop om de content van de huidige pagina/post op te halen
-    if (have_posts()) :
-        while (have_posts()) : the_post();
-
-            // De functie die de volledige content (inclusief Gutenberg blokken) weergeeft
-            the_content();
-
-        endwhile;
-    endif;
-    ?>
+<main class="page-wrapper">
+    <div class="page-content">
+        <?php
+        if (have_posts()) :
+            while (have_posts()) : the_post();
+                the_content();
+            endwhile;
+        endif;
+        ?>
+    </div>
 </main>
-<!-- /main -->
 <?php get_footer(); ?>

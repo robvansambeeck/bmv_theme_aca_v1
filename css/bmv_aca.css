@@ -125,6 +125,11 @@ meter {
   background-color: rgb(109, 84, 163);
 }
 
+.block {
+  display: block;
+  margin-bottom: 2rem;
+}
+
 .btn {
   max-width: 20rem;
   border-radius: 8px;

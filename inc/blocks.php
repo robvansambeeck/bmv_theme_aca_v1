@@ -15,13 +15,106 @@ function register_my_acf_block()
     if (function_exists('acf_register_block_type')) {
         // block-header-cta
         acf_register_block_type(array(
-            'name'              => 'cta-header',
-            'title'             => __('cta-header'),
-            'description'       => __('block for heasder with optional cta'),
-            'render_template'   => 'blocks/block-cta-header.php',
+            'name'              => 'header',
+            'title'             => __('header'),
+            'description'       => __('block for header with optional cta'),
+            'render_template'   => 'parts/block-header.php',
             'category'          => 'formatting',
             'icon'              => 'star-filled',
             'keywords'          => array('header', 'cta'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-image-grid
+        acf_register_block_type(array(
+            'name'              => 'image-grid-1',
+            'title'             => __('image-grid-1'),
+            'description'       => __('block to display a grid image with quotes'),
+            'render_template'   => 'parts/block-image-grid-1.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('grid', 'image', '1'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-info
+        acf_register_block_type(array(
+            'name'              => 'info',
+            'title'             => __('info'),
+            'description'       => __('block to display info'),
+            'render_template'   => 'parts/block-info.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('info'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-program
+        acf_register_block_type(array(
+            'name'              => 'program',
+            'title'             => __('program'),
+            'description'       => __('block to display a program'),
+            'render_template'   => 'parts/block-program.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('program'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+
+        // block-bullet-block-list
+        acf_register_block_type(array(
+            'name'              => 'bullet-list',
+            'title'             => __('bullet-list'),
+            'description'       => __('block to display a bullet list'),
+            'render_template'   => 'parts/block-bullet-list.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('bullet', 'list'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+
+        // block-cta-register
+        acf_register_block_type(array(
+            'name'              => 'cta-register',
+            'title'             => __('cta-register'),
+            'description'       => __('block to display a register with cta'),
+            'render_template'   => 'parts/block-cta-register.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('cta', 'register'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+
+        // block-filter
+        acf_register_block_type(array(
+            'name'              => 'filter',
+            'title'             => __('filter'),
+            'description'       => __('block to display a filter with opleidingen'),
+            'render_template'   => 'parts/block-filter.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('filter', 'opleidingen'),
             'mode'              => 'edit', // or 'edit'
             'supports'          => array(
                 'align' => true,
