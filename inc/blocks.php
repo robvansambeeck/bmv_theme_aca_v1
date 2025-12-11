@@ -28,7 +28,7 @@ function register_my_acf_block()
                 'jsx'   => true,
             ),
         ));
-        // block-image-grid
+        // block-image-grid-1
         acf_register_block_type(array(
             'name'              => 'image-grid-1',
             'title'             => __('image-grid-1'),
@@ -73,7 +73,6 @@ function register_my_acf_block()
                 'jsx'   => true,
             ),
         ));
-
         // block-bullet-block-list
         acf_register_block_type(array(
             'name'              => 'bullet-list',
@@ -89,7 +88,6 @@ function register_my_acf_block()
                 'jsx'   => true,
             ),
         ));
-
         // block-cta-register
         acf_register_block_type(array(
             'name'              => 'cta-register',
@@ -105,7 +103,6 @@ function register_my_acf_block()
                 'jsx'   => true,
             ),
         ));
-
         // block-filter
         acf_register_block_type(array(
             'name'              => 'filter',
@@ -115,6 +112,96 @@ function register_my_acf_block()
             'category'          => 'formatting',
             'icon'              => 'star-filled',
             'keywords'          => array('filter', 'opleidingen'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-image-grid-2
+        acf_register_block_type(array(
+            'name'              => 'image-grid-2',
+            'title'             => __('image-grid-2'),
+            'description'       => __('block to display a grid image with quotes'),
+            'render_template'   => 'parts/block-image-grid-2.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('grid', 'image', '2'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-steps
+        acf_register_block_type(array(
+            'name'              => 'steps',
+            'title'             => __('steps'),
+            'description'       => __('block to display steps'),
+            'render_template'   => 'parts/block-steps.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('steps'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-students
+        acf_register_block_type(array(
+            'name'              => 'students',
+            'title'             => __('students'),
+            'description'       => __('block to display students'),
+            'render_template'   => 'parts/block-students.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('students'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-image-grid-3
+        acf_register_block_type(array(
+            'name'              => 'image-grid-3',
+            'title'             => __('image-grid-3'),
+            'description'       => __('block to display a grid image with quotes'),
+            'render_template'   => 'parts/block-image-grid-3.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('grid', 'image', '3'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-faq
+        acf_register_block_type(array(
+            'name'              => 'faq',
+            'title'             => __('faq'),
+            'description'       => __('block to display a faq - Frequently Asked Questions'),
+            'render_template'   => 'parts/block-faq.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('faq'),
+            'mode'              => 'edit', // or 'edit'
+            'supports'          => array(
+                'align' => true,
+                'jsx'   => true,
+            ),
+        ));
+        // block-contact
+        acf_register_block_type(array(
+            'name'              => 'contact',
+            'title'             => __('contact'),
+            'description'       => __('block to display a contact form'),
+            'render_template'   => 'parts/block-contact.php',
+            'category'          => 'formatting',
+            'icon'              => 'star-filled',
+            'keywords'          => array('contact'),
             'mode'              => 'edit', // or 'edit'
             'supports'          => array(
                 'align' => true,
