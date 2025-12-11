@@ -53,3 +53,15 @@
         transition: .5s ease-in-out;
     }
 }
+
+// secondary (outline) variant
+.btn-secondary {
+    width: auto;
+    color: $color-cta;
+    border: 2px solid $color-cta;
+    background-color: transparent;
+    padding: 0.6875rem 1.5rem;
+    border-radius: 999px;
+    font-weight: $font-medium;
+    box-shadow: none;
+}

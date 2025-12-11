@@ -34,7 +34,6 @@ $show_quote   = get_field('show_quote_icon');
                                 <i class="fa-sharp-duotone fa-light fa-quote-left"></i>
                             </div>
                         <?php endif; ?>
-
                         <?php echo $text_bottom; ?>
                     </div>
                 <?php endif; ?>
