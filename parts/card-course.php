@@ -6,19 +6,33 @@
 
                 <?php
                 // Startdatum badge
-                $course_date = get_field('course_date'); // bv. "2025-09-01"
+                $course_date = get_field('course_date'); // ACF Date Picker returns string in format set in field settings
 
                 if ($course_date) {
-                    $timestamp = strtotime($course_date);
-                    $label = sprintf(
-                        'Start %s',
-                        date_i18n('F Y', $timestamp) // "september 2025"
-                    );
-                ?>
-                    <div class="card-course__badge">
-                        <?php echo esc_html($label); ?>
-                    </div>
-                <?php } ?>
+                    // ACF Date Picker usually returns a string (e.g., "20251201" or "2025-12-01" depending on field settings)
+                    // Convert to timestamp
+                    $timestamp = false;
+                    
+                    if (is_array($course_date) && isset($course_date['date'])) {
+                        // If it's an array with 'date' key
+                        $timestamp = strtotime($course_date['date']);
+                    } elseif (is_string($course_date)) {
+                        // Most common: ACF returns a string
+                        $timestamp = strtotime($course_date);
+                    }
+
+                    // Only display if we have a valid timestamp
+                    if ($timestamp && $timestamp > 0) {
+                        $label = sprintf(
+                            'Start %s',
+                            date_i18n('F Y', $timestamp) // "december 2025" (Nederlandse maandnaam)
+                        );
+                    ?>
+                        <div class="card-course__badge">
+                            <?php echo esc_html($label); ?>
+                        </div>
+                    <?php }
+                } ?>
 
                 <?php if (has_post_thumbnail()) : ?>
                     <figure class="card-course__image">

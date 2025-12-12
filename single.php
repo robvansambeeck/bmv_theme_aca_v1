@@ -9,7 +9,17 @@ The single post template. Used when a single post is queried. For this and all o
 */
 ?>
 
-
-<h1>
-    single notification
-</h1>
+<?php get_header(); ?>
+<?php get_template_part('parts/nav-main'); ?>
+<main class="page-wrapper">
+    <div class="page-content">
+        <?php
+        if (have_posts()) :
+            while (have_posts()) : the_post();
+                the_content();
+            endwhile;
+        endif;
+        ?>
+    </div>
+</main>
+<?php get_footer(); ?>

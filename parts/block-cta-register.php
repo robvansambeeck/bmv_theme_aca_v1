@@ -16,8 +16,7 @@ $bg     = get_field('cta_register_bg');
         <div class="block-content cta-register">
             <?php if ($title) : ?>
                 <div class="cta-register__title">
-                    <?php echo $title; // WYSIWYG, dus HTML toegestaan 
-                    ?>
+                    <?php echo wp_kses_post($title); // WYSIWYG, dus HTML toegestaan ?>
                 </div>
             <?php endif; ?>
 

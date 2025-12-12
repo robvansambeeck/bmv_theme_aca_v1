@@ -10,9 +10,9 @@ $steps = get_field('steps');
                 <div class="steps__grid">
 
                     <?php foreach ($steps as $index => $step) :
-                        $icon  = $step['icon'];
-                        $text  = $step['text'];
-                        $number = $step['number'] ? $step['number'] : $index + 1;
+                        $icon  = isset($step['icon']) ? $step['icon'] : null;
+                        $text  = isset($step['text']) ? $step['text'] : null;
+                        $number = isset($step['number']) && !empty($step['number']) ? $step['number'] : $index + 1;
                     ?>
                         <div class="steps__item">
 
@@ -26,7 +26,7 @@ $steps = get_field('steps');
                             <div class="steps__number"><?php echo $number; ?>.</div>
 
                             <?php if ($text) : ?>
-                                <div class="steps__text"><?php echo $text; ?></div>
+                                <div class="steps__text"><?php echo wp_kses_post($text); ?></div>
                             <?php endif; ?>
 
                         </div>

@@ -3,9 +3,11 @@ $title = get_field('info_title');
 $text  = get_field('info_text');
 $cta   = get_field('info_cta');   // link array
 $logo  = get_field('info_logo');  // image array
+$bg_active = get_field('bg_active'); // "bg" or "no bg"
+$no_bg_class = ($bg_active === 'no bg' || $bg_active === 'no_bg') ? 'block-info--no-bg' : '';
 ?>
 
-<div class="block block-info">
+<div class="block block-info <?php echo esc_attr($no_bg_class); ?>">
     <div class="block-inner">
         <div class="block-content block-info__content">
 

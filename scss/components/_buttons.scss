@@ -16,6 +16,7 @@
     text-shadow: none;
     transition: background-color 0.3s ease;
     border: 2px solid transparent;
+
     @media only screen and (max-width: 768px) {
         font-size: 0.9rem;
         max-width: 12rem;
@@ -28,9 +29,11 @@
     color: #fff;
     border-color: $color-cta;
     background-color: $color-cta;
+
     @media only screen and (max-width: 768px) {
         width: 100%;
     }
+
     &:hover {
         background-color: $color-cta-hover;
         border-color: $color-cta-hover;
@@ -43,9 +46,11 @@
     color: $color-cta;
     border-color: $color-cta;
     background-color: transparent;
+
     @media only screen and (max-width: 768px) {
         width: 100%;
     }
+
     &:hover {
         background-color: $color-cta;
         border: 2px solid $color-cta;

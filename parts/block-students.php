@@ -11,7 +11,15 @@ $students = get_field('students');
 
         <?php if ($title) : ?>
             <h2 class="block-students__title">
-                <?php echo esc_html($title); ?>
+                <?php 
+                // Highlight "studenten" in purple
+                $title_highlighted = preg_replace(
+                    '/\b(studenten)\b/i',
+                    '<span class="block-students__title-highlight">$1</span>',
+                    esc_html($title)
+                );
+                echo $title_highlighted;
+                ?>
             </h2>
         <?php endif; ?>
 
