@@ -3,22 +3,23 @@ $parent = get_term_by('slug', 'opleiding', 'category');
 $parent_id = $parent ? (int) $parent->term_id : 0;
 
 $terms = get_the_terms(get_the_ID(), 'category');
-$filter_slug = '';
+$filter_slugs = [];
 
 // Pak ALLEEN subcats van "opleiding"
-if ($terms && ! is_wp_error($terms)) {
+if ($terms && ! is_wp_error($terms) && $parent_id) {
     foreach ($terms as $term) {
         if ((int) $term->parent === $parent_id) {
-            $filter_slug = $term->slug; // type-a / type-b / etc
-            break;
+            $filter_slugs[] = $term->slug;
         }
     }
 }
+
+$data_terms = implode(',', array_unique($filter_slugs)); // kan leeg zijn
 ?>
 
 <div class="card card-course"
     data-course-card
-    data-term="<?php echo esc_attr($filter_slug); ?>">
+    data-terms="<?php echo esc_attr($data_terms); ?>">
 
     <div class="card-inner">
         <div class="card-content">

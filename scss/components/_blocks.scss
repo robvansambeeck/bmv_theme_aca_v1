@@ -1045,11 +1045,6 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
 }
 
 // Filter block
-.filter-tab.is-active {
-  display: block;
-}
-
-
 $filter-bg: #e6e0f0; // Light lavender background
 
 .block-filter {
@@ -1105,11 +1100,13 @@ $filter-bg: #e6e0f0; // Light lavender background
             width: 100%;
         }
 
-        .cards-courses {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-            gap: 2rem;
-        }
+.cards-courses {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+
     }
 
     // Responsive
@@ -1148,6 +1145,36 @@ $filter-bg: #e6e0f0; // Light lavender background
         }
     }
 }
+
+// block-filter animation
+
+[data-course-card] {
+  will-change: transform, opacity;
+  transform-origin: top left; /* belangrijk */
+  transition:
+    opacity 420ms cubic-bezier(.22,1,.36,1),
+    transform 520ms cubic-bezier(.22,1,.36,1);
+}
+
+/* verborgen: alleen fade + mini shift naar beneden */
+[data-course-card].is-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+/* optionele stagger */
+[data-course-card].is-stagger {
+  transition-delay: var(--stagger-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-course-card] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 
 // Steps block
 .block-steps {

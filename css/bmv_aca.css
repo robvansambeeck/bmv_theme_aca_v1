@@ -928,10 +928,6 @@ meter {
   }
 }
 
-.filter-tab.is-active {
-  display: block;
-}
-
 .block-filter {
   max-width: 1400px;
   margin: 0 auto;
@@ -979,7 +975,7 @@ meter {
 }
 .block-filter .output .cards-courses {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 @media only screen and (max-width: 992px) {
@@ -1013,6 +1009,30 @@ meter {
   }
 }
 
+[data-course-card] {
+  will-change: transform, opacity;
+  transform-origin: top left; /* belangrijk */
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* verborgen: alleen fade + mini shift naar beneden */
+[data-course-card].is-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+/* optionele stagger */
+[data-course-card].is-stagger {
+  transition-delay: var(--stagger-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-course-card] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
 .block-steps {
   margin-bottom: 6rem;
 }
