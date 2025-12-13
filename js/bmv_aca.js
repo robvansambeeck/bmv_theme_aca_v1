@@ -16,4 +16,32 @@ if (navMain) {
     toggleSticky(); // Check on load
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.filter-tab');
+  const cards = document.querySelectorAll('[data-course-card]');
+
+  if (!tabs.length || !cards.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.dataset.filter;
+
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      cards.forEach(card => {
+        const term = card.dataset.term;
+
+        if (filter === 'all' || term === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+
+
+
 console.log("js end");

@@ -928,6 +928,10 @@ meter {
   }
 }
 
+.filter-tab.is-active {
+  display: block;
+}
+
 .block-filter {
   max-width: 1400px;
   margin: 0 auto;

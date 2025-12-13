@@ -1045,6 +1045,11 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
 }
 
 // Filter block
+.filter-tab.is-active {
+  display: block;
+}
+
+
 $filter-bg: #e6e0f0; // Light lavender background
 
 .block-filter {
