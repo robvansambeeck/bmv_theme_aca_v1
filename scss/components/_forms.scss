@@ -95,20 +95,20 @@ legend, {
 }
 
 .gform_wrapper .gfield_checkbox input[type='checkbox'] {
-    appearance: none; /* Hide default checkbox */
-    -webkit-appearance: none; /* Hide default checkbox for Safari */
-    background-color: #fff; /* Background color of the box */
-    border: 2px solid #ddd; /* Border color of the box */
-    padding: 8px 6px 8px 6px; /* Size of the box */
-    display: inline-block;
-    position: relative;
+    appearance: none !important; /* Hide default checkbox */
+    -webkit-appearance: none !important; /* Hide default checkbox for Safari */
+    background-color: #fff !important; /* Background color of the box */
+    border: 2px solid #ddd !important; /* Border color of the box */
+    padding: 8px 6px 8px 6px !important; /* Size of the box */
+    display: inline-block !important;
+    position: relative !important;
 }
 
 .gform_wrapper .gfield_checkbox input[type='checkbox']:checked::before {
-    content: '✓'; /* Unicode checkmark symbol */
-    position: absolute;
-    top: -12px; /* Adjust these values based on your specific alignment needs */
-    left: -1px; /* Adjust these values based on your specific alignment needs */
-    color: $color-cta; /* Color of the checkmark */
-    font-size: 30px; /* Size of the checkmark */
+    content: '✓' !important; /* Unicode checkmark symbol */
+    position: absolute !important;
+    top: -12px !important; /* Adjust these values based on your specific alignment needs */
+    left: -1px !important; /* Adjust these values based on your specific alignment needs */
+    color: $color-cta !important; /* Color of the checkmark */
+    font-size: 30px !important; /* Size of the checkmark */
 }
