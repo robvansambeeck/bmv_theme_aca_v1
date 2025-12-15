@@ -5,18 +5,17 @@ $title = get_field('section_titel');
 // Repeater students
 $students = get_field('students');
 ?>
- <h2 class="title">
-                <?php echo $title; ?>
-            </h2>
 <div class="block block-students">
     <div class="block-inner">
-
-        <?php if ($title) : ?>
-            <h2 class="title">
-                <?php echo $title; ?>
-            </h2>
-        <?php endif; ?>
-
+ 
+    <div class="title">
+    <?php
+$content = get_field('review_title');
+if ($content) {
+  echo apply_filters('review_title', $content);
+}
+?>
+</div>
         <?php if ($students) : ?>
             <div class="block-students__grid">
 

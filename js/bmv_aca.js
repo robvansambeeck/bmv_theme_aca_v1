@@ -16,6 +16,36 @@ if (navMain) {
     toggleSticky(); // Check on load
 }
 
+// FAQ accordion
+document.addEventListener('DOMContentLoaded', () => {
+  const faqButtons = document.querySelectorAll('.accordion-list__question');
+  if (faqButtons.length) {
+    faqButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        const targetId = btn.getAttribute('aria-controls');
+        const answer = targetId ? document.getElementById(targetId) : null;
+
+        // Optioneel: één tegelijk openhouden
+        faqButtons.forEach((otherBtn) => {
+          const otherId = otherBtn.getAttribute('aria-controls');
+          const otherAnswer = otherId ? document.getElementById(otherId) : null;
+          const shouldOpen = otherBtn === btn && !isExpanded;
+
+          otherBtn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+          if (otherAnswer) {
+            if (shouldOpen) {
+              otherAnswer.removeAttribute('hidden');
+            } else {
+              otherAnswer.setAttribute('hidden', '');
+            }
+          }
+        });
+      });
+    });
+  }
+});
+
 // block-filter
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.filter-tab');

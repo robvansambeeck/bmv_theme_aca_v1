@@ -13,40 +13,47 @@ $link_text   = "Neem dan contact met ons op!";
     <div class="block-inner">
         <div class="faq">
 
-            <?php if ($title) : ?>
-                <h2><?php echo esc_html($title); ?></h2>
-            <?php endif; ?>
+            <div class="faq__sidebar">
+                <?php if ($title) : ?>
+                    <?php
+                    // Laat HTML uit het veld toe (zoals <h2> en <strong>), maar gefilterd
+                    echo wp_kses_post($title);
+                    ?>
+                <?php endif; ?>
 
-            <?php if ($intro) : ?>
-                <div><?php echo $intro; ?></div>
-            <?php endif; ?>
+                <?php if ($intro) : ?>
+                    <div><?php echo wp_kses_post($intro); ?></div>
+                <?php endif; ?>
 
-            <?php if ($pre_text) : ?>
-                <div><?php echo esc_html($pre_text); ?></div>
-            <?php endif; ?>
+                <?php if ($pre_text) : ?>
+                    <div><?php echo esc_html($pre_text); ?></div>
+                <?php endif; ?>
 
-            <?php if ($link_text && $url) : ?>
-                <a href="<?php echo esc_url($url); ?>">
-                    <?php echo esc_html($link_text); ?> →
-                </a>
-            <?php endif; ?>
+                <?php if ($link_text && $url) : ?>
+                    <a href="<?php echo esc_url($url); ?>">
+                        <?php echo esc_html($link_text); ?> →
+                    </a>
+                <?php endif; ?>
+            </div>
 
             <?php if (have_rows('faq_questions')) : ?>
-                <div class="accordion-list">
-                    <?php while (have_rows('faq_questions')) : the_row();
-                        $question = get_sub_field('question');
-                        $answer   = get_sub_field('answer');
-                    ?>
-                        <div class="accordion-list__item">
-                            <button class="accordion-list__question" aria-expanded="false" aria-controls="faq-answer-<?php echo get_row_index(); ?>">
-                                <span class="accordion-list__icon">+</span>
-                                <?php echo esc_html($question); ?>
-                            </button>
-                            <div id="faq-answer-<?php echo get_row_index(); ?>" class="accordion-list__answer" hidden>
-                                <?php echo $answer; ?>
+                <div class="faq__content">
+                    <div class="accordion-list">
+                        <?php while (have_rows('faq_questions')) : the_row();
+                            $question = get_sub_field('question');
+                            $answer   = get_sub_field('answer');
+                        ?>
+                            <div class="accordion-list__item">
+                                <button class="accordion-list__question" aria-expanded="false" aria-controls="faq-answer-<?php echo get_row_index(); ?>">
+                                    <span class="accordion-list__icon" aria-hidden="true"></span>
+                                    <?php echo esc_html($question); ?>
+                                </button>
+                                <div id="faq-answer-<?php echo get_row_index(); ?>" class="accordion-list__answer" hidden>
+                                    <?php echo $answer; ?>
+                                </div>
                             </div>
-                        </div>
-                    <?php endwhile; ?>
+                        <?php endwhile; ?>
+                    </div>
                 </div>
             <?php endif; ?>
 
