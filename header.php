@@ -24,3 +24,6 @@ header.php
 <!-- /head -->
 
 <body <?php body_class(); ?>>
+  <div class="site-label">
+    Powered by
+  </div>
