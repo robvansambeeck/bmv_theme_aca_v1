@@ -7,7 +7,7 @@
     top: 0;
     z-index: $z-nav;
     width: 100%;
-    background: transparent;
+  background: #ffffff !important;
     border-top-left-radius: 0.75rem;
     border-top-right-radius: 0.75rem;
     display: flex;
@@ -16,7 +16,7 @@
 
     &.is-sticky {
         background: rgba(255, 255, 255, 0.8) !important;
-        backdrop-filter: saturate(120%) blur(0.25rem);
+    backdrop-filter: none;
         min-height: 3rem;
         display: flex;
         align-items: center;
@@ -104,7 +104,7 @@
             color: $color-heading-light;
             border: none;
             border-radius: 999px;
-            padding: 0.6875rem 2.5rem; // Increased horizontal padding for more width
+            padding: 0.5rem 3.4rem; // nog iets platter en breder
             font-weight: $font-medium;
             display: inline-flex;
             align-items: center;
