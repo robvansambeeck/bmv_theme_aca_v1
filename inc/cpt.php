@@ -38,7 +38,7 @@ function bmv_register_opleidingen_cpt()
         'rewrite'       => ['slug' => 'opleidingen'],
         'show_in_rest'  => true,
         'menu_position' => 8, // <— hoger in het menu
-        'taxonomies'    => ['category'], // <— ADD THIS
+        'taxonomies'    => ['category', 'post_tag'], // <— ADD THIS
     ]);
 }
 add_action('init', 'bmv_register_opleidingen_cpt');
