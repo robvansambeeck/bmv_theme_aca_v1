@@ -16,6 +16,55 @@ if (navMain) {
     toggleSticky(); // Check on load
 }
 
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector('.nav-main .toggle');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const openIcon = document.querySelector('.toggle-icon--open');
+    const closeIcon = document.querySelector('.toggle-icon--close');
+
+    if (!toggleButton || !mobileMenuOverlay) return;
+
+    const openMenu = () => {
+        toggleButton.setAttribute('aria-expanded', 'true');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+        mobileMenuOverlay.classList.add('is-open');
+        // CSS zorgt voor het tonen/verbergen via aria-expanded
+    };
+
+    const closeMenu = () => {
+        toggleButton.setAttribute('aria-expanded', 'false');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+        mobileMenuOverlay.classList.remove('is-open');
+        // CSS zorgt voor het tonen/verbergen via aria-expanded
+    };
+
+    // Toggle button click
+    toggleButton.addEventListener('click', () => {
+        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Close button click
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMenu);
+    }
+
+    // Sluit menu bij klik buiten overlay
+    mobileMenuOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileMenuOverlay) {
+            closeMenu();
+        }
+    });
+
+    // Initial state wordt bepaald door CSS (aria-expanded="false" is default)
+});
+
 // FAQ accordion
 document.addEventListener('DOMContentLoaded', () => {
   const faqButtons = document.querySelectorAll('.accordion-list__question');

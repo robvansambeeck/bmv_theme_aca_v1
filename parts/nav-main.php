@@ -31,11 +31,42 @@
                     </a>
                 <?php endif; ?>
             </div>
-            <div class="toggle">
-                <i class="fa-sharp-duotone fa-light fa-bars-sort fa-flip-horizontal"></i>
-                <i class="fa-light fa-xmark"></i>
-            </div>
+            <button class="toggle" aria-label="Toggle menu" aria-expanded="false">
+                <i class="fa-sharp-duotone fa-light fa-bars-sort fa-flip-horizontal toggle-icon toggle-icon--open"></i>
+                <i class="fa-light fa-xmark toggle-icon toggle-icon--close"></i>
+            </button>
         </div>
     </div>
 </div>
 <!-- /nav-main -->
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-menu-content">
+        <div class="mobile-menu-header">
+            <div class="mobile-menu-logo">
+                <?php
+                if (function_exists('the_custom_logo')) {
+                    the_custom_logo();
+                }
+                ?>
+            </div>
+            <button class="mobile-menu-close" aria-label="Close menu">
+                <i class="fa-light fa-xmark"></i>
+            </button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <?php
+            wp_nav_menu([
+                'theme_location' => 'main',
+                'container'      => false,
+                'menu_class'     => 'mobile-menu-list',
+                'fallback_cb'    => false,
+            ]);
+            ?>
+        </nav>
+        <div class="mobile-menu-footer">
+            <p class="mobile-menu-powered">Powered by <strong>bink</strong></p>
+        </div>
+    </div>
+</div>

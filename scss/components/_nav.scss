@@ -8,8 +8,10 @@
     z-index: $z-nav;
     width: 100%;
   background: #ffffff !important;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
+    border-top-left-radius: 1.5rem; // minder border radius
+    border-top-right-radius: 1.5rem; // minder border radius
+    border-bottom: none; // geen streep onder navbar
+    box-shadow: none; // geen shadow die streep kan veroorzaken
     display: flex;
     align-items: center;
     min-height: 3rem;
@@ -28,25 +30,26 @@
         padding: 0.5rem 1.75rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        flex: 1;
-        height: 100%;
-        min-height: 3rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .nav-content {
         display: flex;
         align-items: center;
+        justify-content: space-between; // logo links, toggle rechts
         gap: 2.25rem;
+        width: 100%;
         flex: 1;
     }
 
     .logo {
         display: flex;
         align-items: center;
+        flex-shrink: 0; // logo mag niet krimpen
 
         img {
-            max-height: 2rem;
+            max-height: 1.75rem; // iets kleiner logo
             width: auto;
             display: block;
         }
@@ -54,6 +57,10 @@
 
     .items {
         flex: 1;
+        
+        @media only screen and (max-width: 992px) {
+            display: none; // verberg items op mobiel
+        }
     }
 
     .main-nav {
@@ -124,10 +131,47 @@
 
     .toggle {
         display: none;
-        margin-left: 0.75rem;
         color: $color-cta;
         font-size: 1.5rem;
         cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        margin-left: auto; // push naar rechts
+        position: relative;
+        flex-shrink: 0; // toggle mag niet krimpen
+
+        .toggle-icon {
+            position: absolute;
+            top: 50%;
+            left: calc(50% - 0.75rem); // nog iets meer naar links
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s ease;
+
+            &--open {
+                display: block;
+                transform: translate(-50%, -50%) scaleX(-1); // horizontaal spiegelen
+            }
+
+            &--close {
+                display: none;
+                transform: translate(-50%, -50%); // behoud positie voor kruisje
+            }
+        }
+
+        &[aria-expanded="true"] {
+            // Verberg alleen het hamburger icoon, toon het kruisje op dezelfde plek
+            .toggle-icon--open {
+                display: none;
+            }
+            .toggle-icon--close {
+                display: block;
+            }
+            // Behoud dezelfde positie - toggle blijft zichtbaar
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
     }
 
     // Responsiveness
@@ -148,13 +192,16 @@
 
         .logo {
             img {
-                max-height: 2rem;
+                max-height: 1.75rem; // iets kleiner logo
             }
         }
 
         .items,
         .cta {
-            display: none;
+            display: none !important;
+            flex: 0 0 0 !important; // geen flex ruimte op mobiel
+            width: 0 !important;
+            margin: 0 !important;
         }
 
         .toggle {
@@ -166,6 +213,53 @@
     @media only screen and (max-width: 768px) {
         .nav-inner {
             padding: 0.5rem 0.875rem;
+            justify-content: space-between; // logo links, toggle rechts
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; // logo links, toggle rechts op mobiel
+            width: 100%;
+            gap: 0; // geen gap op mobiel
+            flex: 1;
+        }
+
+        .logo {
+            flex-shrink: 0; // logo mag niet krimpen
+            order: 1; // logo eerst
+            margin-right: auto; // push naar links
+        }
+
+        .items,
+        .cta {
+            display: none !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            flex: 0 0 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            order: 3; // items en cta helemaal achteraan
+        }
+
+        .toggle {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto; // push naar rechts op mobiel
+            flex-shrink: 0; // toggle mag niet krimpen
+            order: 2; // toggle na logo
+            position: relative; // voor absolute positioning van iconen
+            
+            &[aria-expanded="true"] {
+                // Behoud exact dezelfde positie wanneer menu open is
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                visibility: visible !important;
+            }
         }
     }
 }
@@ -282,20 +376,152 @@ $footer-bg: #282865; // Purple background
 
         .nav-content {
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem; // ruimte tussen logo en menu's
             align-items: center;
         }
 
         .col {
-            &.pages,
-            &.legal {
+            &.logo {
+                order: 1; // logo eerst
+            }
+
+            &.pages {
+                order: 2; // pages menu tweede
                 align-items: center;
+
+            }
+
+            &.legal {
+                order: 3; // legal menu derde
+                align-items: center;
+                margin-top: -1rem; // negatieve margin om gap tussen menu's te verwijderen
             }
         }
 
         .footer-menu--pages,
         .footer-menu--legal {
             align-items: center;
+        }
+    }
+}
+
+// Mobile Menu Overlay
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(40, 40, 101); // paarse achtergrond zoals body
+    z-index: 999; // onder navbar (1000) zodat navbar zichtbaar blijft
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    pointer-events: none; // voorkom clicks wanneer gesloten
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto; // enable clicks wanneer open
+    }
+
+    .mobile-menu-content {
+        background-color: #ffffff;
+        border-radius: 1.5rem;
+        margin: 0.75rem; // minder margin = breder menu
+        margin-top: calc(0.75rem + 4rem); // ruimte voor navbar (min-height 3rem + padding)
+        height: calc(100vh - 1.5rem - 4rem); // aangepast voor nieuwe margin
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        width: calc(100% - 1.5rem); // breder door minder margin
+        max-width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        flex-direction: row; // logo links, kruisje rechts
+
+        .mobile-menu-logo {
+            // Verberg logo in overlay, gebruik alleen navbar logo
+            display: none;
+            
+            img {
+                max-height: 2rem;
+                width: auto;
+            }
+        }
+
+        .mobile-menu-close {
+            // Verberg het kruisje in mobile-menu-header, gebruik alleen het kruisje in navbar
+            display: none !important;
+        }
+    }
+
+    .mobile-menu-nav {
+        flex: 1;
+        margin-bottom: 2rem;
+    }
+
+    .mobile-menu-list {
+        list-style: none !important;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none !important;
+        }
+
+        a {
+            color: $color-heading-dark;
+            text-decoration: none;
+            font-size: 1.25rem; // zelfde grootte voor alle items
+            font-weight: $font-medium;
+            display: block;
+            transition: color 0.2s ease;
+
+            &:hover,
+            &:focus {
+                color: $color-cta;
+            }
+        }
+
+        // Eerste item (Opleidingen) moet paars maar zelfde grootte
+        > li:first-child > a {
+            color: $color-cta;
+            font-size: 1.25rem; // zelfde grootte
+            font-weight: $font-bold; // wel bold
+        }
+    }
+
+    .mobile-menu-footer {
+        margin-top: auto;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+        .mobile-menu-powered {
+            font-size: 0.875rem;
+            color: rgba(0, 0, 0, 0.5);
+            margin: 0;
+
+            strong {
+                color: $color-heading-dark;
+                font-weight: $font-bold;
+            }
         }
     }
 }

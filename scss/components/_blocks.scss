@@ -12,6 +12,8 @@
 // Header block (hero style)
 .block-header {
     text-align: center;
+    border-top: none !important; // geen lijn boven header
+    margin-top: 0 !important; // geen margin boven header
 
     .block-inner {
         max-width: 100%; // Full width for wider header
@@ -21,6 +23,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-top: none !important; // geen lijn boven header inner
     }
 
     .block-content {
@@ -2092,6 +2095,172 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     @media only screen and (max-width: 768px) {
         .block-inner {
             padding: $card-padding-v $padding-base * 0.75;
+        }
+    }
+}
+
+// =========================================
+// Mobile overrides (home page specific)
+// Alleen toevoegingen; desktop blijft gelijk
+// =========================================
+@media only screen and (max-width: 768px) {
+    // Header block: meer compacte paddings
+    .block-header {
+        .block-inner {
+            padding: 2.5rem $padding-base * 1.25 0; // geen padding onderaan
+        }
+
+        .row.cta {
+            .btn {
+                // op mobiel: iets plattere maar bredere CTA-buttons
+                min-width: 17rem;
+                height: 2.5rem; // direct minder hoog
+                padding: 0 2.5rem; // alleen horizontale padding
+                display: inline-flex; // zorg dat flex werkt
+                align-items: center; // tekst verticaal gecentreerd
+                justify-content: center; // tekst horizontaal gecentreerd
+            }
+        }
+
+        .row.title {
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    // Image Grid 1: alles onder elkaar full-width
+    .block-image-grid-1 {
+        .block-inner {
+            // geen padding boven, alleen onder en zijkanten
+            padding: 0 $padding-base $card-padding-v * 1.2;
+        }
+
+        .block-content.image-grid-1 {
+            flex-direction: column;
+            gap: $gap-cols; // gelijke gap tussen alle items
+        }
+
+        .image-grid-1__col {
+            &--left,
+            &--middle,
+            &--right {
+                min-height: auto;
+                margin: 0; // verwijder alle individuele margins
+            }
+
+            &--middle {
+                gap: $gap-cols; // zelfde gap tussen cards als tussen images en cards
+            }
+        }
+    }
+
+    // Info block: kolommen onder elkaar
+    .block-info {
+        padding: 0 $padding-base;
+
+        .block-inner {
+            padding: 3rem $padding-base * 1.5 4rem;
+        }
+
+        .block-content.block-info__content {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .block-info__col--text {
+            padding-left: 0;
+            align-items: flex-start; // links uitlijnen ipv center
+        }
+
+        .block-content.block-info__content {
+            text-align: left; // tekst links uitlijnen op mobiel
+        }
+
+        .block-info__col--logo {
+            justify-content: center; // logo gecentreerd op mobiel
+            padding-right: 0;
+        }
+
+        .block-info__logo-wrap {
+            width: 16rem; // kleiner logo op mobiel
+            margin: 0 auto; // extra centrering
+        }
+
+        .block-info__title {
+            font-size: 2.25rem; // kleiner op mobiel
+            text-align: left; // titel links uitlijnen
+        }
+
+        .block-info__text {
+            text-align: left; // tekst links uitlijnen
+        }
+
+        .block-info__cta {
+            margin-left: auto;
+            margin-right: auto; // button gecentreerd op mobiel
+        }
+    }
+
+    // Program block: cards 1 kolom
+    .block-program {
+        .block-content.program-grid {
+            grid-template-columns: 1fr;
+            gap: $gap-cards * 1.5;
+        }
+    }
+
+    // Bullet list: image boven, content onder, full-width
+    .block-bullet-list {
+        .block-content.bullet-list__container {
+            flex-direction: column;
+            padding: 2.5rem $padding-base;
+        }
+
+        .bullet-list__col--image,
+        .bullet-list__col--content {
+            max-width: 100%;
+            flex: 0 0 100%;
+            padding-left: 0;
+        }
+
+        .bullet-list__col--content {
+            align-items: center; // content items centreren
+        }
+
+        .bullet-list__cta {
+            margin-left: auto;
+            margin-right: auto; // button gecentreerd op mobiel
+            margin-bottom: $gap-cols; // meer ruimte onder de button
+        }
+    }
+
+    // CTA register: wat compacter op mobiel
+    .block-cta-register {
+        border-bottom-left-radius: 1.5rem !important;
+        border-bottom-right-radius: 1.5rem !important; // border radius onderaan op mobiel
+        overflow: hidden; // zorg dat border-radius zichtbaar is
+
+        &::after {
+            border-bottom-left-radius: 1.5rem !important;
+            border-bottom-right-radius: 1.5rem !important; // border radius ook op ::after element
+        }
+
+        .block-bg {
+            border-bottom-left-radius: 1.5rem !important;
+            border-bottom-right-radius: 1.5rem !important; // border radius ook op background
+        }
+
+        .block-inner {
+            padding: 3rem $padding-base * 1.25;
+        }
+
+        .cta-register__title {
+            font-size: 2rem !important;
+
+            h1, h2, h3, h4, h5, h6,
+            p,
+            * {
+                font-size: 2rem !important;
+            }
         }
     }
 }

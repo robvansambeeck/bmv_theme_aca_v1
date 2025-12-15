@@ -11,6 +11,9 @@ body{
     background-color: #ffffff;
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
+    border-top: none !important; // geen lijn boven page-wrapper
+    margin-top: 0 !important; // geen margin boven page-wrapper
+    padding-top: 0 !important; // geen padding boven page-wrapper
     overflow: hidden;
 }
 
@@ -72,5 +75,19 @@ body{
         margin-right: auto;
         display: block;
     }
+}
+
+// =============================
+// Mobile layout (home & global)
+// =============================
+@media only screen and (max-width: 768px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  .page-wrapper {
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem; // border radius onderaan voor CTA register block
+  }
 }
 
