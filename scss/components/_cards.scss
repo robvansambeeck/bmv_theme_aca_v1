@@ -131,11 +131,6 @@
                 font-weight: $font-bold; // bold
                 line-height: 1.3;
                 display: block;
-
-                &:hover,
-                &:focus {
-                    text-decoration: underline;
-                }
         }
 
         .level {
@@ -163,7 +158,6 @@
             width: 100%; // Ensure tags stay within card
 
             .tag {
-                background-color: #ffffff;
                 color: $color-cta;
                 border: 2px solid $color-cta;
                 border-radius: 999px;

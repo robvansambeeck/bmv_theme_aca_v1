@@ -247,6 +247,7 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
 
 .block-image-grid-2 {
     margin-bottom: 0;
+    margin-top: -$grid-gap * 3.0; // minder margin-top
 
     .block-inner {
         max-width: $container-base;
@@ -295,10 +296,10 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
 
         .image-grid-2__label {
             position: absolute;
-            top: 0.75rem;
-            left: 0.75rem;
+            top: 1.25rem; // iets meer naar onder
+            left: 1.25rem; // iets meer naar rechts
             background-color: #ffffff;
-            color: $color-txt-dark;
+            color: $color-badge-orange;
             padding: 0.375rem 0.75rem;
             border-radius: 999px;
             font-size: 0.875rem;
@@ -340,7 +341,7 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
         }
 
         &--top {
-            background-color: $card-lavender;
+            background-color: $card-top-purple; // E7A8F1 with 20% opacity
         }
 
         &--middle {
@@ -412,7 +413,7 @@ $program-text: $color-txt-dark;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        padding: 7rem $padding-base * 4 8rem $padding-base * 4; // nog meer ademruimte
+        padding: 4rem $padding-base * 4 8rem $padding-base * 4; // minder gap boven, meer ademruimte onder
     }
 
     // No background variant
@@ -449,15 +450,35 @@ $program-text: $color-txt-dark;
     }
 
     .block-info__title {
-        font-size: 2rem;
-        font-weight: $font-bold;
-        color: $info-title-color;
+        font-size: 3rem; // nog groter
         line-height: 1.2;
-    margin: 0; // geen extra ruimte eronder; focus op tekstruimte
+        margin: 0; // geen extra ruimte eronder; focus op tekstruimte
 
         * {
             margin: 0;
-            color: inherit;
+            color: $color-heading-dark; // standaard: zwart
+            font-weight: 300; // standaard: dun
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            color: $color-heading-dark; // zwart voor headings
+            font-weight: 300; // dun
+            font-size: inherit;
+            line-height: inherit;
+            display: block;
+
+            strong,
+            b {
+                color: $color-cta !important; // paars voor bold binnen headings
+                font-weight: 700 !important; // dikgedrukt
+            }
+        }
+
+        strong,
+        b {
+            color: $color-cta; // paars voor bold
+            font-weight: 700; // dikgedrukt
         }
     }
 
@@ -483,19 +504,23 @@ $program-text: $color-txt-dark;
         color: $color-heading-light;
         border: none;
         border-radius: 999px;
-    padding: 1rem 4.5rem; // nog veel meer breedte
+        padding: 0.6875rem 3.5rem; //zelfde als header buttons
+        min-width: 16rem; //zelfde als header buttons
         font-weight: $font-medium;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
         white-space: nowrap;
         text-decoration: none;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
         max-width: fit-content;
 
         &:hover,
         &:focus {
             background: $color-cta-hover;
+            box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
             color: $color-heading-light;
         }
     }
@@ -702,7 +727,7 @@ $program-text: $color-txt-dark;
             gap: 4rem;
             align-items: center;
             background-color: #EAEBF3;
-            border-radius: $border-radius-card;
+            border-radius: 0; // geen border radius
             padding: 8rem 3rem 8rem 8rem; // nog meer hoogte voor de grijze bg
             width: 100%;
             max-width: 100%;
@@ -818,7 +843,7 @@ $program-text: $color-txt-dark;
         padding: 0;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.75rem; // meer ruimte tussen bulletpoints
     }
 
     .bullet-list__item {
@@ -859,7 +884,8 @@ $program-text: $color-txt-dark;
         color: $color-heading-light;
         border: none;
         border-radius: 999px;
-        padding: 0.75rem 1.5rem;
+        padding: 0.6875rem 3.5rem; //zelfde als header buttons
+        min-width: 16rem; //zelfde als header buttons
         font-weight: $font-medium;
         font-size: 1rem;
         display: inline-flex;
@@ -1031,10 +1057,12 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         color: $color-cta;
         border: none;
         border-radius: 999px;
-        padding: 0.875rem 2rem;
+        padding: 0.6875rem 3.5rem; //zelfde als header buttons
+        min-width: 16rem; //zelfde als header buttons
         font-weight: $font-medium;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
         white-space: nowrap;
         text-decoration: none;
@@ -1255,21 +1283,17 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     .steps__icon {
-        width: 5.5rem; // Slightly larger circle
-        height: 5.5rem; // Slightly larger circle
-        background-color: $steps-icon-bg;
-        border-radius: 50%; // Circular background
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0; // No padding so icon can extend beyond circle
+        padding: 0;
         box-sizing: border-box;
         flex-shrink: 0;
-        overflow: visible; // Allow icon to extend beyond circle
+        overflow: visible;
 
         img {
-            width: 6.5rem; // Slightly larger than circle (5.5rem)
-            height: 6.5rem; // Slightly larger than circle (5.5rem)
+            width: 7rem; // iets kleiner icon zonder circle
+            height: 7rem; // iets kleiner icon zonder circle
             object-fit: contain;
             display: block;
         }
@@ -1325,7 +1349,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: $card-padding-v $padding-base * 1.5;
+    padding: $card-padding-v * 3 $padding-base * 1.5 $card-padding-v * 3 $padding-base * 1.5; // nog meer padding boven en onder
     background-color: $info-bg;
 
     .block-inner {
@@ -1333,13 +1357,19 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         margin: 0 auto;
     }
 
-    .block-students__title {
+    .title {
         font-size: 2rem;
-        font-weight: $font-bold;
-        color: $color-txt-dark;
         line-height: 1.2;
         margin: 0 0 2rem 0;
         text-align: left;
+
+  
+
+        strong,
+        b {
+            color: $color-cta; // paars
+            font-weight: 700; // vet
+        }
 
         &-highlight {
             color: $color-cta;
@@ -1357,6 +1387,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         background-color: #ffffff;
         border-radius: $border-radius-card;
         padding: 2rem 1.5rem;
+        min-height: 20rem; // meer height zonder meer padding
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1396,7 +1427,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             font-size: 0.9375rem;
             font-weight: $font-regular;
             color: rgba(64, 64, 64, 0.7);
-            margin: 0;
+            margin: -1rem 0 0 0; // negatieve margin om dichter bij naam te komen
             line-height: 1.4;
         }
 
@@ -1445,6 +1476,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 // Image Grid 3 block
 .block-image-grid-3 {
     margin-bottom: 0;
+    margin-top: -$grid-gap * 0.5; // minder ruimte boven
 
     .block-inner {
         max-width: $container-base;

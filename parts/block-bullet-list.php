@@ -39,7 +39,7 @@ $cta         = get_field('bullet_list_cta');
                             <?php if ($item_text) : ?>
                                 <li class="bullet-list__item">
                                     <span class="bullet-list__item-icon">
-                                        <i class="fa-duotone fa-circle-check"></i>
+                                        <i class="fa-sharp-duotone fa-solid fa-check-circle"></i>
                                     </span>
                                     <span class="bullet-list__item-text">
                                         <?php echo esc_html($item_text); ?>

@@ -24,18 +24,20 @@ $data_terms = implode(',', array_unique($filter_slugs)); // kan leeg zijn
     <div class="card-inner">
         <div class="card-content">
             <div class="card-img">
-                <div class="card-date">
-                    <?php
-                    $raw = get_field('course_date', get_the_ID());
+            <div class="card-date">
+                <?php
+                $raw = get_field('course_date', get_the_ID());
 
-                    if ($raw) {
-                        $timestamp = strtotime($raw);
+                if ($raw) {
+                    // ACF datepicker usually returns d/m/Y on hosting
+                    $date = DateTime::createFromFormat('d/m/Y', $raw);
 
-                        if ($timestamp) {
-                            echo 'Start ' . esc_html(wp_date('F Y', $timestamp));
-                        }
+                    if ($date) {
+                        echo 'Start ' . esc_html($date->format('F Y'));
                     }
-                    ?>
+                }
+                ?>
+
                 </div>
                 <?php the_post_thumbnail('large'); ?>
             </div>

@@ -310,6 +310,7 @@ meter {
 
 .block-image-grid-2 {
   margin-bottom: 0;
+  margin-top: -6rem;
 }
 .block-image-grid-2 .block-inner {
   max-width: 1400px;
@@ -352,10 +353,10 @@ meter {
 }
 .block-image-grid-2 .image-grid-2__image .image-grid-2__label {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
+  top: 1.25rem;
+  left: 1.25rem;
   background-color: #ffffff;
-  color: rgb(64, 64, 64), 1;
+  color: #FF8C42;
   padding: 0.375rem 0.75rem;
   border-radius: 999px;
   font-size: 0.875rem;
@@ -393,7 +394,7 @@ meter {
   color: rgb(64, 64, 64), 1;
 }
 .block-image-grid-2 .image-grid-2__card--top {
-  background-color: rgb(230, 220, 250);
+  background-color: rgba(231, 168, 241, 0.2);
 }
 .block-image-grid-2 .image-grid-2__card--middle {
   background-color: rgb(255, 235, 205);
@@ -439,7 +440,7 @@ meter {
   border-radius: 0.75rem;
   max-width: 100%;
   margin: 0;
-  padding: 7rem 4rem 8rem 4rem;
+  padding: 4rem 4rem 8rem 4rem;
 }
 .block-info--no-bg .block-inner {
   background-color: transparent;
@@ -464,15 +465,37 @@ meter {
   padding-right: 2.5rem;
 }
 .block-info .block-info__title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: rgb(109, 84, 163);
+  font-size: 3rem;
   line-height: 1.2;
   margin: 0;
 }
 .block-info .block-info__title * {
   margin: 0;
-  color: inherit;
+  color: rgb(64, 64, 64), 1;
+  font-weight: 300;
+}
+.block-info .block-info__title h1, .block-info .block-info__title h2, .block-info .block-info__title h3, .block-info .block-info__title h4, .block-info .block-info__title h5, .block-info .block-info__title h6 {
+  margin: 0;
+  color: rgb(64, 64, 64), 1;
+  font-weight: 300;
+  font-size: inherit;
+  line-height: inherit;
+  display: block;
+}
+.block-info .block-info__title h1 strong,
+.block-info .block-info__title h1 b, .block-info .block-info__title h2 strong,
+.block-info .block-info__title h2 b, .block-info .block-info__title h3 strong,
+.block-info .block-info__title h3 b, .block-info .block-info__title h4 strong,
+.block-info .block-info__title h4 b, .block-info .block-info__title h5 strong,
+.block-info .block-info__title h5 b, .block-info .block-info__title h6 strong,
+.block-info .block-info__title h6 b {
+  color: rgb(109, 84, 163) !important;
+  font-weight: 700 !important;
+}
+.block-info .block-info__title strong,
+.block-info .block-info__title b {
+  color: rgb(109, 84, 163);
+  font-weight: 700;
 }
 .block-info .block-info__text {
   font-size: 1rem;
@@ -494,18 +517,22 @@ meter {
   color: #ffffff;
   border: none;
   border-radius: 999px;
-  padding: 1rem 4.5rem;
+  padding: 0.6875rem 3.5rem;
+  min-width: 16rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
   max-width: fit-content;
 }
 .block-info .block-info__cta:hover, .block-info .block-info__cta:focus {
   background: rgb(68, 47, 145);
+  box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
   color: #ffffff;
 }
 .block-info .block-info__logo-wrap {
@@ -649,7 +676,7 @@ meter {
   gap: 4rem;
   align-items: center;
   background-color: #EAEBF3;
-  border-radius: 0.75rem;
+  border-radius: 0;
   padding: 8rem 3rem 8rem 8rem;
   width: 100%;
   max-width: 100%;
@@ -746,7 +773,7 @@ meter {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.75rem;
 }
 .block-bullet-list .bullet-list__item {
   display: flex;
@@ -780,7 +807,8 @@ meter {
   color: #ffffff;
   border: none;
   border-radius: 999px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6875rem 3.5rem;
+  min-width: 16rem;
   font-weight: 500;
   font-size: 1rem;
   display: inline-flex;
@@ -921,10 +949,12 @@ meter {
   color: rgb(109, 84, 163);
   border: none;
   border-radius: 999px;
-  padding: 0.875rem 2rem;
+  padding: 0.6875rem 3.5rem;
+  min-width: 16rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
   text-decoration: none;
@@ -1103,10 +1133,6 @@ meter {
   max-width: 100%;
 }
 .block-steps .steps__icon {
-  width: 5.5rem;
-  height: 5.5rem;
-  background-color: rgb(255, 235, 205);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1116,8 +1142,8 @@ meter {
   overflow: visible;
 }
 .block-steps .steps__icon img {
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 7rem;
+  height: 7rem;
   object-fit: contain;
   display: block;
 }
@@ -1162,22 +1188,25 @@ meter {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 9rem 1.5rem 9rem 1.5rem;
   background-color: #EAEBF3;
 }
 .block-students .block-inner {
   max-width: 1400px;
   margin: 0 auto;
 }
-.block-students .block-students__title {
+.block-students .title {
   font-size: 2rem;
-  font-weight: 600;
-  color: rgb(64, 64, 64), 1;
   line-height: 1.2;
   margin: 0 0 2rem 0;
   text-align: left;
 }
-.block-students .block-students__title-highlight {
+.block-students .title strong,
+.block-students .title b {
+  color: rgb(109, 84, 163);
+  font-weight: 700;
+}
+.block-students .title-highlight {
   color: rgb(109, 84, 163);
 }
 .block-students .block-students__grid {
@@ -1190,6 +1219,7 @@ meter {
   background-color: #ffffff;
   border-radius: 0.75rem;
   padding: 2rem 1.5rem;
+  min-height: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1224,7 +1254,7 @@ meter {
   font-size: 0.9375rem;
   font-weight: 400;
   color: rgba(64, 64, 64, 0.7);
-  margin: 0;
+  margin: -1rem 0 0 0;
   line-height: 1.4;
 }
 .block-students .student-card__desc {
@@ -1265,6 +1295,7 @@ meter {
 
 .block-image-grid-3 {
   margin-bottom: 0;
+  margin-top: -1rem;
 }
 .block-image-grid-3 .block-inner {
   max-width: 1400px;
@@ -1606,9 +1637,6 @@ meter {
   line-height: 1.3;
   display: block;
 }
-.card-course .card-info .title:hover, .card-course .card-info .title:focus {
-  text-decoration: underline;
-}
 .card-course .card-info .level {
   color: #FF8C42;
   font-size: 0.9375rem;
@@ -1632,7 +1660,6 @@ meter {
   width: 100%;
 }
 .card-course .card-info .tags .tag {
-  background-color: #ffffff;
   color: rgb(109, 84, 163);
   border: 2px solid rgb(109, 84, 163);
   border-radius: 999px;
@@ -1914,7 +1941,7 @@ legend {
 .nav-footer {
   background-color: #282865;
   width: 100%;
-  padding: 3rem 0 1.5rem 0;
+  padding: 3rem 0 1rem 0;
   position: relative;
   z-index: 2;
   margin-top: 1.5rem;
@@ -1945,10 +1972,10 @@ legend {
 .nav-footer .col.logo {
   align-items: center;
   gap: 1rem;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 .nav-footer .col.logo img {
-  max-width: 18rem;
+  max-width: 22rem;
   height: auto;
   display: block;
 }
@@ -1961,7 +1988,7 @@ legend {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 .nav-footer .footer-menu li {
   list-style: none;
@@ -1972,6 +1999,7 @@ legend {
   color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
+  font-weight: 400;
   transition: opacity 0.2s ease;
   display: block;
 }
@@ -2016,7 +2044,7 @@ legend {
 .copyright {
   background-color: #282865;
   width: 100%;
-  padding: 0.75rem 0 1.5rem 0;
+  padding: 1.25rem 0 1.5rem 0;
   text-align: center;
   color: #ffffff;
   font-size: 0.875rem;
