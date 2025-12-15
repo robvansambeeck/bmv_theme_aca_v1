@@ -39,6 +39,13 @@
                 margin: 0;
                 color: $color-heading-dark;
                 text-align: center;
+                font-weight: 300; // standaard: dun/zwart
+            }
+
+            strong,
+            b {
+                color: $color-cta; // paars
+                font-weight: 700; // vet
             }
         }
 
@@ -59,13 +66,17 @@
             flex-wrap: wrap;
 
             .btn {
+                min-width: 16rem; // breder, zoals in referentie
+                justify-content: center;
+                text-align: center;
+
                 &:not(.btn-secondary) {
                     margin: 0;
                     background: $color-cta;
                     color: $color-heading-light;
                     border: none;
                     border-radius: 999px;
-                    padding: 0.6875rem 1.5rem;
+                    padding: 0.6875rem 3.5rem; // nog breder
                     font-weight: $font-medium;
                     display: inline-flex;
                     align-items: center;
@@ -84,6 +95,7 @@
 
                 &.btn-secondary {
                     margin: 0;
+                    padding: 0.6875rem 3.5rem; // even breed als primary
                 }
             }
         }
@@ -126,12 +138,25 @@ $card-padding-h: 2rem;
         flex-direction: column;
         min-height: 0;
 
+        &--left {
+            flex: 1.45 1 0; // iets meer breedte links
+            min-height: 32rem;
+        }
+
         &--middle {
             gap: $gap-cards;
             justify-content: center;
             width: 100%;
             min-width: 0;
+            flex: 0.8 1 0; // smaller
+            min-height: 32rem;
         }
+
+        &--right {
+            flex: 0.85 1 0; // iets breder dan midden maar smaller dan links
+            min-height: 32rem;
+        }
+
     }
 
     .image-grid-1__image {
@@ -164,6 +189,14 @@ $card-padding-h: 2rem;
         flex-direction: column;
         justify-content: center;
 
+        h4 {
+            margin: 0 0 $padding-base * 0.25;
+            font-size: 1.5rem;
+            font-weight: $font-bold;
+            color: $color-heading-dark;
+            line-height: 1.3;
+        }
+
         &--top {
             background-color: $card-lavender;
             flex: 1.5 1 auto;
@@ -173,6 +206,16 @@ $card-padding-h: 2rem;
             background-color: $card-peach;
             position: relative;
             flex: 1 1 auto;
+
+            strong {
+                color: $quote-orange;
+                font-weight: $font-bold;
+                font-size: 4.5rem;
+                line-height: 0.8; // minder ruimte onderaan
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
         }
 
         p {
@@ -183,7 +226,7 @@ $card-padding-h: 2rem;
     .image-grid-1__quote-icon {
         font-size: 3rem;
         color: $quote-orange;
-        margin-bottom: $padding-base * 0.5;
+        margin-bottom: 0; // geen ruimte onder het quote-teken
         line-height: 1;
     }
 
@@ -377,7 +420,7 @@ $program-text: $color-txt-dark;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        padding: 1.5rem $padding-base * 2 3.5rem $padding-base * 2;
+        padding: 3rem $padding-base * 2 4rem $padding-base * 2; // meer hoogte/padding
     }
 
     // No background variant
@@ -415,14 +458,20 @@ $program-text: $color-txt-dark;
 
     .block-info__title {
         font-size: 2rem;
-        font-weight: $font-bold;
-        color: $info-title-color;
+        font-weight: 300; // standaard dun/zwart
+        color: $color-heading-dark;
         line-height: 1.2;
         margin: 0;
 
         * {
             margin: 0;
             color: inherit;
+        }
+
+        strong,
+        b {
+            color: $info-title-color; // paars
+            font-weight: $font-bold;
         }
     }
 
@@ -1045,8 +1094,7 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
 }
 
 // Filter block
-$filter-bg: #e6e0f0; // Light lavender background
-
+$filter-bg: #e6e0f0; // light lavender for tab background
 .block-filter {
   max-width: $container-base;
   margin: 0 auto;
