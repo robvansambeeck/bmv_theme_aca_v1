@@ -22,14 +22,14 @@ body{
     z-index: $z-nav;
     margin-left: 2.5rem;
     padding: 0.75rem 2.5rem;
-    background-color: $color-badge-orange;
+    background-color: rgba(234, 235, 243, 1.0);
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem; // iets meer ruimte tussen img en tekst
-    color: $color-heading-light;
+    color: $color-heading-dark;
     font-weight: $font-medium;
     letter-spacing: 0.01em;
 }
@@ -37,6 +37,7 @@ body{
 .site-label__text {
     position: relative;
     z-index: 1;
+    font-size: 0.95rem; // iets kleiner
 }
 
 .site-label__img {

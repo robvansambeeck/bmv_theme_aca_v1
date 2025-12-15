@@ -229,7 +229,7 @@ meter {
 }
 .block-image-grid-1 .image-grid-1__col--left {
   flex: 1.35 1 0;
-  min-height: 26rem;
+  min-height: 32rem;
 }
 .block-image-grid-1 .image-grid-1__col--middle {
   gap: 0.75rem;
@@ -237,11 +237,11 @@ meter {
   width: 100%;
   min-width: 0;
   flex: 0.9 1 0;
-  min-height: 26rem;
+  min-height: 32rem;
 }
 .block-image-grid-1 .image-grid-1__col--right {
   flex: 0.75 1 0;
-  min-height: 26rem;
+  min-height: 32rem;
 }
 .block-image-grid-1 .image-grid-1__image {
   width: 100%;
@@ -259,7 +259,7 @@ meter {
 }
 .block-image-grid-1 .image-grid-1__card {
   width: 100%;
-  padding: 3rem 2rem;
+  padding: 4rem 2.5rem;
   border-radius: 0.75rem;
   color: rgb(64, 64, 64), 1;
   font-size: 1rem;
@@ -272,7 +272,7 @@ meter {
   justify-content: center;
 }
 .block-image-grid-1 .image-grid-1__card--top {
-  background-color: rgb(230, 220, 250);
+  background-color: rgba(231, 168, 241, 0.2);
   flex: 1.5 1 auto;
 }
 .block-image-grid-1 .image-grid-1__card--bottom {
@@ -280,8 +280,18 @@ meter {
   position: relative;
   flex: 1 1 auto;
 }
+.block-image-grid-1 .image-grid-1__card h4 {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: #FF8C42;
+  line-height: 1.3;
+}
 .block-image-grid-1 .image-grid-1__card p {
   margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgb(64, 64, 64), 1;
 }
 .block-image-grid-1 .image-grid-1__quote-icon {
   font-size: 3rem;
@@ -429,7 +439,7 @@ meter {
   border-radius: 0.75rem;
   max-width: 100%;
   margin: 0;
-  padding: 1.5rem 2rem 3.5rem 2rem;
+  padding: 7rem 4rem 8rem 4rem;
 }
 .block-info--no-bg .block-inner {
   background-color: transparent;
@@ -443,7 +453,7 @@ meter {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3rem;
   padding-left: 2.5rem;
 }
 .block-info .block-info__col--logo {
@@ -466,13 +476,17 @@ meter {
 }
 .block-info .block-info__text {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 2.2;
   color: rgb(64, 64, 64), 1;
-  max-width: 60ch;
+  max-width: 75ch;
   margin: 0;
+  padding: 0;
 }
 .block-info .block-info__text p {
   margin: 0;
+}
+.block-info .block-info__text p:not(:last-child) {
+  margin-bottom: 2rem;
 }
 .block-info .block-info__cta {
   margin: 0;
@@ -480,7 +494,7 @@ meter {
   color: #ffffff;
   border: none;
   border-radius: 999px;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 4.5rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
@@ -495,7 +509,7 @@ meter {
   color: #ffffff;
 }
 .block-info .block-info__logo-wrap {
-  width: 16rem;
+  width: 22rem;
   height: auto;
   background: transparent;
   border-radius: 0;
@@ -544,9 +558,10 @@ meter {
   justify-items: center;
 }
 .block-program .program-card {
-  max-width: 19.5rem;
+  max-width: 18.5rem;
   width: 100%;
-  padding: 2.25rem 1.25rem;
+  padding: 1.75rem 2rem;
+  min-height: 15rem;
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
@@ -556,8 +571,8 @@ meter {
   box-shadow: none;
 }
 .block-program .program-card__icon {
-  width: 52px;
-  height: 52px;
+  width: 5rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -570,7 +585,7 @@ meter {
 }
 .block-program .program-card__title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.3;
   color: rgb(64, 64, 64), 1;
@@ -622,7 +637,7 @@ meter {
 .block-bullet-list {
   width: 100%;
   margin: 0;
-  padding: 3rem 0;
+  padding: 3rem 0 0;
 }
 .block-bullet-list .block-inner {
   max-width: 100%;
@@ -633,9 +648,9 @@ meter {
   display: flex;
   gap: 4rem;
   align-items: center;
-  background-color: #f8f8f9;
+  background-color: #EAEBF3;
   border-radius: 0.75rem;
-  padding: 2.5rem 2.5rem 2.5rem 8rem;
+  padding: 8rem 3rem 8rem 8rem;
   width: 100%;
   max-width: 100%;
 }
@@ -741,15 +756,17 @@ meter {
 }
 .block-bullet-list .bullet-list__item-icon {
   flex: 0 0 auto;
-  color: rgb(109, 84, 163);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 0.125rem;
 }
 .block-bullet-list .bullet-list__item-icon i {
-  color: rgb(109, 84, 163) !important;
+  --fa-secondary-color: #6D54A3;
+  --fa-secondary-opacity: 1;
+  --fa-primary-color: #ffffff;
+  --fa-primary-opacity: 1;
 }
 .block-bullet-list .bullet-list__item-text {
   flex: 1;
@@ -807,6 +824,7 @@ meter {
   overflow: visible;
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
+  margin-top: -2rem;
   margin-bottom: -1.5rem;
   z-index: 1;
 }
@@ -1502,7 +1520,7 @@ meter {
 
 .card-course {
   background-color: #EAEBF3;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1528,20 +1546,23 @@ meter {
   width: 100%;
   overflow: hidden;
   flex-shrink: 0;
+  padding: 1.5rem 1.5rem 0;
+  max-height: 18rem;
+}
+.card-course .card-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  max-width: 100%;
+  border-radius: inherit;
+  border-radius: 1rem;
 }
 .card-course .card-img .card-course__image {
   margin: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  border-radius: 0.75rem 0.75rem 0 0;
-}
-.card-course .card-img .card-course__image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  max-width: 100%;
 }
 .card-course .card-img .card-course__badge {
   position: absolute;
@@ -1569,16 +1590,14 @@ meter {
 }
 .card-course .card-info .title {
   margin: 0;
-}
-.card-course .card-info .title a {
-  color: rgb(109, 84, 163);
+  color: rgb(68, 47, 145);
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   font-weight: 600;
   line-height: 1.3;
   display: block;
 }
-.card-course .card-info .title a:hover, .card-course .card-info .title a:focus {
+.card-course .card-info .title:hover, .card-course .card-info .title:focus {
   text-decoration: underline;
 }
 .card-course .card-info .level {
@@ -1886,7 +1905,7 @@ legend {
 .nav-footer {
   background-color: #282865;
   width: 100%;
-  padding: 3rem 0;
+  padding: 3rem 0 1.5rem 0;
   position: relative;
   z-index: 2;
   margin-top: 1.5rem;
@@ -1917,9 +1936,10 @@ legend {
 .nav-footer .col.logo {
   align-items: center;
   gap: 1rem;
+  margin-top: 0.75rem;
 }
 .nav-footer .col.logo img {
-  max-width: 16rem;
+  max-width: 18rem;
   height: auto;
   display: block;
 }
@@ -1987,7 +2007,7 @@ legend {
 .copyright {
   background-color: #282865;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 0.75rem 0 1.5rem 0;
   text-align: center;
   color: #ffffff;
   font-size: 0.875rem;
@@ -2021,14 +2041,14 @@ body {
   z-index: 5000;
   margin-left: 2.5rem;
   padding: 0.75rem 2.5rem;
-  background-color: #FF8C42;
+  background-color: rgb(234, 235, 243);
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  color: #ffffff;
+  color: rgb(64, 64, 64), 1;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -2036,6 +2056,7 @@ body {
 .site-label__text {
   position: relative;
   z-index: 1;
+  font-size: 0.95rem;
 }
 
 .site-label__img {

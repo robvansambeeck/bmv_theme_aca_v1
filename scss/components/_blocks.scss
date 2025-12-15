@@ -140,7 +140,7 @@ $card-padding-h: 2rem;
 
         &--left {
             flex: 1.35 1 0; // meer breedte links
-            min-height: 26rem;
+            min-height: 32rem; // meer hoogte
         }
 
         &--middle {
@@ -149,12 +149,12 @@ $card-padding-h: 2rem;
             width: 100%;
             min-width: 0;
             flex: 0.9 1 0; // iets smaller
-            min-height: 26rem;
+            min-height: 32rem; // meer hoogte
         }
 
         &--right {
             flex: 0.75 1 0; // smaller rechts
-            min-height: 26rem;
+            min-height: 32rem; // meer hoogte
         }
 
     }
@@ -177,7 +177,7 @@ $card-padding-h: 2rem;
 
     .image-grid-1__card {
         width: 100%;
-        padding: $card-padding-v $card-padding-h;
+        padding: 4rem 2.5rem; // extra hoogte en ruimte
         border-radius: $border-radius-card;
         color: $color-txt-dark;
         font-size: 1rem;
@@ -190,7 +190,7 @@ $card-padding-h: 2rem;
         justify-content: center;
 
         &--top {
-            background-color: $card-lavender;
+            background-color: $card-top-purple; // #E7A8F1 op 20% opacity
             flex: 1.5 1 auto;
         }
 
@@ -199,9 +199,19 @@ $card-padding-h: 2rem;
             position: relative;
             flex: 1 1 auto;
         }
+        h4 {
+            font-size: 2.75rem;   // nog groter
+            font-weight: 900;     // maximaal dik
+            color: $color-badge-orange;
+            line-height: 1.3;
+        }
 
         p {
             margin: 0;
+            font-size: 1.5rem; 
+            font-weight: 600; // ietsjes dikker
+            line-height: 1.5;
+            color: $color-txt-dark;
         }
     }
 
@@ -402,7 +412,7 @@ $program-text: $color-txt-dark;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        padding: 1.5rem $padding-base * 2 3.5rem $padding-base * 2;
+        padding: 7rem $padding-base * 4 8rem $padding-base * 4; // nog meer ademruimte
     }
 
     // No background variant
@@ -425,7 +435,7 @@ $program-text: $color-txt-dark;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 3rem; // nog meer ruimte tussen teksten
             padding-left: $padding-base * 2.5;
         }
 
@@ -443,7 +453,7 @@ $program-text: $color-txt-dark;
         font-weight: $font-bold;
         color: $info-title-color;
         line-height: 1.2;
-        margin: 0;
+    margin: 0; // geen extra ruimte eronder; focus op tekstruimte
 
         * {
             margin: 0;
@@ -453,13 +463,17 @@ $program-text: $color-txt-dark;
 
     .block-info__text {
         font-size: 1rem;
-        line-height: 1.6;
+        line-height: 2.2; // nog meer lucht binnen alinea
         color: $color-txt-dark;
-        max-width: 60ch;
+        max-width: 75ch; // meer breedte voor tekst
         margin: 0;
+        padding: 0; // padding weggehaald
 
         p {
             margin: 0;
+            &:not(:last-child) {
+                margin-bottom: 2rem; // nog meer ruimte tussen paragrafen
+            }
         }
     }
 
@@ -469,7 +483,7 @@ $program-text: $color-txt-dark;
         color: $color-heading-light;
         border: none;
         border-radius: 999px;
-        padding: 0.75rem 1.5rem;
+    padding: 1rem 4.5rem; // nog veel meer breedte
         font-weight: $font-medium;
         display: inline-flex;
         align-items: center;
@@ -487,7 +501,7 @@ $program-text: $color-txt-dark;
     }
 
     .block-info__logo-wrap {
-        width: 16rem;
+        width: 22rem;  // ietsjes groter logo
         height: auto;
         background: transparent;
         border-radius: 0;
@@ -550,9 +564,10 @@ $program-text: $color-txt-dark;
     }
 
     .program-card {
-        max-width: 19.5rem;
+        max-width: 18.5rem;
         width: 100%;
-        padding: 2.25rem 1.25rem;
+        padding: 1.75rem 2rem;
+        min-height: 15rem; // extra hoogte zonder meer padding
         border-radius: $border-radius-card;
         display: flex;
         flex-direction: column;
@@ -562,8 +577,8 @@ $program-text: $color-txt-dark;
         box-shadow: none;
 
         &__icon {
-            width: 52px;
-            height: 52px;
+            width: 5rem;
+            height: 5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -578,7 +593,7 @@ $program-text: $color-txt-dark;
 
         &__title {
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 1.6rem; // grotere titel
             font-weight: $font-bold;
             line-height: 1.3;
             color: $program-text;
@@ -673,7 +688,7 @@ $program-text: $color-txt-dark;
 .block-bullet-list {
     width: 100%;
     margin: 0;
-    padding: $card-padding-v 0;
+    padding: $card-padding-v 0 0; // geen extra ruimte onder de grijze bg
 
     .block-inner {
         max-width: 100%;
@@ -686,9 +701,9 @@ $program-text: $color-txt-dark;
             display: flex;
             gap: 4rem;
             align-items: center;
-            background-color: #f8f8f9;
+            background-color: #EAEBF3;
             border-radius: $border-radius-card;
-            padding: 2.5rem 2.5rem 2.5rem 8rem;
+            padding: 8rem 3rem 8rem 8rem; // nog meer hoogte voor de grijze bg
             width: 100%;
             max-width: 100%;
         }
@@ -814,17 +829,21 @@ $program-text: $color-txt-dark;
     }
 
     .bullet-list__item-icon {
-        flex: 0 0 auto;
-        color: $color-cta;
-        font-size: 1.25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 0.125rem;
+    flex: 0 0 auto;
+    font-size: 1.5rem; // iets groter icoon
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.125rem;
 
-        i {
-            color: $color-cta !important;
-        }
+    // Font Awesome duotone kleuren:
+    // secundaire vorm (circle) paars, primaire (check) wit
+    i {
+        --fa-secondary-color: #6D54A3;
+        --fa-secondary-opacity: 1;
+        --fa-primary-color: #ffffff;
+        --fa-primary-opacity: 1;
+    }
     }
 
     .bullet-list__item-text {
@@ -901,6 +920,7 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
     overflow: visible;
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
+    margin-top: -$grid-gap;  // trekt de CTA tegen het blok erboven aan
     margin-bottom: -1.5rem;
     z-index: 1;
 

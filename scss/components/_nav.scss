@@ -176,7 +176,7 @@ $footer-bg: #282865; // Purple background
 .nav-footer {
     background-color: $footer-bg;
     width: 100%;
-    padding: 3rem 0;
+    padding: 3rem 0 1.5rem 0; // minder ruimte onder footer-nav
     position: relative;
     z-index: 2;
     margin-top: 1.5rem;
@@ -211,9 +211,10 @@ $footer-bg: #282865; // Purple background
         &.logo {
             align-items: center;
             gap: 1rem;
+            margin-top: 0.75rem; // ietsje verder naar beneden
 
             img {
-                max-width: 16rem;
+                max-width: 18rem; // iets groter
                 height: auto;
                 display: block;
             }
@@ -302,7 +303,7 @@ $footer-bg: #282865; // Purple background
 .copyright {
     background-color: $footer-bg;
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 0.75rem 0 1.5rem 0; // dichter op het footer-logo
     text-align: center;
     color: #ffffff;
     font-size: 0.875rem;

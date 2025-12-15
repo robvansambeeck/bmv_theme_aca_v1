@@ -29,8 +29,15 @@ $data_terms = implode(',', array_unique($filter_slugs)); // kan leeg zijn
             </div>
 
             <div class="card-info">
-                <div class="title"><?php the_title(); ?></div>
-                <div class="description"><?php the_excerpt(); ?></div>
+                <div class="title">
+                    <h5><?php the_title(); ?></h5>
+                </div>
+                <div class="level">
+                    <p><?php the_field('level'); ?></p>
+                </div>
+                <div class="description">
+                    <span><?php the_excerpt(); ?></span>
+                </div>
             </div>
 
         </div>

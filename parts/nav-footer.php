@@ -16,9 +16,21 @@
 
             <div class="col logo">
                 <?php
-                if (function_exists('the_custom_logo')) {
+                // Footer logo uit ACF options (Nav - footer > Footer Logo)
+                $footer_logo = function_exists('get_field') ? get_field('footer_logo', 'option') : null;
+
+                if ($footer_logo && is_array($footer_logo) && !empty($footer_logo['url'])) :
+                    $footer_logo_url = esc_url($footer_logo['url']);
+                    $footer_logo_alt = esc_attr($footer_logo['alt'] ?? get_bloginfo('name'));
+                ?>
+                    <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-logo">
+                        <img src="<?php echo $footer_logo_url; ?>" alt="<?php echo $footer_logo_alt; ?>">
+                    </a>
+                <?php
+                // Fallback: gebruik site identity logo als ACF nog niet is gevuld
+                elseif (function_exists('the_custom_logo')) :
                     the_custom_logo();
-                }
+                endif;
                 ?>
             </div>
 
