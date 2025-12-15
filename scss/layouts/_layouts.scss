@@ -25,6 +25,28 @@ body{
     background-color: $color-badge-orange;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; // iets meer ruimte tussen img en tekst
+    color: $color-heading-light;
+    font-weight: $font-medium;
+    letter-spacing: 0.01em;
+}
+
+.site-label__text {
+    position: relative;
+    z-index: 1;
+}
+
+.site-label__img {
+    position: relative;
+    width: 8rem;         // kleiner via rem
+    height: auto;
+    object-fit: contain; // behoud verhoudingen
+    opacity: 1;          // zichtbaar naast de tekst
+    z-index: 1;
+    pointer-events: none;
 }
 
 

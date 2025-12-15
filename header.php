@@ -24,6 +24,10 @@ header.php
 <!-- /head -->
 
 <body <?php body_class(); ?>>
+  <?php $label_image = get_field('label_image', 'option'); ?>
   <div class="site-label">
-    Powered by
+    <span class="site-label__text">Powered by</span>
+    <?php if ($label_image && !empty($label_image['url'])) : ?>
+      <img class="site-label__img" src="<?php echo esc_url($label_image['url']); ?>" alt="<?php echo esc_attr($label_image['alt'] ?? ''); ?>">
+    <?php endif; ?>
   </div>
