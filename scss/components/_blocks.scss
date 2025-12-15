@@ -946,10 +946,8 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         width: 100%;
         height: 100%;
         z-index: 0;
-        border-bottom-left-radius: 1.5rem;
-        border-bottom-right-radius: 1.5rem;
         overflow: hidden;
-
+        background-color: $color-bg-dark;
         img {
             width: 100%;
             height: 100%;
@@ -979,6 +977,7 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         display: flex;
         align-items: center;
         justify-content: center;
+        // background-color: $color-bg-dark;
     }
 
     .block-content {

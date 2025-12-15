@@ -848,9 +848,8 @@ meter {
   width: 100%;
   height: 100%;
   z-index: 0;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
   overflow: hidden;
+  background-color: rgb(40, 40, 101);
 }
 .block-cta-register .block-bg img {
   width: 100%;
@@ -1771,8 +1770,8 @@ legend {
   z-index: 5000;
   width: 100%;
   background: #ffffff !important;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
   display: flex;
   align-items: center;
   min-height: 3rem;
@@ -2030,6 +2029,21 @@ body {
 
 .page-wrapper {
   background-color: #ffffff;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.site-label {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5000;
+  margin-left: 2.5rem;
+  padding: 0.75rem 2.5rem;
+  background-color: #FF8C42;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 
 .container {
