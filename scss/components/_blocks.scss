@@ -12,18 +12,27 @@
 // Header block (hero style)
 .block-header {
     text-align: center;
-    border-top: none !important; // geen lijn boven header
-    margin-top: 0 !important; // geen margin boven header
 
     .block-inner {
-        max-width: 100%; // Full width for wider header
+        max-width: 100%;
         margin: 0 auto;
-            // Extra padding onderaan zodat er meer ruimte is onder de header
-            padding: 3rem $padding-base * 2 4.5rem; // top, sides, bottom
+        padding: 3rem $padding-base * 2 4.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-top: none !important; // geen lijn boven header inner
+        
+        @media only screen and (max-width: 1100px) {
+            padding: 2.75rem $padding-base * 1.75 4rem;
+        }
+        
+        @media only screen and (max-width: 900px) {
+            max-width: 90%;
+            padding: 2.5rem $padding-base * 1.5 3.5rem;
+        }
+        
+        @media only screen and (max-width: 800px) {
+            padding: 2.25rem $padding-base * 1.25 3rem;
+        }
     }
 
     .block-content {
@@ -227,7 +236,11 @@ $card-padding-h: 2rem;
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
+        .block-inner {
+            max-width: 85%;
+        }
+
         .block-content {
             &.image-grid-1 {
                 flex-direction: column;
@@ -237,8 +250,12 @@ $card-padding-h: 2rem;
         .image-grid-1__col {
             &--left,
             &--right {
-                min-height: 20rem;
+                min-height: 25rem;
             }
+        }
+
+        .image-grid-1__image {
+            min-height: 25rem;
         }
     }
 }
@@ -296,6 +313,9 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             height: 100%;
             object-fit: cover;
             display: block;
+            border-radius: $border-radius-card;
+            border-bottom-left-radius: $border-radius-card;
+            border-bottom-right-radius: $border-radius-card;
         }
 
         .image-grid-2__label {
@@ -358,26 +378,135 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
+        .block-inner {
+            max-width: 85%;
+        }
+
         .image-grid-2 {
             flex-direction: column;
+            gap: 0;
         }
 
         .image-grid-2__col {
             &--left {
                 flex: 1;
-                min-height: 20rem;
+                min-height: 28rem;
+                max-width: 100%;
+                margin-bottom: -0.5rem;
             }
 
             &--right {
                 flex: 1;
+                max-width: 100%;
+            }
+        }
+
+        .image-grid-2__image {
+            min-height: 28rem;
+            max-width: 100%;
+            width: 100%;
+            margin-bottom: -0.5rem;
+            
+            img {
+                width: 100%;
+                max-width: 100%;
             }
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 800px) {
+        .image-grid-2 {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-2__col--left {
+            height: auto;
+            display: block !important;
+            max-width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-2__image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            min-height: auto;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+            
+            img {
+                width: 100%;
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block !important;
+            }
+        }
+        
+        .image-grid-2__col--right {
+            max-width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-2__card {
+            margin: 0 !important;
+            padding: 2.5rem 2rem !important;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
+        }
+        
+        .image-grid-2 {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-2__col--left {
+            max-width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+        }
+        
+        .image-grid-2__image {
+            max-width: 100%;
+            width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+            
+            img {
+                width: 100%;
+                max-width: 100%;
+                display: block !important;
+            }
+        }
+        
+        .image-grid-2__col--right {
+            max-width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-2__card {
+            margin: 0 !important;
+            padding: 1.25rem !important;
         }
 
         .image-grid-2__card {
@@ -418,7 +547,7 @@ $program-text: $color-txt-dark;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        padding: 4rem $padding-base * 4 8rem $padding-base * 4; // minder gap boven, meer ademruimte onder
+        padding: 4rem $padding-base * 4 8rem $padding-base * 4;
     }
 
     // No background variant
@@ -441,7 +570,7 @@ $program-text: $color-txt-dark;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 3rem; // nog meer ruimte tussen teksten
+            gap: 3rem;
             padding-left: $padding-base * 2.5;
         }
 
@@ -455,45 +584,54 @@ $program-text: $color-txt-dark;
     }
 
     .block-info__title {
-        font-size: 3rem; // nog groter
+        font-size: 3rem;
         line-height: 1.2;
-        margin: 0; // geen extra ruimte eronder; focus op tekstruimte
+        margin: 0;
 
         * {
             margin: 0;
-            color: $color-heading-dark; // standaard: zwart
-            font-weight: 300; // standaard: dun
+            color: $color-heading-dark;
+            font-weight: 300;
         }
 
         h1, h2, h3, h4, h5, h6 {
             margin: 0;
-            color: $color-heading-dark; // zwart voor headings
-            font-weight: 300; // dun
+            color: $color-heading-dark;
+            font-weight: 300;
             font-size: inherit;
             line-height: inherit;
             display: block;
 
             strong,
             b {
-                color: $color-cta !important; // paars voor bold binnen headings
-                font-weight: 700 !important; // dikgedrukt
+                color: $color-cta !important;
+                font-weight: 700 !important;
             }
         }
 
         strong,
         b {
-            color: $color-cta; // paars voor bold
-            font-weight: 700; // dikgedrukt
+            color: $color-cta;
+            font-weight: 700;
         }
+        
     }
 
     .block-info__text {
         font-size: 1rem;
-        line-height: 2.2; // nog meer lucht binnen alinea
+        line-height: 2.2;
         color: $color-txt-dark;
-        max-width: 75ch; // meer breedte voor tekst
+        max-width: 75ch;
         margin: 0;
-        padding: 0; // padding weggehaald
+        padding: 0;
+        
+        @media only screen and (max-width: 800px) {
+            font-size: 0.875rem;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            font-size: 0.85rem;
+        }
 
         p {
             margin: 0;
@@ -550,14 +688,15 @@ $program-text: $color-txt-dark;
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         padding: 0;
-        margin: $gap-cols auto 0 auto;
+        margin: $gap-cols auto $card-padding-v auto;
 
         .block-content {
             &.block-info__content {
                 flex-direction: column;
                 text-align: center;
+                gap: 4.5rem;
             }
         }
 
@@ -565,7 +704,18 @@ $program-text: $color-txt-dark;
             &--text {
                 align-items: center;
                 padding-left: 0;
+                gap: 3.5rem;
             }
+
+            &--logo {
+                justify-content: center;
+                padding-right: 0;
+            }
+        }
+
+        .block-info__logo-wrap {
+            margin: 0 auto;
+            margin-bottom: -1.5rem;
         }
 
         .block-info__text {
@@ -597,8 +747,12 @@ $program-text: $color-txt-dark;
         max-width: 18.5rem;
         width: 100%;
         padding: 1.75rem 2rem;
-        min-height: 15rem; // extra hoogte zonder meer padding
+        min-height: 15rem;
         border-radius: $border-radius-card;
+        
+        @media only screen and (max-width: 600px) {
+            max-width: 22.5rem;
+        }
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
@@ -686,29 +840,50 @@ $program-text: $color-txt-dark;
     }
 
     // Responsive
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1100px) {
+        padding: $card-padding-v * 0.9 $padding-base * 1.125;
+        
         .block-content {
             &.program-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                column-gap: 0.5rem;
+                row-gap: 0.5rem;
+                justify-items: stretch;
             }
         }
     }
 
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         padding: $padding-base * 1.5 $padding-base;
+        max-width: 85%;
 
         .block-content {
             &.program-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+                column-gap: 0.25rem;
+                row-gap: 3rem;
+                justify-items: center;
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 800px) {
+        padding: $padding-base * 1.25 $padding-base * 0.875;
+        
+        .block-content {
+            &.program-grid {
                 gap: $gap-cards;
             }
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
+        padding: $padding-base * 1.125 $padding-base * 0.75;
+        
         .block-content {
             &.program-grid {
                 grid-template-columns: 1fr;
+                gap: $gap-cards * 0.9;
             }
         }
     }
@@ -718,7 +893,64 @@ $program-text: $color-txt-dark;
 .block-bullet-list {
     width: 100%;
     margin: 0;
-    padding: $card-padding-v 0 0; // geen extra ruimte onder de grijze bg
+    padding: $card-padding-v 0 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    
+    @media only screen and (max-width: 1100px) {
+        .block-content.bullet-list__container {
+            flex-direction: row !important;
+            align-items: flex-start !important;
+        }
+        
+        .bullet-list__col--image {
+            flex: 0 0 40% !important;
+            max-width: 40% !important;
+            padding-left: 0 !important;
+            padding-right: 1rem !important;
+            display: flex !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            order: 1;
+            padding-top: 0 !important;
+        }
+        
+        .bullet-list__image {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        .bullet-list__col--content {
+            flex: 0 0 60% !important;
+            max-width: 60% !important;
+            padding-bottom: 3.5rem;
+            gap: 0.75rem !important;
+            order: 2;
+            
+            * {
+                max-width: 28rem !important;
+            }
+        }
+        
+        .bullet-list__title {
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .bullet-list__description {
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .bullet-list__items {
+            margin-top: 0.5rem !important;
+            gap: 1.25rem !important;
+        }
+        
+        .bullet-list__cta {
+            margin-top: 2rem !important;
+            margin-bottom: 3.5rem !important;
+            padding: 0.875rem 4rem;
+        }
+    }
 
     .block-inner {
         max-width: 100%;
@@ -732,10 +964,25 @@ $program-text: $color-txt-dark;
             gap: 4rem;
             align-items: center;
             background-color: #EAEBF3;
-            border-radius: 0; // geen border radius
-            padding: 8rem 3rem 8rem 8rem; // nog meer hoogte voor de grijze bg
+            border-radius: 0;
+            padding: 8rem 3rem 8rem 8rem;
             width: 100%;
             max-width: 100%;
+            
+            @media only screen and (max-width: 1100px) {
+                gap: 3.5rem;
+                padding: 7rem 2.5rem 0 7rem;
+                margin-bottom: 0 !important;
+            }
+            
+            @media only screen and (max-width: 900px) {
+                gap: 2rem;
+                padding: 2.5rem $padding-base;
+            }
+            
+            @media only screen and (max-width: 800px) {
+                padding: 2.25rem $padding-base * 0.875;
+            }
         }
     }
 
@@ -914,7 +1161,32 @@ $program-text: $color-txt-dark;
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
+        .bullet-list__image {
+            max-width: 70%;
+            margin: 0 auto;
+        }
+
+        .bullet-list__col--content {
+            gap: 0.25rem;
+            align-items: center;
+            max-width: 28rem !important;
+            
+            * {
+                max-width: 28rem !important;
+            }
+        }
+
+        .bullet-list__items {
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .bullet-list__cta {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .block-content {
             &.bullet-list__container {
                 flex-direction: column;
@@ -931,11 +1203,67 @@ $program-text: $color-txt-dark;
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 800px) {
+        .bullet-list__col--content {
+            align-items: center;
+            padding-bottom: 1.5rem;
+            max-width: 24rem !important;
+            
+            * {
+                max-width: 24rem !important;
+            }
+        }
+
+        .bullet-list__cta {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.5rem !important;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
         .block-content {
             &.bullet-list__container {
                 padding: 2rem $padding-base * 0.75;
+                flex-direction: column !important;
             }
+        }
+        
+        .bullet-list__col--image {
+            order: 1;
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            padding-left: 0 !important;
+        }
+        
+        .bullet-list__image {
+            max-width: 90% !important;
+            margin: 0;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+        
+        .bullet-list__col--content {
+            order: 2;
+            max-width: 32rem !important;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            
+            * {
+                max-width: 32rem !important;
+            }
+        }
+        
+        .bullet-list__items {
+            margin-left: -0.5rem;
+            flex-direction: row !important;
+            flex-wrap: wrap;
+            gap: 0.5rem !important;
+        }
+        
+        .bullet-list__item {
+            flex: 0 0 auto;
+            white-space: nowrap;
         }
     }
 }
@@ -951,9 +1279,13 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
     overflow: visible;
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    margin-top: -$grid-gap;  // trekt de CTA tegen het blok erboven aan
+    margin-top: 0;
     margin-bottom: -1.5rem;
     z-index: 1;
+    
+    @media only screen and (max-width: 1100px) {
+        margin-top: 0 !important;
+    }
 
     &::after {
         content: '';
@@ -1006,6 +1338,26 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         display: flex;
         align-items: center;
         justify-content: center;
+        
+        @media only screen and (max-width: 1100px) {
+            padding: 3.5rem $padding-base * 1.25;
+            min-height: 18rem;
+        }
+        
+        @media only screen and (max-width: 900px) {
+            padding: 3rem $padding-base;
+            min-height: 16rem;
+        }
+        
+        @media only screen and (max-width: 800px) {
+            padding: 2.75rem $padding-base * 0.875;
+            min-height: 15rem;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            padding: 2.5rem $padding-base * 0.75;
+            min-height: 14rem;
+        }
     }
 
     .block-content {
@@ -1022,7 +1374,6 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
 
     .cta-register__title {
         font-size: 3rem !important;
-        // standaard: lichte (thin) titel
         font-weight: $font-thin !important;
         color: #ffffff !important;
         line-height: 1.3;
@@ -1035,6 +1386,46 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
             font-size: 3rem !important;
             font-weight: $font-thin !important;
             line-height: 1.3 !important;
+        }
+        
+        @media only screen and (max-width: 1100px) {
+            font-size: 2.75rem !important;
+            
+            h1, h2, h3, h4, h5, h6,
+            p,
+            * {
+                font-size: 2.75rem !important;
+            }
+        }
+        
+        @media only screen and (max-width: 900px) {
+            font-size: 2.5rem !important;
+            
+            h1, h2, h3, h4, h5, h6,
+            p,
+            * {
+                font-size: 2.5rem !important;
+            }
+        }
+        
+        @media only screen and (max-width: 800px) {
+            font-size: 2.25rem !important;
+            
+            h1, h2, h3, h4, h5, h6,
+            p,
+            * {
+                font-size: 2.25rem !important;
+            }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            font-size: 2rem !important;
+            
+            h1, h2, h3, h4, h5, h6,
+            p,
+            * {
+                font-size: 2rem !important;
+            }
         }
 
         p {
@@ -1087,7 +1478,7 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         .block-inner {
             padding: 3rem $padding-base;
             min-height: 18rem;
@@ -1104,7 +1495,7 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         .block-inner {
             padding: 2.5rem $padding-base * 0.75;
             min-height: 16rem;
@@ -1132,7 +1523,18 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 .block-filter {
   max-width: $container-base;
   margin: 0 auto;
-  padding: $card-padding-v $padding-base * 1.5;
+  margin-top: -$grid-gap;
+  margin-bottom: $grid-gap * 2;
+  padding: $card-padding-v * 0.25 $padding-base * 1.5 $card-padding-v $padding-base * 1.5;
+  
+  @media only screen and (min-width: 1400px) {
+    max-width: 95%;
+    
+    .filter-tabs {
+      max-width: 75%;
+      margin: 0 auto;
+    }
+  }
 
   .block-inner {
     max-width: 100%;
@@ -1191,12 +1593,30 @@ $filter-bg: #e6e0f0; // light lavender for tab background
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+      align-items: stretch;
+      
+      @media only screen and (min-width: 1400px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
     }
   }
 
   // Responsive
-  @media only screen and (max-width: 992px) {
-    padding: $card-padding-v $padding-base;
+  @media only screen and (max-width: 1100px) {
+    .output {
+      .cards-courses {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    margin-top: -$grid-gap * 1.5;
+    padding-top: $card-padding-v * 0.15;
+    padding: $card-padding-v * 0.15 $padding-base $card-padding-v $padding-base;
 
     .filter-tabs {
       gap: 0.5rem;
@@ -1209,7 +1629,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     padding: $card-padding-v $padding-base * 0.75;
 
     .filter-tabs {
@@ -1279,6 +1699,11 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             margin: 0;
             padding: 0;
             grid-auto-flow: row;
+            
+            @media only screen and (max-width: 1100px) {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: $gap-cards * 1.2;
+            }
         }
     }
 
@@ -1321,30 +1746,38 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         line-height: 1.6;
         color: $color-txt-dark;
         margin: 0;
-        max-width: 100%;
+        max-width: 20rem;
 
         p {
             margin: 0;
             color: $color-txt-dark;
         }
-    }
-
-    // Responsive
-    @media only screen and (max-width: 992px) {
-        .steps__grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: $gap-cards * 2;
+        
+        @media only screen and (max-width: 1100px) {
+            max-width: 18rem;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            max-width: 100%;
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    // Responsive
+    @media only screen and (max-width: 900px) {
+        .steps__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: $gap-cards * 1.25;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
         }
 
         .steps__grid {
             grid-template-columns: 1fr;
-            gap: $gap-cards * 2;
+            gap: $gap-cards * 1.25;
         }
 
         .steps__icon {
@@ -1458,7 +1891,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         padding: $card-padding-v $padding-base;
 
         .block-students__grid {
@@ -1467,7 +1900,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         padding: $card-padding-v $padding-base;
 
         .block-students__grid {
@@ -1642,15 +2075,16 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         .block-inner {
+            max-width: 85%;
             padding: $card-padding-v $padding-base;
         }
 
         .image-grid-3 {
             grid-template-columns: 1fr;
             grid-template-rows: auto auto auto auto;
-            gap: $gap-cards * 1.5;
+            gap: 0.5rem !important;
         }
 
         .image-grid-3__col {
@@ -1676,6 +2110,25 @@ $filter-bg: #e6e0f0; // light lavender for tab background
                 min-height: 15rem;
             }
         }
+        
+        .image-grid-3__cards-bottom {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__col {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__image-large,
+        .image-grid-3__image-small {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__card {
+            margin: 0 !important;
+        }
 
         .image-grid-3__image-small {
             position: relative;
@@ -1684,15 +2137,104 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             left: auto;
             max-width: 100%;
         }
+        
+        .image-grid-3__cards-bottom {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__col {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__image-large,
+        .image-grid-3__image-small {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__card {
+            margin: 0 !important;
+        }
+    }
+    
+    @media only screen and (max-width: 800px) {
+        .image-grid-3 {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__cards-bottom {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__col {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__image-large,
+        .image-grid-3__image-small {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__card {
+            margin: 0 !important;
+        }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 800px) {
+        .image-grid-3 {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__cards-bottom {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__col {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__image-large,
+        .image-grid-3__image-small {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__card {
+            margin: 0 !important;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
+        }
+        
+        .image-grid-3 {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__cards-bottom {
+            gap: 0.5rem !important;
+        }
+        
+        .image-grid-3__col {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .image-grid-3__image-large,
+        .image-grid-3__image-small {
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .image-grid-3__card {
             padding: 1.5rem 1.25rem;
+            margin: 0 !important;
 
             h3 {
                 font-size: 1.125rem;
@@ -1715,6 +2257,11 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         grid-template-columns: minmax(0, 32%) minmax(0, 68%);
         gap: 5.75rem;
         align-items: flex-start;
+        
+        @media only screen and (max-width: 1100px) {
+            grid-template-columns: minmax(0, 35%) minmax(0, 65%);
+            gap: 4rem;
+        }
     }
 
     .faq__sidebar {
@@ -1744,7 +2291,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    .faq__sidebar p {
+    .faq__sidebar p,
+    .faq__sidebar > div {
         margin: 0 0 0.75rem 0;
         font-size: 0.9375rem;
         line-height: 1.6;
@@ -1771,6 +2319,12 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     // Rechterkolom: accordion-lijst
     .accordion-list {
         border-top: 1px solid rgba(0, 0, 0, 0.08);
+        width: 100%;
+        margin-left: 0.5rem;
+        
+        @media only screen and (max-width: 1100px) {
+            margin-left: 0.25rem;
+        }
     }
 
     .accordion-list__item {
@@ -1795,7 +2349,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
     .accordion-list__icon {
         flex: 0 0 auto;
-        font-size: 1.6rem; // nog iets grotere plus/min
+        font-size: 0; // verberg tekstknoop; alleen pseudo toont icoon
         line-height: 1;
         color: $color-badge-orange;
         display: inline-flex;
@@ -1805,6 +2359,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         // teken zelf via pseudo zodat we + en - kunnen wisselen
         &::before {
             content: "+";
+            font-size: 1.6rem; // icoonformaat
+            line-height: 1;
         }
     }
 
@@ -1814,9 +2370,9 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         font-weight: $font-bold; // duidelijk bold
     }
 
-    // Open state: min-teken en gekleurde titel
+    // Open state: min-teken (titel blijft zwart)
     .accordion-list__question[aria-expanded="true"] {
-        color: $color-badge-orange;
+        color: $color-txt-dark;
 
         .accordion-list__icon::before {
             content: "–";
@@ -1840,7 +2396,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
         }
@@ -1851,9 +2407,19 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         .block-inner {
-            padding: $card-padding-v $padding-base * 0.75;
+            padding: $card-padding-v $padding-base * 1.5;
+            max-width: 90%;
+        }
+        
+        .faq {
+            gap: 2rem !important;
+        }
+        
+        .faq__sidebar,
+        .faq__content {
+            max-width: 100%;
         }
 
         .accordion-list__question {
@@ -2077,7 +2643,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     // Responsive
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: 900px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
         }
@@ -2092,7 +2658,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         .block-inner {
             padding: $card-padding-v $padding-base * 0.75;
         }
@@ -2103,11 +2669,31 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 // Mobile overrides (home page specific)
 // Alleen toevoegingen; desktop blijft gelijk
 // =========================================
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
     // Header block: meer compacte paddings
     .block-header {
+        border: none !important; // geen border op header op mobiel
+        border-top: none !important; // geen lijn boven header op mobiel
+        border-bottom: none !important; // geen lijn onder header op mobiel
+        box-shadow: none !important;
+        outline: none !important;
+        margin-top: 0 !important;
+        
         .block-inner {
             padding: 2.5rem $padding-base * 1.25 0; // geen padding onderaan
+            border: none !important; // geen border op header inner op mobiel
+            border-top: none !important; // geen lijn boven header inner op mobiel
+            border-bottom: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        
+        .block-content {
+            border: none !important;
+            border-top: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            outline: none !important;
         }
 
         .row.cta {
@@ -2123,20 +2709,36 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
 
         .row.title {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.25rem !important;
+            
+            *:not(strong):not(b) {
+                font-size: 1.65em !important;
+                line-height: 1.2 !important;
+            }
+            
+            strong,
+            b {
+                font-size: inherit !important;
+                line-height: 1.2 !important;
+            }
+        }
+        
+        .row.description {
+            line-height: 1.8 !important;
+            margin-top: 0 !important;
+            margin-bottom: 2rem !important;
         }
     }
 
-    // Image Grid 1: alles onder elkaar full-width
     .block-image-grid-1 {
         .block-inner {
-            // geen padding boven, alleen onder en zijkanten
+ 
             padding: 0 $padding-base $card-padding-v * 1.2;
         }
 
         .block-content.image-grid-1 {
             flex-direction: column;
-            gap: $gap-cols; // gelijke gap tussen alle items
+            gap: $gap-cols;
         }
 
         .image-grid-1__col {
@@ -2144,11 +2746,11 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             &--middle,
             &--right {
                 min-height: auto;
-                margin: 0; // verwijder alle individuele margins
+                margin: 0;
             }
 
             &--middle {
-                gap: $gap-cols; // zelfde gap tussen cards als tussen images en cards
+                gap: $gap-cols; 
             }
         }
     }
@@ -2235,20 +2837,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
     // CTA register: wat compacter op mobiel
     .block-cta-register {
-        border-bottom-left-radius: 1.5rem !important;
-        border-bottom-right-radius: 1.5rem !important; // border radius onderaan op mobiel
-        overflow: hidden; // zorg dat border-radius zichtbaar is
-
-        &::after {
-            border-bottom-left-radius: 1.5rem !important;
-            border-bottom-right-radius: 1.5rem !important; // border radius ook op ::after element
-        }
-
-        .block-bg {
-            border-bottom-left-radius: 1.5rem !important;
-            border-bottom-right-radius: 1.5rem !important; // border radius ook op background
-        }
-
         .block-inner {
             padding: 3rem $padding-base * 1.25;
         }

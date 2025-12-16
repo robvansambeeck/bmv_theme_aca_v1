@@ -16,85 +16,6 @@ if (navMain) {
     toggleSticky(); // Check on load
 }
 
-// Mobile menu toggle
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.querySelector('.nav-main .toggle');
-    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-    const mobileMenuClose = document.querySelector('.mobile-menu-close');
-    const openIcon = document.querySelector('.toggle-icon--open');
-    const closeIcon = document.querySelector('.toggle-icon--close');
-
-    if (!toggleButton || !mobileMenuOverlay) return;
-
-    const openMenu = () => {
-        toggleButton.setAttribute('aria-expanded', 'true');
-        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
-        mobileMenuOverlay.classList.add('is-open');
-        // CSS zorgt voor het tonen/verbergen via aria-expanded
-    };
-
-    const closeMenu = () => {
-        toggleButton.setAttribute('aria-expanded', 'false');
-        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
-        mobileMenuOverlay.classList.remove('is-open');
-        // CSS zorgt voor het tonen/verbergen via aria-expanded
-    };
-
-    // Toggle button click
-    toggleButton.addEventListener('click', () => {
-        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
-
-    // Close button click
-    if (mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', closeMenu);
-    }
-
-    // Sluit menu bij klik buiten overlay
-    mobileMenuOverlay.addEventListener('click', (e) => {
-        if (e.target === mobileMenuOverlay) {
-            closeMenu();
-        }
-    });
-
-    // Initial state wordt bepaald door CSS (aria-expanded="false" is default)
-});
-
-// FAQ accordion
-document.addEventListener('DOMContentLoaded', () => {
-  const faqButtons = document.querySelectorAll('.accordion-list__question');
-  if (faqButtons.length) {
-    faqButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        const targetId = btn.getAttribute('aria-controls');
-        const answer = targetId ? document.getElementById(targetId) : null;
-
-        // Optioneel: één tegelijk openhouden
-        faqButtons.forEach((otherBtn) => {
-          const otherId = otherBtn.getAttribute('aria-controls');
-          const otherAnswer = otherId ? document.getElementById(otherId) : null;
-          const shouldOpen = otherBtn === btn && !isExpanded;
-
-          otherBtn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
-          if (otherAnswer) {
-            if (shouldOpen) {
-              otherAnswer.removeAttribute('hidden');
-            } else {
-              otherAnswer.setAttribute('hidden', '');
-            }
-          }
-        });
-      });
-    });
-  }
-});
-
 // block-filter
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.filter-tab');
@@ -261,8 +182,47 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButton = document.querySelector('.nav-main .toggle');
+  const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+  
+  if (toggleButton && mobileMenuOverlay) {
+    toggleButton.addEventListener('click', () => {
+      const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+      
+      // Toggle aria-expanded
+      toggleButton.setAttribute('aria-expanded', !isExpanded);
+      
+      // Toggle menu overlay
+      mobileMenuOverlay.classList.toggle('is-open', !isExpanded);
+    });
+  }
+});
 
-
-
+// FAQ Accordion
+document.addEventListener('DOMContentLoaded', () => {
+  const questions = document.querySelectorAll('.accordion-list__question');
+  
+  questions.forEach(question => {
+    question.addEventListener('click', () => {
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
+      const answerId = question.getAttribute('aria-controls');
+      const answer = document.getElementById(answerId);
+      
+      if (!answer) return;
+      
+      // Toggle aria-expanded
+      question.setAttribute('aria-expanded', !isExpanded);
+      
+      // Toggle hidden attribute
+      if (isExpanded) {
+        answer.setAttribute('hidden', '');
+      } else {
+        answer.removeAttribute('hidden');
+      }
+    });
+  });
+});
 
 console.log("js end");

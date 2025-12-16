@@ -17,7 +17,7 @@
     transition: background-color 0.3s ease;
     border: 2px solid transparent;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         font-size: 0.9rem;
         max-width: 12rem;
     }
@@ -30,7 +30,7 @@
     border-color: $color-cta;
     background-color: $color-cta;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         width: 100%;
     }
 
@@ -47,7 +47,7 @@
     border-color: $color-cta;
     background-color: transparent;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         width: 100%;
     }
 

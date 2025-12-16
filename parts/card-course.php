@@ -31,7 +31,7 @@ $data_terms = implode(',', array_unique($filter_slugs)); // kan leeg zijn
                     if ($raw) {
                         $timestamp = strtotime($raw);
                         if ($timestamp) {
-                            echo esc_html(wp_date('F Y', $timestamp));
+                            echo 'Start ' . esc_html(wp_date('F Y', $timestamp));
                         }
                     }
                     ?>

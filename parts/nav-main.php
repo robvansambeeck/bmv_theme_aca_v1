@@ -65,8 +65,5 @@
             ]);
             ?>
         </nav>
-        <div class="mobile-menu-footer">
-            <p class="mobile-menu-powered">Powered by <strong>bink</strong></p>
-        </div>
     </div>
 </div>

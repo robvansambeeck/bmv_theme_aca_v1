@@ -1,5 +1,25 @@
+// Breakpoints voor responsive design
+// Gebruik: @media only screen and (max-width: $breakpoint-xxx) { }
 
+// Large screens (> 1400px)
+@media only screen and (min-width: 1401px) {}
+
+// Desktop (max 1400px)
 @media only screen and (max-width: 1400px) {}
+
+// Large tablet / Small desktop (max 1100px)
+@media only screen and (max-width: 1100px) {}
+
+// Tablet (max 900px)
+@media only screen and (max-width: 900px) {}
+
+// Small tablet (max 800px)
+@media only screen and (max-width: 800px) {}
+
+// Mobile (max 600px)
+@media only screen and (max-width: 600px) {}
+
+// Legacy breakpoints (behouden voor backwards compatibility)
 @media only screen and (max-width: 1200px) {}
 @media only screen and (max-width: 992px) {}
 @media only screen and (max-width: 768px) {}

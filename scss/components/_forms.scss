@@ -45,7 +45,7 @@ body .gform_wrapper .gform_footer input[type="submit"] {
     text-align: center !important;
     min-width: 300px !important;
     max-width: 400px !important;
-    border-radius: 8px !important;
+    border-radius: 999px !important;
     font-size: 1rem !important;
     margin: 1rem 0 !important;
     padding: 0.5rem 2rem !important;
@@ -64,14 +64,11 @@ body .gform_wrapper .gform_footer input[type="submit"] {
         background-color: $color-cta-hover;
         border-color: $color-cta-hover;
     }
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 600px) {
         font-size: 0.9rem;
+        padding: 0.5rem 0.5rem;
+        width: 100%;
     }
-	@media only screen and (max-width: 768px) {
-		padding: 0.5rem 0.5rem;
-		font-size: 0.75rem;
-		width: 100%;
-	}
 }
 
 .gform_wrapper label.gfield_label,
