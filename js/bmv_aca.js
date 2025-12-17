@@ -190,12 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggleButton && mobileMenuOverlay) {
     toggleButton.addEventListener('click', () => {
       const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-      
+
       // Toggle aria-expanded
       toggleButton.setAttribute('aria-expanded', !isExpanded);
-      
+
       // Toggle menu overlay
-      mobileMenuOverlay.classList.toggle('is-open', !isExpanded);
+      const open = !isExpanded;
+      mobileMenuOverlay.classList.toggle('is-open', open);
+
+      // Lock page scroll while menu is open
+      document.body.classList.toggle('mobile-menu-open', open);
     });
   }
 });

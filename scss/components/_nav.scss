@@ -5,6 +5,8 @@
 .nav-main {
     position: sticky;
     top: 0;
+    /* explicit CSS variable for navbar height used by mobile dropdown */
+    --nav-height: 4rem;
     z-index: $z-nav;
     width: 100%;
   background: #ffffff !important;
@@ -460,41 +462,102 @@ $footer-bg: #282865; // Purple background
     }
 }
 
-// Mobile Menu Overlay
+// Mobile Menu Overlay (dropdown under navbar)
 .mobile-menu-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(40, 40, 101); // paarse achtergrond zoals body
-    z-index: 999; // onder navbar (1000) zodat navbar zichtbaar blijft
+    inset: 0; /* covers entire viewport */
+    background-color: rgba(0,0,0,0.12); /* subtle backdrop but site bg still visible */
+    z-index: $z-nav - 2; /* below panel and below navbar */
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    overflow-y: auto;
-    pointer-events: none; // voorkom clicks wanneer gesloten
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    overflow: hidden; /* prevent scrolling of the backdrop */
+    pointer-events: none; /* prevent clicks when closed */
+    overscroll-behavior: none; /* prevent scroll chaining to the page underneath */
 
     &.is-open {
         opacity: 1;
         visibility: visible;
-        pointer-events: auto; // enable clicks wanneer open
+        pointer-events: auto;
     }
 
+    /* The white dropdown panel should align exactly with the navbar inner container.
+       Use an inner .mobile-menu-panel that is centered and constrained to $container-base. */
     .mobile-menu-content {
+        position: fixed;
+        top: var(--nav-height, 4rem); /* start immediately under the navbar */
+        left: 0;
+        right: 0;
+        height: calc(100vh - var(--nav-height, 4rem));
+        background-color: transparent; /* backdrop handled by overlay */
+        display: flex;
+        justify-content: center; /* center the inner panel (matches .nav-inner centering) */
+        align-items: flex-start;
+        margin: 0;
+        padding: 0;
+        z-index: $z-nav - 2;
+        pointer-events: none; /* disabled until .is-open allows interactions */
+    }
+
+    .mobile-menu-content .mobile-menu-panel {
+        pointer-events: auto;
+        width: calc(100% - 3.5rem);
+        max-width: $container-base; /* same as .nav-inner */
+        height: calc(100vh - var(--nav-height, 4rem) - 1rem);
         background-color: #ffffff;
-        border-radius: 1.5rem;
-        margin: 1rem; // minder margin = breder menu
-        margin-top: calc(1rem + 4rem); // ruimte voor navbar (min-height 3rem + padding)
-        height: calc(100vh - 2rem - 4rem); // aangepast voor nieuwe margin
+        border-radius: 1.5rem; /* rounded corners */
+        border: 4px solid $color-bg-dark;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 2rem;
-        width: calc(100% - 2rem); // breder door minder margin
-        max-width: calc(100% - 2rem);
-        box-sizing: border-box;
-        position: relative;
-        z-index: 1;
+        /* default horizontal padding matches .nav-inner (desktop) */
+        padding: 2rem 1.75rem;
+        margin-top: 0.5rem; /* small gap to show bg around panel */
+        z-index: $z-nav - 1; /* above overlay but below navbar */
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    // Match .nav-inner horizontal padding at the same breakpoints
+    @media only screen and (max-width: 1100px) {
+        .mobile-menu-content .mobile-menu-panel {
+            padding-left: 1.125rem;
+            padding-right: 1.125rem;
+        }
+    }
+
+    @media only screen and (max-width: 900px) {
+        .mobile-menu-content .mobile-menu-panel {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .mobile-menu-content .mobile-menu-panel {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .mobile-menu-content .mobile-menu-panel {
+            padding-left: 0.875rem;
+            padding-right: 0.875rem;
+        }
+    }
+
+/* When menu is open, prevent body scrolling */
+body.mobile-menu-open {
+    overflow: hidden;
+    height: 100%;
+}
+
+    /* match mobile padding with .nav-inner on small screens so widths align */
+    @media only screen and (max-width: 600px) {
+        .mobile-menu-content {
+            padding: 0.5rem 0.875rem; /* same as .nav-inner on mobile */
+        }
     }
 
     .mobile-menu-header {

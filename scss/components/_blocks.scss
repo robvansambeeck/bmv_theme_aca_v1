@@ -1927,7 +1927,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     .block-inner {
         max-width: $container-base;
         margin: 0 auto;
-        padding: $card-padding-v $padding-base * 1; // verminderde padding zodat de grid breeder wordt
+        padding: $card-padding-v $padding-base * 1;
     }
     
     .image-grid-3 {
