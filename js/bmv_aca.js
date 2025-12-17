@@ -226,3 +226,111 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 console.log("js end");
+
+
+
+
+// SCROLL REVEAL - OPTIMIZED FOR PERFORMANCE - FIXED: Don't hide already visible elements
+(function() {
+  'use strict';
+  
+  var processed = {};
+  var observer = null;
+  var isRunning = false;
+  
+  // Create observer ONCE
+  function getObserver() {
+    if (observer) return observer;
+    
+    observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          observer.unobserve(el);
+        }
+      });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    return observer;
+  }
+  
+  function doReveal() {
+    // Prevent multiple simultaneous runs
+    if (isRunning) return;
+    isRunning = true;
+    
+    var blocks = document.querySelectorAll('.block');
+    if (!blocks.length) {
+      isRunning = false;
+      return;
+    }
+    
+    var obs = getObserver();
+    var count = 0;
+    
+    for (var i = 0; i < blocks.length; i++) {
+      var block = blocks[i];
+      if (block.closest('nav, .nav-main, header')) continue;
+      
+      var container = block.querySelector('.block-content') || block.querySelector('.block-inner');
+      if (!container) continue;
+      
+      // Only get content elements, not all divs
+      var all = container.querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, button, img, .row, [class*="title"], [class*="text"], [class*="description"]');
+      
+      for (var j = 0; j < all.length; j++) {
+        var el = all[j];
+        var elId = el.getAttribute('data-reveal-id');
+        
+        // Create unique ID if not exists
+        if (!elId) {
+          elId = 'reveal-' + count++;
+          el.setAttribute('data-reveal-id', elId);
+        }
+        
+        // Skip if already processed
+        if (processed[elId]) continue;
+        if (el.closest('nav')) continue;
+        
+        // Check if already visible BEFORE applying styles
+        var rect = el.getBoundingClientRect();
+        var isAlreadyVisible = rect.top < window.innerHeight + 100 && rect.top > -100;
+        
+        // If element is already visible, skip it entirely (don't hide it!)
+        if (isAlreadyVisible && !processed[elId]) {
+          processed[elId] = true;
+          continue; // Skip this element - it's already visible
+        }
+        
+        processed[elId] = true;
+        
+        // Apply styles only to elements that are not yet visible
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        el.style.willChange = 'opacity, transform';
+        
+        // Observe for scroll
+        obs.observe(el);
+      }
+    }
+    
+    isRunning = false;
+  }
+  
+  // Run on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', doReveal);
+  } else {
+    doReveal();
+  }
+  
+  // Run once more after delay for dynamic content
+  setTimeout(doReveal, 1000);
+  window.addEventListener('load', doReveal);
+})();
