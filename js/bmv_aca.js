@@ -183,26 +183,28 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleButton = document.querySelector('.nav-main .toggle');
-  const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-  
-  if (toggleButton && mobileMenuOverlay) {
-    toggleButton.addEventListener('click', () => {
-      const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+const btn = document.querySelector('.toggle');
+const menu = document.querySelector('.nav-mobile');
 
-      // Toggle aria-expanded
-      toggleButton.setAttribute('aria-expanded', !isExpanded);
+let scrollY = 0;
 
-      // Toggle menu overlay
-      const open = !isExpanded;
-      mobileMenuOverlay.classList.toggle('is-open', open);
+btn.addEventListener('click', () => {
+  const open = document.body.classList.toggle('mobile-menu-open');
 
-      // Lock page scroll while menu is open
-      document.body.classList.toggle('mobile-menu-open', open);
-    });
+  if (open) {
+    scrollY = window.scrollY;
+    document.body.style.top = `-${scrollY}px`;
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+  } else {
+    document.body.classList.remove('mobile-menu-open');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
   }
 });
+
 
 // FAQ Accordion
 document.addEventListener('DOMContentLoaded', () => {
@@ -228,11 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-console.log("js end");
-
-
-
 
 // SCROLL REVEAL - OPTIMIZED FOR PERFORMANCE - FIXED: Don't hide already visible elements
 (function() {
@@ -338,3 +335,5 @@ console.log("js end");
   setTimeout(doReveal, 1000);
   window.addEventListener('load', doReveal);
 })();
+
+console.log("js end");

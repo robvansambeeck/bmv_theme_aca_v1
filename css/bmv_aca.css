@@ -725,19 +725,17 @@ meter {
   padding: 1.75rem 2rem;
   min-height: 15rem;
   border-radius: 0.75rem;
-}
-@media only screen and (max-width: 600px) {
-  .block-program .program-card {
-    max-width: 22.5rem;
-  }
-}
-.block-program .program-card {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   color: rgb(64, 64, 64), 1;
   box-sizing: border-box;
   box-shadow: none;
+}
+@media only screen and (max-width: 600px) {
+  .block-program .program-card {
+    max-width: 22.5rem;
+  }
 }
 .block-program .program-card__icon {
   width: 5rem;
@@ -2985,16 +2983,16 @@ legend {
   display: none;
   transform: translate(-50%, -50%);
 }
+.nav-main .toggle[aria-expanded=true] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
 .nav-main .toggle[aria-expanded=true] .toggle-icon--open {
   display: none;
 }
 .nav-main .toggle[aria-expanded=true] .toggle-icon--close {
   display: block;
-}
-.nav-main .toggle[aria-expanded=true] {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
 }
 @media only screen and (max-width: 1100px) {
   .nav-main .nav-inner {
@@ -3099,6 +3097,30 @@ legend {
     pointer-events: auto !important;
     visibility: visible !important;
   }
+}
+
+.nav-mobile {
+  display: none;
+  background-color: #fff;
+  z-index: 5000;
+  height: 100dvh; /* beter dan 100vh op mobiel */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-mobile .menu {
+  padding: 1rem;
+}
+.nav-mobile .menu li {
+  list-style: none;
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+body.mobile-menu-open .nav-mobile {
+  display: block;
 }
 
 .nav-footer {
@@ -3211,166 +3233,6 @@ legend {
   .nav-footer .footer-menu--legal {
     align-items: center;
   }
-}
-
-.mobile-menu-overlay {
-  position: fixed;
-  inset: 0; /* covers entire viewport */
-  background-color: rgba(0, 0, 0, 0.12); /* subtle backdrop but site bg still visible */
-  z-index: 4998; /* below panel and below navbar */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
-  overflow: hidden; /* prevent scrolling of the backdrop */
-  pointer-events: none; /* prevent clicks when closed */
-  overscroll-behavior: none; /* prevent scroll chaining to the page underneath */
-}
-.mobile-menu-overlay.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-.mobile-menu-overlay {
-  /* The white dropdown panel should align exactly with the navbar inner container.
-     Use an inner .mobile-menu-panel that is centered and constrained to $container-base. */
-}
-.mobile-menu-overlay .mobile-menu-content {
-  position: fixed;
-  top: var(--nav-height, 4rem); /* start immediately under the navbar */
-  left: 0;
-  right: 0;
-  height: calc(100vh - var(--nav-height, 4rem));
-  background-color: transparent; /* backdrop handled by overlay */
-  display: flex;
-  justify-content: center; /* center the inner panel (matches .nav-inner centering) */
-  align-items: flex-start;
-  margin: 0;
-  padding: 0;
-  z-index: 4998;
-  pointer-events: none; /* disabled until .is-open allows interactions */
-}
-.mobile-menu-overlay .mobile-menu-content .mobile-menu-panel {
-  pointer-events: auto;
-  width: calc(100% - 3.5rem);
-  max-width: 1200px; /* same as .nav-inner */
-  height: calc(100vh - var(--nav-height, 4rem) - 1rem);
-  background-color: #ffffff;
-  border-radius: 1.5rem; /* rounded corners */
-  border: 4px solid rgb(40, 40, 101);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  /* default horizontal padding matches .nav-inner (desktop) */
-  padding: 2rem 1.75rem;
-  margin-top: 0.5rem; /* small gap to show bg around panel */
-  z-index: 4999; /* above overlay but below navbar */
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-@media only screen and (max-width: 1100px) {
-  .mobile-menu-overlay .mobile-menu-content .mobile-menu-panel {
-    padding-left: 1.125rem;
-    padding-right: 1.125rem;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .mobile-menu-overlay .mobile-menu-content .mobile-menu-panel {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-}
-@media only screen and (max-width: 800px) {
-  .mobile-menu-overlay .mobile-menu-content .mobile-menu-panel {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .mobile-menu-overlay .mobile-menu-content .mobile-menu-panel {
-    padding-left: 0.875rem;
-    padding-right: 0.875rem;
-  }
-}
-.mobile-menu-overlay {
-  /* When menu is open, prevent body scrolling */
-}
-.mobile-menu-overlay body.mobile-menu-open {
-  overflow: hidden;
-  height: 100%;
-}
-.mobile-menu-overlay {
-  /* match mobile padding with .nav-inner on small screens so widths align */
-}
-@media only screen and (max-width: 600px) {
-  .mobile-menu-overlay .mobile-menu-content {
-    padding: 0.5rem 0.875rem; /* same as .nav-inner on mobile */
-  }
-}
-.mobile-menu-overlay .mobile-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: none !important;
-  flex-direction: row;
-}
-.mobile-menu-overlay .mobile-menu-header .mobile-menu-logo {
-  display: none;
-}
-.mobile-menu-overlay .mobile-menu-header .mobile-menu-logo img {
-  max-height: 2rem;
-  width: auto;
-}
-.mobile-menu-overlay .mobile-menu-header .mobile-menu-close {
-  display: none !important;
-}
-.mobile-menu-overlay .mobile-menu-nav {
-  flex: 1;
-  margin-bottom: 2rem;
-}
-.mobile-menu-overlay .mobile-menu-list {
-  list-style: none !important;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.mobile-menu-overlay .mobile-menu-list li {
-  margin: 0;
-  padding: 0;
-  list-style: none !important;
-}
-.mobile-menu-overlay .mobile-menu-list a {
-  color: rgb(64, 64, 64), 1;
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: 500;
-  display: block;
-  transition: color 0.2s ease;
-}
-.mobile-menu-overlay .mobile-menu-list a:hover, .mobile-menu-overlay .mobile-menu-list a:focus {
-  color: rgb(109, 84, 163);
-}
-.mobile-menu-overlay .mobile-menu-list > li:first-child > a {
-  color: rgb(109, 84, 163);
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-.mobile-menu-overlay .mobile-menu-footer {
-  margin-top: auto;
-  padding-top: 2rem;
-  border-top: none !important;
-}
-.mobile-menu-overlay .mobile-menu-footer .mobile-menu-powered {
-  font-size: 0.875rem;
-  color: rgba(0, 0, 0, 0.5);
-  margin: 0;
-}
-.mobile-menu-overlay .mobile-menu-footer .mobile-menu-powered strong {
-  color: rgb(64, 64, 64), 1;
-  font-weight: 600;
 }
 
 .copyright {

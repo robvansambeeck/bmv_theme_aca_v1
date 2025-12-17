@@ -40,30 +40,21 @@
 </div>
 <!-- /nav-main -->
 
-<!-- Mobile Menu Overlay -->
-<div class="mobile-menu-overlay" aria-hidden="true">
-    <div class="mobile-menu-content">
-        <div class="mobile-menu-header">
-            <div class="mobile-menu-logo">
+<!-- Nav-main-mobile -->
+<div class="nav-mobile">
+    <div class="nav-inner">
+        <div class="nav-content">
+            <nav class="menu">
                 <?php
-                if (function_exists('the_custom_logo')) {
-                    the_custom_logo();
-                }
+                wp_nav_menu([
+                    'theme_location' => 'main',
+                    'container'      => false,
+                    'menu_class'     => 'mobile-menu-list',
+                    'fallback_cb'    => false,
+                ]);
                 ?>
-            </div>
-            <button class="mobile-menu-close" aria-label="Close menu">
-                <i class="fa-light fa-xmark"></i>
-            </button>
+            </nav>
         </div>
-        <nav class="mobile-menu-nav">
-            <?php
-            wp_nav_menu([
-                'theme_location' => 'main',
-                'container'      => false,
-                'menu_class'     => 'mobile-menu-list',
-                'fallback_cb'    => false,
-            ]);
-            ?>
-        </nav>
     </div>
 </div>
+<!-- /nav-mobile -->
