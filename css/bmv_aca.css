@@ -372,6 +372,7 @@ meter {
   border-radius: 0.75rem;
   border-bottom-left-radius: 0.75rem;
   border-bottom-right-radius: 0.75rem;
+  max-height: 38rem;
 }
 .block-image-grid-2 .image-grid-2__image .image-grid-2__label {
   position: absolute;
@@ -441,6 +442,7 @@ meter {
   .block-image-grid-2 .image-grid-2__col--right {
     flex: 1;
     max-width: 100%;
+    min-height: 28rem; /* **HIER IS DE TOEGEVOEGDE LIJN** */
   }
   .block-image-grid-2 .image-grid-2__image {
     min-height: 28rem;
@@ -725,17 +727,19 @@ meter {
   padding: 1.75rem 2rem;
   min-height: 15rem;
   border-radius: 0.75rem;
+}
+@media only screen and (max-width: 600px) {
+  .block-program .program-card {
+    max-width: 22.5rem;
+  }
+}
+.block-program .program-card {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   color: rgb(64, 64, 64), 1;
   box-sizing: border-box;
   box-shadow: none;
-}
-@media only screen and (max-width: 600px) {
-  .block-program .program-card {
-    max-width: 22.5rem;
-  }
 }
 .block-program .program-card__icon {
   width: 5rem;
@@ -2983,16 +2987,16 @@ legend {
   display: none;
   transform: translate(-50%, -50%);
 }
-.nav-main .toggle[aria-expanded=true] {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-}
 .nav-main .toggle[aria-expanded=true] .toggle-icon--open {
   display: none;
 }
 .nav-main .toggle[aria-expanded=true] .toggle-icon--close {
   display: block;
+}
+.nav-main .toggle[aria-expanded=true] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 @media only screen and (max-width: 1100px) {
   .nav-main .nav-inner {
@@ -3103,7 +3107,7 @@ legend {
   display: none;
   background-color: #fff;
   z-index: 5000;
-  height: 100dvh; /* beter dan 100vh op mobiel */
+  height: 100dvh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -3112,6 +3116,17 @@ legend {
 }
 .nav-mobile .menu li {
   list-style: none;
+}
+.nav-mobile .menu a {
+  color: #404040;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+}
+.nav-mobile .menu li.current-menu-item > a,
+.nav-mobile .menu li.current-menu-parent > a {
+  color: rgb(109, 84, 163);
+  font-weight: 600;
 }
 
 body.mobile-menu-open {

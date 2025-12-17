@@ -326,26 +326,40 @@
     display: none;
     background-color: #fff;
     z-index: $z-nav;
-    height: 100dvh;           /* beter dan 100vh op mobiel */
+    height: 100dvh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
     .menu {
         padding: $padding-base;
+
         li {
             list-style: none;
+        }
+
+        a {
+            color: #404040;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        li.current-menu-item > a,
+        li.current-menu-parent > a {
+            color: $color-cta;
+            font-weight: $font-bold; 
         }
     }
 }
 
 body.mobile-menu-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  .nav-mobile {
-    display: block;
-  }
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    .nav-mobile {
+        display: block;
+    }
 }
-
 
 // Footer navigation
 $footer-bg: #282865; // Purple background
