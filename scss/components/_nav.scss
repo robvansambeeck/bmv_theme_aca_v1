@@ -113,6 +113,12 @@
                 color: $color-cta;
             }
         }
+
+        li.current-menu-item > a,
+        li.current-menu-parent > a {
+            color: $color-cta;
+            font-weight: $font-bold;
+        }
     }
 
     .cta {
@@ -133,13 +139,11 @@
             align-items: center;
             gap: 0.5rem;
             white-space: nowrap;
-            box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
 
             &:hover,
             &:focus {
                 background: $color-cta-hover;
-                box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
                 color: $color-heading-light;
             }
         }
@@ -591,11 +595,5 @@ $footer-bg: #282865; // Purple background
         color: #ffffff;
         text-decoration: none;
         transition: opacity 0.2s ease;
-
-        &:hover,
-        &:focus {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
     }
 }

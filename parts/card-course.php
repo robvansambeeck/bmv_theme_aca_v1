@@ -17,7 +17,9 @@ if ($terms && ! is_wp_error($terms) && $parent_id) {
 $data_terms = implode(',', array_unique($filter_slugs)); // kan leeg zijn
 ?>
 
-<div class="card card-course"
+<a class="card card-course"
+    href="<?php echo esc_url(get_permalink()); ?>"
+    aria-label="<?php echo esc_attr(get_the_title()); ?>"
     data-course-card
     data-terms="<?php echo esc_attr($data_terms); ?>">
 
@@ -76,5 +78,5 @@ $data_terms = implode(',', array_unique($filter_slugs)); // kan leeg zijn
             </div>
         </div>
     </div>
-</div>
+</a>
 <!-- /card-course -->

@@ -6,15 +6,21 @@
 // card-generic
 .card {
     overflow: hidden;
+    display: block; // ensure anchor behaves like a block when we wrap the card in an <a>
+
+    // reset anchor default styles when card is an <a>
+    text-decoration: none;
+    color: inherit;
+
     .card-inner {
-    text-decoration: none; /* Remove the underline */
-    color: inherit; /* Make the link color same as the surrounding text */
-    background-color: transparent; /* Remove any background color */
-    cursor: pointer; /* Ensure it shows as a clickable item */
-    border: none; /* Remove any borders */
-    outline: none; /* Remove focus outline */
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Remove any margin */
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        border: none;
+        width: 100%;
+        display: block;
     }
 }
 

@@ -211,12 +211,9 @@ meter {
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
-  box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .block-header .row.cta .btn:not(.btn-secondary):hover, .block-header .row.cta .btn:not(.btn-secondary):focus {
   background: rgb(68, 47, 145);
-  box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
   color: #ffffff;
 }
 .block-header .row.cta .btn.btn-secondary {
@@ -230,7 +227,7 @@ meter {
 .block-image-grid-1 .block-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
 }
 .block-image-grid-1 .block-content.image-grid-1 {
   display: flex;
@@ -335,9 +332,9 @@ meter {
   margin-top: -6rem;
 }
 .block-image-grid-2 .block-inner {
-  max-width: 1200px;
+  max-width: calc(1200px + 4rem);
   margin: 0 auto;
-  padding: 3rem 2.5rem;
+  padding: 3rem 0;
 }
 .block-image-grid-2 .image-grid-2 {
   display: flex;
@@ -559,7 +556,7 @@ meter {
   border-radius: 0.75rem;
   max-width: 100%;
   margin: 0;
-  padding: 4rem 4rem 8rem 4rem;
+  padding: 6rem 4rem 8rem 4rem;
 }
 .block-info--no-bg .block-inner {
   background-color: transparent;
@@ -655,13 +652,10 @@ meter {
   gap: 0.5rem;
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
   max-width: fit-content;
 }
 .block-info .block-info__cta:hover, .block-info .block-info__cta:focus {
   background: rgb(68, 47, 145);
-  box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
   color: #ffffff;
 }
 .block-info .block-info__logo-wrap {
@@ -715,7 +709,9 @@ meter {
   padding: 3rem 1.25rem;
 }
 .block-program .block-inner {
-  max-width: 100%;
+  max-width: calc(1200px + 8rem);
+  margin-left: -3.25rem;
+  margin-right: -3.25rem;
 }
 .block-program .block-content.program-grid {
   display: grid;
@@ -802,6 +798,11 @@ meter {
   .block-program {
     padding: 1.5rem 1rem;
     max-width: 85%;
+  }
+  .block-program .block-inner {
+    max-width: 85%;
+    margin-left: 0;
+    margin-right: 0;
   }
   .block-program .block-content.program-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1050,15 +1051,12 @@ meter {
   gap: 0.5rem;
   white-space: nowrap;
   text-decoration: none;
-  box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
   max-width: fit-content;
   width: auto;
   cursor: pointer;
 }
 .block-bullet-list .bullet-list__cta:hover, .block-bullet-list .bullet-list__cta:focus {
   background: rgb(68, 47, 145);
-  box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
   color: #ffffff;
 }
 @media only screen and (max-width: 900px) {
@@ -1716,7 +1714,7 @@ meter {
 .block-image-grid-3 .block-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 3rem 1rem;
 }
 .block-image-grid-3 .image-grid-3 {
   display: grid;
@@ -1747,14 +1745,14 @@ meter {
   z-index: 1;
 }
 .block-image-grid-3 .image-grid-3__col--right-bottom {
-  grid-column: 10/span 3;
+  grid-column: 9/span 4;
   grid-row: 2;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
   z-index: 2;
-  padding-top: 2rem;
+  padding-top: 0;
 }
 .block-image-grid-3 .image-grid-3__cards-bottom {
   width: 100%;
@@ -1779,22 +1777,20 @@ meter {
 }
 .block-image-grid-3 .image-grid-3__image-small {
   width: 100%;
-  max-width: 35rem;
-  max-height: 24.5rem;
-  height: auto;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  margin: 0;
-  position: absolute;
-  left: 0.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
+  height: 100%;
+  min-height: 30rem;
+  max-width: none;
+  max-height: none;
+  position: relative;
+  left: auto;
+  transform: none;
 }
 .block-image-grid-3 .image-grid-3__image-small img {
   width: 100%;
   height: 100%;
-  max-height: 24.5rem;
+  min-height: inherit;
+  max-height: none;
+  border-radius: 0.75rem;
   object-fit: cover;
   display: block;
 }
@@ -2279,8 +2275,6 @@ meter {
   gap: 0.5rem;
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
   margin-left: auto;
   margin-right: auto;
 }
@@ -2288,7 +2282,6 @@ meter {
 .block-contact .contact-grid__form-wrapper input[type=submit]:hover,
 .block-contact .contact-grid__form-wrapper input[type=submit]:focus {
   background: rgb(68, 47, 145);
-  box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
   color: #ffffff;
 }
 .block-contact .gform_wrapper .gfield {
@@ -2517,16 +2510,19 @@ meter {
 
 .card {
   overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 .card .card-inner {
-  text-decoration: none; /* Remove the underline */
-  color: inherit; /* Make the link color same as the surrounding text */
-  background-color: transparent; /* Remove any background color */
-  cursor: pointer; /* Ensure it shows as a clickable item */
-  border: none; /* Remove any borders */
-  outline: none; /* Remove focus outline */
-  padding: 0; /* Remove any padding */
-  margin: 0; /* Remove any margin */
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  width: 100%;
+  display: block;
 }
 
 .card-course {
@@ -2934,6 +2930,11 @@ legend {
 .nav-main .main-menu a:hover, .nav-main .main-menu a:focus {
   color: rgb(109, 84, 163);
 }
+.nav-main .main-menu li.current-menu-item > a,
+.nav-main .main-menu li.current-menu-parent > a {
+  color: rgb(109, 84, 163);
+  font-weight: 600;
+}
 .nav-main .cta {
   margin-left: auto;
   display: flex;
@@ -2950,12 +2951,9 @@ legend {
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
-  box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .nav-main .btn.nav-cta:hover, .nav-main .btn.nav-cta:focus {
   background: rgb(68, 47, 145);
-  box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
   color: #ffffff;
 }
 .nav-main .toggle {
@@ -3327,10 +3325,6 @@ legend {
   color: #ffffff;
   text-decoration: none;
   transition: opacity 0.2s ease;
-}
-.copyright a:hover, .copyright a:focus {
-  opacity: 0.8;
-  text-decoration: underline;
 }
 
 body {

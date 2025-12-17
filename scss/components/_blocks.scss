@@ -95,13 +95,10 @@
                     align-items: center;
                     gap: 0.5rem;
                     white-space: nowrap;
-                    box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
-                    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
                     &:hover,
                     &:focus {
                         background: $color-cta-hover;
-                        box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
                         color: $color-heading-light;
                     }
                 }
@@ -134,7 +131,7 @@ $card-padding-h: 2rem;
     .block-inner {
         max-width: $container-base;
         margin: 0 auto;
-        padding: $card-padding-v $padding-base * 1.5;
+        padding: 1.5rem $padding-base * 1.5 $card-padding-v $padding-base * 1.5; // minder padding boven
     }
 
     .block-content {
@@ -271,9 +268,9 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
     margin-top: -$grid-gap * 3.0; // minder margin-top
 
     .block-inner {
-        max-width: $container-base;
+        max-width: calc(#{$container-base} + 4rem); // iets breder naar buiten
         margin: 0 auto;
-        padding: $card-padding-v $padding-base * 2.5; // Increased horizontal padding to make grid smaller
+        padding: $card-padding-v 0; // geen horizontale padding zodat grid maximaal breed is
     }
 
     .image-grid-2 {
@@ -547,7 +544,7 @@ $program-text: $color-txt-dark;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        padding: 4rem $padding-base * 4 8rem $padding-base * 4;
+        padding: 6rem $padding-base * 4 8rem $padding-base * 4; // meer padding boven
     }
 
     // No background variant
@@ -656,14 +653,12 @@ $program-text: $color-txt-dark;
         gap: 0.5rem;
         white-space: nowrap;
         text-decoration: none;
-        transition: background-color 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
+
         max-width: fit-content;
 
         &:hover,
         &:focus {
             background: $color-cta-hover;
-            box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
             color: $color-heading-light;
         }
     }
@@ -731,7 +726,9 @@ $program-text: $color-txt-dark;
     padding: $card-padding-v $padding-base * 1.25;
 
     .block-inner {
-        max-width: 100%;
+            max-width: calc(#{$container-base} + 8rem); // iets breder zodat block naar buiten steekt
+            margin-left: -3.25rem;
+            margin-right: -3.25rem;
     }
 
     .block-content {
@@ -856,6 +853,12 @@ $program-text: $color-txt-dark;
     @media only screen and (max-width: 900px) {
         padding: $padding-base * 1.5 $padding-base;
         max-width: 85%;
+
+        .block-inner {
+            max-width: 85%;
+            margin-left: 0;
+            margin-right: 0;
+        }
 
         .block-content {
             &.program-grid {
@@ -1146,8 +1149,6 @@ $program-text: $color-txt-dark;
         gap: 0.5rem;
         white-space: nowrap;
         text-decoration: none;
-        box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
-        transition: background-color 0.2s ease, box-shadow 0.2s ease;
         max-width: fit-content;
         width: auto;
         cursor: pointer;
@@ -1155,7 +1156,6 @@ $program-text: $color-txt-dark;
         &:hover,
         &:focus {
             background: $color-cta-hover;
-            box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
             color: $color-heading-light;
         }
     }
@@ -1927,9 +1927,9 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     .block-inner {
         max-width: $container-base;
         margin: 0 auto;
-        padding: $card-padding-v $padding-base * 1.5;
+        padding: $card-padding-v $padding-base * 1; // verminderde padding zodat de grid breeder wordt
     }
-
+    
     .image-grid-3 {
         display: grid;
         // 12 kolommen zodat we per rij andere breedtes kunnen geven
@@ -1971,14 +1971,14 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
         &--right-bottom {
             // rechter bottom image: nog iets smaller
-            grid-column: 10 / span 3; // 3/12
+            grid-column: 9 / span 4; // 4/12 (vergroot zodat de afbeelding breder wordt)
             grid-row: 2;
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
             position: relative;
             z-index: 2;
-            padding-top: 2rem;
+            padding-top: 0; // verwijder extra ruimte boven de afbeelding
         }
     }
 
@@ -2006,24 +2006,23 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
+
     .image-grid-3__image-small {
         width: 100%;
-        max-width: 35rem;
-        max-height: 24.5rem;
-        height: auto;
-        border-radius: $border-radius-card;
-        overflow: hidden;
-        margin: 0;
-        position: absolute;
-        left: 0.25rem;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 3;
+        height: 100%;
+        min-height: 30rem;
+        max-width: none;
+        max-height: none;
+        position: relative;
+        left: auto;
+        transform: none;
 
         img {
             width: 100%;
             height: 100%;
-            max-height: 24.5rem;
+            min-height: inherit;
+            max-height: none;
+            border-radius: $border-radius-card;
             object-fit: cover;
             display: block;
         }
@@ -2618,8 +2617,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             gap: 0.5rem;
             white-space: nowrap;
             text-decoration: none;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 0.375rem 1rem rgba(109, 84, 163, 0.25);
+
 
             // centreren onder het formulier
             margin-left: auto;
@@ -2628,7 +2626,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             &:hover,
             &:focus {
                 background: $color-cta-hover;
-                box-shadow: 0 0.625rem 1.375rem rgba(109, 84, 163, 0.3);
                 color: $color-heading-light;
             }
         }
