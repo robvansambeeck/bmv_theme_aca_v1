@@ -265,19 +265,19 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
 
 .block-image-grid-2 {
     margin-bottom: 0;
-    margin-top: -$grid-gap * 3.0; // minder margin-top
+    margin-top: -$grid-gap * 3.0; // Behoudt afstand tot header boven
 
     .block-inner {
-        max-width: calc(#{$container-base} + 4rem); // iets breder naar buiten
+        max-width: calc(#{$container-base} + 4rem);
         margin: 0 auto;
-        padding: $card-padding-v 0; // geen horizontale padding zodat grid maximaal breed is
+        padding: $card-padding-v 0;
     }
 
     .image-grid-2 {
         display: flex;
         gap: $gap-cols;
         align-items: stretch;
-        justify-content: center; // Center the grid
+        justify-content: center;
     }
 
     .image-grid-2__col {
@@ -285,15 +285,15 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
         flex-direction: column;
 
         &--left {
-            flex: 0 0 65%; // Image takes 65% of width (decreased from 70%)
+            flex: 0 0 65%;
             position: relative;
         }
 
         &--right {
-            flex: 0 0 25%; // Cards take 25% of width (decreased from 30%)
+            flex: 0 0 25%;
             gap: $gap-cards;
-            justify-content: stretch; // Stretch cards to fill height
-            height: 100%; // Match height of left column
+            justify-content: stretch;
+            height: 100%;
         }
     }
 
@@ -311,15 +311,13 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             object-fit: cover;
             display: block;
             border-radius: $border-radius-card;
-            border-bottom-left-radius: $border-radius-card;
-            border-bottom-right-radius: $border-radius-card;
             max-height: 38rem;
         }
 
         .image-grid-2__label {
             position: absolute;
-            top: 1.25rem; // iets meer naar onder
-            left: 1.25rem; // iets meer naar rechts
+            top: 1.25rem;
+            left: 1.25rem;
             background-color: #ffffff;
             color: $color-badge-orange;
             padding: 0.375rem 0.75rem;
@@ -334,7 +332,7 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
     }
 
     .image-grid-2__card {
-        padding: 2.5rem 2rem; // Increased padding on all sides
+        padding: 2.5rem 2rem;
         border-radius: $border-radius-card;
         color: $color-txt-dark;
         font-size: 1rem;
@@ -345,7 +343,7 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
-        flex: 1; // Cards grow to fill available space
+        flex: 1;
 
         h3 {
             margin: 0;
@@ -362,63 +360,96 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             color: $color-txt-dark;
         }
 
-        &--top {
-            background-color: $card-top-purple; // E7A8F1 with 20% opacity
+        &--top { background-color: $card-top-purple; }
+        &--middle { background-color: $card-peach; }
+        &--bottom { background-color: $card-blue-gray; }
+    }
+
+
+// Responsive
+    @media only screen and (max-width: 1155px) and (min-width: 901px) {
+        .image-grid-2 {
+            display: flex !important;
+            flex-direction: row !important; // Houd ze naast elkaar
+            align-items: stretch !important; // Zorg dat de kolommen even hoog blijven
+            gap: 2rem; // Of gebruik je $gap-cols variabele
         }
 
-        &--middle {
-            background-color: $card-peach;
+        .image-grid-2__col {
+            &--left {
+                flex: 0 0 65% !important; // Foto behoudt 65% breedte
+                height: auto !important;
+            }
+
+            &--right {
+                flex: 0 0 30% !important; // Kaarten behouden 30% breedte (totaal ~95% + gap)
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between; // Verdeelt de 3 kaarten over de volledige hoogte
+                height: auto !important;
+            }
         }
 
-        &--bottom {
-            background-color: $card-blue-gray;
+        .image-grid-2__image {
+            height: 100% !important;
+            
+            img {
+                height: 100% !important;
+                object-fit: cover; // Voorkomt vervorming van de foto
+            }
+        }
+
+        .image-grid-2__card {
+            flex: 1; // Zorgt dat de kaarten de beschikbare ruimte verticaal eerlijk verdelen
+            display: flex;
+            flex-direction: column;
+            justify-content: center; // Centreert tekst in de kaart als er weinig tekst is
+            padding: 1.5rem !important; // Iets minder padding zodat het niet te "propperig" wordt
         }
     }
 
-    // Responsive
-@media only screen and (max-width: 900px) {
-    .block-inner {
-        max-width: 85%;
-    }
+    @media only screen and (max-width: 900px) {
+        .block-inner {
+            max-width: 85%;
+        }
 
-    .image-grid-2 {
-        flex-direction: column;
-        gap: 0;
-    }
+        .image-grid-2 {
+            flex-direction: column;
+            // FIX: Voeg hier een gap toe zodat de img niet tegen de cards aanplakt
+            gap: 1.5rem; 
+        }
 
-    .image-grid-2__col {
-        &--left {
-            flex: 1;
+        .image-grid-2__col {
+            &--left {
+                flex: 1;
+                min-height: 28rem;
+                max-width: 100%;
+                // Verwijder de negatieve margin die de overlap veroorzaakt
+                margin-bottom: 0; 
+            }
+
+            &--right {
+                flex: 1;
+                max-width: 100%;
+                min-height: auto; // Verander naar auto zodat de cards hun eigen hoogte bepalen
+                gap: 1rem; // Ruimte tussen de kleine kaarten onderling
+            }
+        }
+
+        .image-grid-2__image {
             min-height: 28rem;
             max-width: 100%;
-            margin-bottom: -0.5rem;
-        }
-
-        &--right {
-            flex: 1;
-            max-width: 100%;
-            min-height: 28rem; /* **HIER IS DE TOEGEVOEGDE LIJN** */
-        }
-    }
-
-    .image-grid-2__image {
-        min-height: 28rem;
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: -0.5rem;
-        
-        img {
             width: 100%;
-            max-width: 100%;
+            margin-bottom: 0; // Reset margin
         }
     }
-}
 
-    @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 800px) {
         .image-grid-2 {
             display: flex !important;
             flex-direction: column !important;
-            gap: 0.5rem !important;
+            // Gap op 0.75rem voor een minimale, strakke scheiding
+            gap: 0.75rem !important; 
         }
         
         .image-grid-2__col--left {
@@ -426,22 +457,19 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             display: block !important;
             max-width: 100%;
             margin: 0 !important;
-            padding: 0 !important;
+            min-height: auto !important;
         }
         
         .image-grid-2__image {
             width: 100%;
-            max-width: 100%;
             height: auto;
             min-height: auto;
-            margin: 0 !important;
-            padding: 0 !important;
             display: block !important;
+            margin: 0 !important;
             
             img {
                 width: 100%;
-                max-width: 100%;
-                height: 100%;
+                height: auto;
                 object-fit: cover;
                 display: block !important;
             }
@@ -449,11 +477,9 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
         
         .image-grid-2__col--right {
             max-width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
             display: flex !important;
             flex-direction: column !important;
-            gap: 0.5rem !important;
+            gap: 0.75rem !important; // Ook de ruimte tussen de kaarten iets verkleind voor balans
         }
         
         .image-grid-2__card {
@@ -463,60 +489,28 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
     }
 
     @media only screen and (max-width: 600px) {
-        .block-inner {
-            padding: $card-padding-v $padding-base;
-        }
-        
+        .block-inner { padding: $card-padding-v $padding-base; }
+        .image-grid-2__card { padding: 1.25rem !important; }
+    }
+
+    // FIX VOOR 460PX
+    @media only screen and (max-width: 460px) {
         .image-grid-2 {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 0.5rem !important;
+            gap: 0.75rem !important; // De "mini beetje ruimte" tussen img en cards
         }
-        
-        .image-grid-2__col--left {
-            max-width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
-            display: block !important;
+
+        .image-grid-2__col {
+            &--left, &--right {
+                min-height: auto !important; // Verwijdert het zweven/lege ruimte
+                height: auto !important;
+            }
         }
-        
+
         .image-grid-2__image {
-            max-width: 100%;
-            width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
-            display: block !important;
-            
+            min-height: auto !important;
             img {
-                width: 100%;
-                max-width: 100%;
-                display: block !important;
-            }
-        }
-        
-        .image-grid-2__col--right {
-            max-width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 0.5rem !important;
-        }
-        
-        .image-grid-2__card {
-            margin: 0 !important;
-            padding: 1.25rem !important;
-        }
-
-        .image-grid-2__card {
-            padding: 1.25rem;
-
-            h3 {
-                font-size: 1.125rem;
-            }
-
-            p {
-                font-size: 0.9375rem;
+                height: auto !important;
+                max-height: 250px; // Voorkomt dat de afbeelding te hoog wordt op mobiel
             }
         }
     }
@@ -2730,186 +2724,69 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 // Mobile overrides (home page specific)
 // Alleen toevoegingen; desktop blijft gelijk
 // =========================================
-@media only screen and (max-width: 600px) {
-    // Header block: meer compacte paddings
-    .block-header {
-        border: none !important; // geen border op header op mobiel
-        border-top: none !important; // geen lijn boven header op mobiel
-        border-bottom: none !important; // geen lijn onder header op mobiel
-        box-shadow: none !important;
-        outline: none !important;
-        margin-top: 0 !important;
-        
+    @media only screen and (max-width: 600px) {
         .block-inner {
-            padding: 2.5rem $padding-base * 1.25 0; // geen padding onderaan
-            border: none !important; // geen border op header inner op mobiel
-            border-top: none !important; // geen lijn boven header inner op mobiel
-            border-bottom: none !important;
-            box-shadow: none !important;
-            outline: none !important;
-        }
-        
-        .block-content {
-            border: none !important;
-            border-top: none !important;
-            border-bottom: none !important;
-            box-shadow: none !important;
-            outline: none !important;
+            // Minder padding boven en onder voor een compactere sectie
+            padding: ($card-padding-v * 0.5) ($padding-base * 0.75);
         }
 
-        .row.cta {
-            .btn {
-                // op mobiel: iets plattere maar bredere CTA-buttons
-                min-width: 17rem;
-                height: 2.5rem; // direct minder hoog
-                padding: 0 2.5rem; // alleen horizontale padding
-                display: inline-flex; // zorg dat flex werkt
-                align-items: center; // tekst verticaal gecentreerd
-                justify-content: center; // tekst horizontaal gecentreerd
-            }
-        }
-
-        .row.title {
-            margin-bottom: 1.25rem !important;
-            
-            *:not(strong):not(b) {
-                font-size: 1.65em !important;
-                line-height: 1.2 !important;
-            }
-            
-            strong,
-            b {
-                font-size: inherit !important;
-                line-height: 1.2 !important;
-            }
-        }
-        
-        .row.description {
-            line-height: 1.8 !important;
-            margin-top: 0 !important;
-            margin-bottom: 2rem !important;
-        }
-    }
-
-    .block-image-grid-1 {
-        .block-inner {
- 
-            padding: 0 $padding-base $card-padding-v * 1.2;
-        }
-
-        .block-content.image-grid-1 {
-            flex-direction: column;
-            gap: $gap-cols;
-        }
-
-        .image-grid-1__col {
-            &--left,
-            &--middle,
-            &--right {
-                min-height: auto;
-                margin: 0;
-            }
-
-            &--middle {
-                gap: $gap-cols; 
-            }
-        }
-    }
-
-    // Info block: kolommen onder elkaar
-    .block-info {
-        padding: 0 $padding-base;
-
-        .block-inner {
-            padding: 3rem $padding-base * 1.5 4rem;
-        }
-
-        .block-content.block-info__content {
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .block-info__col--text {
-            padding-left: 0;
-            align-items: flex-start; // links uitlijnen ipv center
-        }
-
-        .block-content.block-info__content {
-            text-align: left; // tekst links uitlijnen op mobiel
-        }
-
-        .block-info__col--logo {
-            justify-content: center; // logo gecentreerd op mobiel
-            padding-right: 0;
-        }
-
-        .block-info__logo-wrap {
-            width: 16rem; // kleiner logo op mobiel
-            margin: 0 auto; // extra centrering
-        }
-
-        .block-info__title {
-            font-size: 2.25rem; // kleiner op mobiel
-            text-align: left; // titel links uitlijnen
-        }
-
-        .block-info__text {
-            text-align: left; // tekst links uitlijnen
-        }
-
-        .block-info__cta {
-            margin-left: auto;
-            margin-right: auto; // button gecentreerd op mobiel
-        }
-    }
-
-    // Program block: cards 1 kolom
-    .block-program {
-        .block-content.program-grid {
+        .contact-grid {
             grid-template-columns: 1fr;
-            gap: $gap-cards * 1.5;
-        }
-    }
-
-    // Bullet list: image boven, content onder, full-width
-    .block-bullet-list {
-        .block-content.bullet-list__container {
-            flex-direction: column;
-            padding: 2.5rem $padding-base;
+            // Ruimte tussen het tekstblok en het formulier zelf
+            gap: 1.5rem !important; 
         }
 
-        .bullet-list__col--image,
-        .bullet-list__col--content {
-            max-width: 100%;
-            flex: 0 0 100%;
-            padding-left: 0;
+        .contact-grid__col--left {
+            text-align: center;
+            align-items: center;
+            // Ruimte tussen de verschillende tekst-onderdelen (titel, intro, adres)
+            gap: 0.75rem !important; 
         }
 
-        .bullet-list__col--content {
-            align-items: center; // content items centreren
+        .contact-grid__title {
+            margin-bottom: 0.25rem;
+            // Forceer een kleinere line-height voor de titel
+            line-height: 1.1; 
         }
 
-        .bullet-list__cta {
-            margin-left: auto;
-            margin-right: auto; // button gecentreerd op mobiel
-            margin-bottom: $gap-cols; // meer ruimte onder de button
-        }
-    }
-
-    // CTA register: wat compacter op mobiel
-    .block-cta-register {
-        .block-inner {
-            padding: 3rem $padding-base * 1.25;
+        .contact-grid__intro {
+            p {
+                // Verwijder de standaard browser margin van paragrafen bijna volledig
+                margin-bottom: 0.35rem !important; 
+                line-height: 1.4;
+            }
         }
 
-        .cta-register__title {
-            font-size: 2rem !important;
+        .contact-grid__faq-link-wrapper {
+            margin-top: -0.25rem; // Trekt de FAQ link dichter naar de tekst erboven
+        }
 
-            h1, h2, h3, h4, h5, h6,
-            p,
-            * {
-                font-size: 2rem !important;
+        .contact-grid__faq-link {
+            justify-content: center;
+            margin-top: 0;
+        }
+
+        .contact-grid__address-info {
+            margin-top: 0.5rem;
+            gap: 0.15rem; // Adresregels plakken bijna aan elkaar
+            
+            .contact-grid__address-title {
+                margin-bottom: 0.15rem;
+            }
+        }
+
+        .contact-grid__form-title {
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .contact-grid__form-wrapper {
+            .gform_fields {
+                gap: 0.5rem; // Invoervelden van het formulier dichter op elkaar
+            }
+            
+            .gform_footer {
+                margin-top: 1rem;
             }
         }
     }
-}
