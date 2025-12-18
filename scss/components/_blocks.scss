@@ -841,23 +841,32 @@ $program-text: $color-txt-dark;
     // Responsive
     @media only screen and (max-width: 1100px) {
         padding: $card-padding-v * 0.9 $padding-base * 1.125;
+        max-width: 900px; // Verlaagd om alles meer naar rechts/midden te brengen
+        margin: 0 auto;
+
+        .block-inner {
+            margin-left: 0; // Negatieve margin verwijderen
+            margin-right: 0;
+            max-width: 100%;
+        }
         
         .block-content {
             &.program-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                column-gap: 0.5rem;
-                row-gap: 0.5rem;
-                justify-items: stretch;
+                column-gap: 2rem; // Meer ruimte tussen de kolommen
+                row-gap: 2rem;
+                justify-items: center; // Zorg dat de cards in hun grid-cel centreren
             }
         }
     }
 
     @media only screen and (max-width: 900px) {
         padding: $padding-base * 1.5 $padding-base;
-        max-width: 85%;
+        max-width: 700px; // Versmald voor betere centrering van alle 4
+        margin: 0 auto;
 
         .block-inner {
-            max-width: 85%;
+            max-width: 100%;
             margin-left: 0;
             margin-right: 0;
         }
@@ -865,31 +874,41 @@ $program-text: $color-txt-dark;
         .block-content {
             &.program-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                column-gap: 0.25rem;
+                column-gap: 1.5rem;
                 row-gap: 3rem;
                 justify-items: center;
             }
         }
     }
-    
+
     @media only screen and (max-width: 800px) {
         padding: $padding-base * 1.25 $padding-base * 0.875;
+        max-width: 600px; // Nog iets smaller voor focus op het midden
+        margin: 0 auto;
         
         .block-content {
             &.program-grid {
-                gap: $gap-cards;
+                gap: 2rem;
+                justify-items: center;
             }
         }
     }
 
     @media only screen and (max-width: 600px) {
         padding: $padding-base * 1.125 $padding-base * 0.75;
+        max-width: 100%;
+        margin: 0 auto;
         
         .block-content {
             &.program-grid {
                 grid-template-columns: 1fr;
-                gap: $gap-cards * 0.9;
+                gap: 2rem;
+                justify-items: center; // Kaarten staan nu exact in het midden van het scherm
             }
+        }
+        
+        .program-card {
+            margin: 0 auto; // Extra zekerheid voor centrering op mobiel
         }
     }
 }
@@ -1266,6 +1285,49 @@ $program-text: $color-txt-dark;
         .bullet-list__item {
             flex: 0 0 auto;
             white-space: nowrap;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .block-bullet-list {
+        .block-content.bullet-list__container {
+            /* Vergroot de padding aan de zijkant om de tekst naar binnen te duwen */
+            padding: 2rem 2rem !important; 
+        }
+
+        .bullet-list__col--content {
+            /* Zet de breedte van de tekstkolom flink omlaag */
+            max-width: 16rem !important; 
+            margin: 0 auto !important;
+            padding: 0 !important;
+
+            * {
+                max-width: 100% !important;
+            }
+        }
+
+        .bullet-list__items {
+            /* Belangrijk: zet dit op column zodat ze niet proberen naast elkaar te staan */
+            flex-direction: column !important;
+            gap: 1rem !important;
+            width: 100%;
+        }
+
+        .bullet-list__item {
+            /* DIT IS DE OPLOSSING VOOR DE AFBEELDING: */
+            white-space: normal !important; /* Zorgt dat tekst afbreekt naar de volgende regel */
+            display: flex !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            width: 100%;
+        }
+
+        .bullet-list__item-text {
+            /* Zorg dat de tekst alle beschikbare ruimte pakt en dan afbreekt */
+            flex: 1;
+            font-size: 0.95rem; 
+            line-height: 1.4;
         }
     }
 }

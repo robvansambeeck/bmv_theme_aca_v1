@@ -788,27 +788,35 @@ meter {
 @media only screen and (max-width: 1100px) {
   .block-program {
     padding: 2.7rem 1.125rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .block-program .block-inner {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
   }
   .block-program .block-content.program-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 0.5rem;
-    row-gap: 0.5rem;
-    justify-items: stretch;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    justify-items: center;
   }
 }
 @media only screen and (max-width: 900px) {
   .block-program {
     padding: 1.5rem 1rem;
-    max-width: 85%;
+    max-width: 700px;
+    margin: 0 auto;
   }
   .block-program .block-inner {
-    max-width: 85%;
+    max-width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
   .block-program .block-content.program-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 0.25rem;
+    column-gap: 1.5rem;
     row-gap: 3rem;
     justify-items: center;
   }
@@ -816,18 +824,27 @@ meter {
 @media only screen and (max-width: 800px) {
   .block-program {
     padding: 1.25rem 0.875rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
   .block-program .block-content.program-grid {
-    gap: 0.75rem;
+    gap: 2rem;
+    justify-items: center;
   }
 }
 @media only screen and (max-width: 600px) {
   .block-program {
     padding: 1.125rem 0.75rem;
+    max-width: 100%;
+    margin: 0 auto;
   }
   .block-program .block-content.program-grid {
     grid-template-columns: 1fr;
-    gap: 0.675rem;
+    gap: 2rem;
+    justify-items: center;
+  }
+  .block-program .program-card {
+    margin: 0 auto;
   }
 }
 
@@ -1145,6 +1162,41 @@ meter {
   }
 }
 
+@media only screen and (max-width: 480px) {
+  .block-bullet-list .block-content.bullet-list__container {
+    /* Vergroot de padding aan de zijkant om de tekst naar binnen te duwen */
+    padding: 2rem 2rem !important;
+  }
+  .block-bullet-list .bullet-list__col--content {
+    /* Zet de breedte van de tekstkolom flink omlaag */
+    max-width: 16rem !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  .block-bullet-list .bullet-list__col--content * {
+    max-width: 100% !important;
+  }
+  .block-bullet-list .bullet-list__items {
+    /* Belangrijk: zet dit op column zodat ze niet proberen naast elkaar te staan */
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100%;
+  }
+  .block-bullet-list .bullet-list__item {
+    /* DIT IS DE OPLOSSING VOOR DE AFBEELDING: */
+    white-space: normal !important; /* Zorgt dat tekst afbreekt naar de volgende regel */
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100%;
+  }
+  .block-bullet-list .bullet-list__item-text {
+    /* Zorg dat de tekst alle beschikbare ruimte pakt en dan afbreekt */
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
 .block-cta-register {
   position: relative;
   width: 100%;
@@ -2689,7 +2741,18 @@ meter {
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.75rem;
-  width: 100%;
+  width: 100% !important; /* Forceer volle breedte van de card */
+}
+@media only screen and (max-width: 600px) {
+  .card-course .card-info .tags {
+    display: flex !important;
+    justify-content: center !important; /* Horizontaal centreren */
+    align-items: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 .card-course .card-info .tags .tag {
   color: rgb(109, 84, 163);
@@ -2702,6 +2765,11 @@ meter {
   text-decoration: none;
   display: inline-block;
   margin: 0;
+}
+@media only screen and (max-width: 600px) {
+  .card-course .card-info .tags .tag {
+    margin: 0.25rem !important; /* Geef ze rondom wat ruimte om niet tegen elkaar te plakken */
+  }
 }
 @media only screen and (max-width: 600px) {
   .card-course .card-info {
@@ -3325,25 +3393,25 @@ body {
   z-index: 5000;
   margin-left: 2.5rem;
   padding: 0.75rem 2.5rem;
-  background-color: rgb(234, 235, 243);
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  background-color: rgb(234, 235, 243);
   color: rgb(64, 64, 64), 1;
   font-weight: 500;
   letter-spacing: 0.01em;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
   box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
+  text-decoration: none;
 }
-
 .site-label__text {
   position: relative;
   z-index: 1;
   font-size: 0.95rem;
+  color: inherit;
 }
-
 .site-label__img {
   position: relative;
   width: 8rem;
@@ -3352,6 +3420,16 @@ body {
   opacity: 1;
   z-index: 1;
   pointer-events: none;
+  display: block;
+}
+@media only screen and (max-width: 600px) {
+  .site-label {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+    width: max-content !important;
+    white-space: nowrap;
+  }
 }
 
 .container {

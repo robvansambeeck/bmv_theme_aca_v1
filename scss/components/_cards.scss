@@ -208,10 +208,20 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: auto; // Push tags to bottom of card
+            margin-top: auto;
             padding-top: 0.75rem;
-            width: 100%; // Ensure tags stay within card
-
+            width: 100% !important; /* Forceer volle breedte van de card */
+        
+            @media only screen and (max-width: 600px) {
+                display: flex !important;
+                justify-content: center !important; /* Horizontaal centreren */
+                align-items: center !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        
             .tag {
                 color: $color-cta;
                 border: 2px solid $color-cta;
@@ -223,6 +233,10 @@
                 text-decoration: none;
                 display: inline-block;
                 margin: 0;
+        
+                @media only screen and (max-width: 600px) {
+                    margin: 0.25rem !important; /* Geef ze rondom wat ruimte om niet tegen elkaar te plakken */
+                }
             }
         }
     }
