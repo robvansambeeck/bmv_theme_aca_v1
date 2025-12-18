@@ -717,9 +717,17 @@ $program-text: $color-txt-dark;
     padding: $card-padding-v $padding-base * 1.25;
 
     .block-inner {
-            max-width: calc(#{$container-base} + 8rem); // iets breder zodat block naar buiten steekt
-            margin-left: -3.25rem;
-            margin-right: -3.25rem;
+        // Standaard breed (desktop > 1400px)
+        max-width: calc(#{$container-base} + 8rem);
+        margin-left: -3.25rem;
+        margin-right: -3.25rem;
+
+        // FIX: Tussen 1400px en 1100px de 'overlap' verkleinen
+        @media only screen and (max-width: 1400px) {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 
     .block-content {
@@ -737,16 +745,16 @@ $program-text: $color-txt-dark;
         padding: 1.75rem 2rem;
         min-height: 15rem;
         border-radius: $border-radius-card;
-        
-        @media only screen and (max-width: 600px) {
-            max-width: 22.5rem;
-        }
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
         color: $program-text;
         box-sizing: border-box;
         box-shadow: none;
+
+        @media only screen and (max-width: 600px) {
+            max-width: 22.5rem;
+        }
 
         &__icon {
             width: 5rem;
@@ -765,7 +773,7 @@ $program-text: $color-txt-dark;
 
         &__title {
             margin: 0;
-            font-size: 1.6rem; // grotere titel
+            font-size: 1.6rem;
             font-weight: $font-bold;
             line-height: 1.3;
             color: $program-text;
@@ -782,59 +790,22 @@ $program-text: $color-txt-dark;
             }
         }
 
-        // variants (NL names from ACF select) with common aliases/casing
-        &--oranje,
-        &--Oranje,
-        &--orange,
-        &--Orange,
-        &--peach,
-        &--Peach {
-            background: $program-oranje;
-        }
-
-        &--paars,
-        &--Paars,
-        &--purple,
-        &--Purple {
-            background: $program-paars;
-        }
-
-        &--roze,
-        &--Roze,
-        &--pink,
-        &--Pink {
-            background: $program-roze;
-        }
-
-        &--licht-grijs,
-        &--lichtgrijs,
-        &--Licht-grijs,
-        &--Lichtgrijs,
-        &--grijs,
-        &--Grijs,
-        &--gray,
-        &--grey,
-        &--Gray,
-        &--Grey {
-            background: $program-licht-grijs;
-        }
-
-        &--wit,
-        &--Wit,
-        &--white,
-        &--White {
-            background: $program-white;
-        }
+        // Variants
+        &--oranje, &--Oranje, &--orange, &--Orange, &--peach, &--Peach { background: $program-oranje; }
+        &--paars, &--Paars, &--purple, &--Purple { background: $program-paars; }
+        &--roze, &--Roze, &--pink, &--Pink { background: $program-roze; }
+        &--licht-grijs, &--lichtgrijs, &--Licht-grijs, &--Lichtgrijs, &--grijs, &--Grijs, &--gray, &--grey, &--Gray, &--Grey { background: $program-licht-grijs; }
+        &--wit, &--Wit, &--white, &--White { background: $program-white; }
     }
 
     // Responsive
     @media only screen and (max-width: 1100px) {
         padding: $card-padding-v * 0.9 $padding-base * 1.125;
-        max-width: 900px; // Verlaagd om alles meer naar rechts/midden te brengen
+        max-width: 900px;
         margin: 0 auto;
 
         .block-inner {
-            margin-left: 0; // Negatieve margin verwijderen
+            margin-left: 0;
             margin-right: 0;
             max-width: 100%;
         }
@@ -842,23 +813,17 @@ $program-text: $color-txt-dark;
         .block-content {
             &.program-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                column-gap: 2rem; // Meer ruimte tussen de kolommen
+                column-gap: 2rem;
                 row-gap: 2rem;
-                justify-items: center; // Zorg dat de cards in hun grid-cel centreren
+                justify-items: center;
             }
         }
     }
 
     @media only screen and (max-width: 900px) {
         padding: $padding-base * 1.5 $padding-base;
-        max-width: 700px; // Versmald voor betere centrering van alle 4
+        max-width: 700px;
         margin: 0 auto;
-
-        .block-inner {
-            max-width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-        }
 
         .block-content {
             &.program-grid {
@@ -872,13 +837,11 @@ $program-text: $color-txt-dark;
 
     @media only screen and (max-width: 800px) {
         padding: $padding-base * 1.25 $padding-base * 0.875;
-        max-width: 600px; // Nog iets smaller voor focus op het midden
-        margin: 0 auto;
+        max-width: 600px;
         
         .block-content {
             &.program-grid {
                 gap: 2rem;
-                justify-items: center;
             }
         }
     }
@@ -886,18 +849,16 @@ $program-text: $color-txt-dark;
     @media only screen and (max-width: 600px) {
         padding: $padding-base * 1.125 $padding-base * 0.75;
         max-width: 100%;
-        margin: 0 auto;
         
         .block-content {
             &.program-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-                justify-items: center; // Kaarten staan nu exact in het midden van het scherm
             }
         }
         
         .program-card {
-            margin: 0 auto; // Extra zekerheid voor centrering op mobiel
+            margin: 0 auto;
         }
     }
 }
@@ -905,420 +866,167 @@ $program-text: $color-txt-dark;
 // Bullet list block
 .block-bullet-list {
     width: 100%;
-    margin: 0;
-    padding: $card-padding-v 0 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    
-    @media only screen and (max-width: 1100px) {
-        .block-content.bullet-list__container {
-            flex-direction: row !important;
-            align-items: flex-start !important;
-        }
-        
-        .bullet-list__col--image {
-            flex: 0 0 40% !important;
-            max-width: 40% !important;
-            padding-left: 0 !important;
-            padding-right: 1rem !important;
-            display: flex !important;
-            align-items: flex-start !important;
-            justify-content: flex-start !important;
-            order: 1;
-            padding-top: 0 !important;
-        }
-        
-        .bullet-list__image {
-            width: 100% !important;
-            max-width: 100% !important;
-        }
-        
-        .bullet-list__col--content {
-            flex: 0 0 60% !important;
-            max-width: 60% !important;
-            padding-bottom: 3.5rem;
-            gap: 0.75rem !important;
-            order: 2;
-            
-            * {
-                max-width: 28rem !important;
-            }
-        }
-        
-        .bullet-list__title {
-            margin-bottom: 0.5rem !important;
-        }
-        
-        .bullet-list__description {
-            margin-bottom: 0.5rem !important;
-        }
-        
-        .bullet-list__items {
-            margin-top: 0.5rem !important;
-            gap: 1.25rem !important;
-        }
-        
-        .bullet-list__cta {
-            margin-top: 2rem !important;
-            margin-bottom: 3.5rem !important;
-            padding: 0.875rem 4rem;
-        }
-    }
+    margin: 0 !important;
+    padding: $card-padding-v 0 0 !important; 
+    overflow: hidden;
 
     .block-inner {
         max-width: 100%;
         margin: 0;
+        padding: 0;
         width: 100%;
     }
 
-    .block-content {
-        &.bullet-list__container {
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-            background-color: #EAEBF3;
-            border-radius: 0;
-            padding: 8rem 3rem 8rem 8rem;
-            width: 100%;
-            max-width: 100%;
-            
-            @media only screen and (max-width: 1100px) {
-                gap: 3.5rem;
-                padding: 7rem 2.5rem 0 7rem;
-                margin-bottom: 0 !important;
-            }
-            
-            @media only screen and (max-width: 900px) {
-                gap: 2rem;
-                padding: 2.5rem $padding-base;
-            }
-            
-            @media only screen and (max-width: 800px) {
-                padding: 2.25rem $padding-base * 0.875;
-            }
+    .block-content.bullet-list__container {
+        display: flex;
+        gap: 4rem;
+        align-items: center; 
+        background-color: #EAEBF3;
+        width: 100%;
+        margin: 0;
+        padding: 8rem 5rem;
+        box-sizing: border-box;
+
+        @media only screen and (max-width: 800px) {
+            flex-direction: column !important;
+            width: 100vw !important;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+            padding: 4rem 2rem 0 2rem !important; // Padding aan zijkant geforceerd
+            gap: 3rem;
         }
     }
 
     .bullet-list__col {
         &--image {
+            flex: 0 0 40%;
+            max-width: 40%;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            flex: 0 0 35%;
-            max-width: 35%;
-            padding-left: 2rem;
+
+            @media only screen and (min-width: 801px) and (max-width: 1400px) {
+                flex: 0 0 45% !important;
+                max-width: 45% !important;
+            }
+
+            @media only screen and (max-width: 800px) {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+                order: 1;
+                padding: 0 1rem; // Iets naar binnen op mobiel
+            }
         }
 
         &--content {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            justify-content: flex-start; // Changed from center to flex-start
-            max-width: 45rem;
-            overflow: visible; // Ensure button is not hidden
-            min-height: 0; // Allow flex shrinking
+            gap: 2.5rem; // Meer ruimte tussen tekstblokken
+            
+            @media only screen and (max-width: 800px) {
+                max-width: 100% !important;
+                width: 100%;
+                order: 2;
+                padding: 0 1.5rem 5rem 1.5rem !important; 
+                align-items: center !important; 
+                text-align: center !important;
+            }
         }
     }
 
     .bullet-list__image {
-        margin: 0;
+        width: 100%;
         border-radius: $border-radius-card;
         overflow: hidden;
-        width: 100%;
-        max-width: 100%;
-
+        
         img {
             width: 100%;
             height: auto;
-            display: block;
             object-fit: cover;
-        }
-    }
-
-    .bullet-list__title {
-        font-size: 2.5rem;
-        font-weight: $font-bold;
-        color: $color-cta !important;
-        line-height: 1.2;
-        margin: 0 0 1rem 0;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        min-height: 1rem;
-
-        h1, h2, h3, h4, h5, h6 {
-            margin: 0;
-            color: $color-cta !important;
-            font-size: inherit;
-            font-weight: inherit;
-            line-height: inherit;
             display: block;
-        }
-
-        p {
-            margin: 0 0 0.5rem 0;
-            color: $color-cta !important;
-            display: block;
-
-            &:last-child {
-                margin-bottom: 0;
+            
+            @media only screen and (min-width: 801px) and (max-width: 1400px) {
+                min-height: 500px; 
             }
-
-            &:empty {
-                display: none;
-            }
-        }
-
-        * {
-            color: $color-cta !important;
-        }
-    }
-
-    .bullet-list__description {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: $color-txt-dark;
-        margin: 0 0 1rem 0;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-
-        p {
-            margin: 0 0 1rem 0;
-            color: $color-txt-dark;
-            display: block;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            &:empty {
-                display: none;
-            }
-        }
-
-        * {
-            color: $color-txt-dark;
         }
     }
 
     .bullet-list__items {
         list-style: none;
-        margin: 0;
         padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 1.75rem; // meer ruimte tussen bulletpoints
+        gap: 1.75rem; // MEER RUIMTE tussen de items na 800px
+        width: 100%;
+
+        @media only screen and (max-width: 800px) {
+            align-items: flex-start; // Items zelf links uitlijnen voor betere leesbaarheid
+            max-width: 450px; // MEER RUIMTE in de breedte na 800px
+            margin: 0 auto;
+        }
+        
+        @media only screen and (max-width: 480px) {
+            max-width: 100%; // Op hele kleine schermen mag hij de volle padding-breedte pakken
+            gap: 1.5rem;
+        }
     }
 
     .bullet-list__item {
         display: flex;
         align-items: flex-start;
-        gap: 0.75rem;
-        list-style: none;
-    }
+        gap: 1.25rem;
+        white-space: normal !important;
+        text-align: left;
+        width: 100%;
 
-    .bullet-list__item-icon {
-    flex: 0 0 auto;
-    font-size: 1.5rem; // iets groter icoon
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0.125rem;
+        &-icon {
+            flex: 0 0 1.75rem; // Iets grotere icon container voor meer witruimte
+            font-size: 1.5rem;
+            color: #6D54A3;
+            display: flex;
+            justify-content: center;
+        }
 
-    // Font Awesome duotone kleuren:
-    // secundaire vorm (circle) paars, primaire (check) wit
-    i {
-        --fa-secondary-color: #6D54A3;
-        --fa-secondary-opacity: 1;
-        --fa-primary-color: #ffffff;
-        --fa-primary-opacity: 1;
-    }
-    }
-
-    .bullet-list__item-text {
-        flex: 1;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: $color-txt-dark;
+        &-text {
+            flex: 1;
+            font-size: 1.1rem;
+            line-height: 1.6; // Meer regelafstand voor rust
+            color: $color-txt-dark;
+        }
     }
 
     .bullet-list__cta {
-        margin: 0;
+        margin-top: 1.5rem; // Meer afstand tot de lijst
         background: $color-cta;
-        color: $color-heading-light;
-        border: none;
+        color: #fff;
         border-radius: 999px;
-        padding: 0.6875rem 3.5rem; //zelfde als header buttons
-        min-width: 16rem; //zelfde als header buttons
-        font-weight: $font-medium;
-        font-size: 1rem;
+        padding: 1.1rem 4.5rem; // Iets grotere knop voor mobiel comfort
+        text-decoration: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        font-weight: $font-medium;
+        width: fit-content; 
         white-space: nowrap;
-        text-decoration: none;
-        max-width: fit-content;
-        width: auto;
-        cursor: pointer;
-
-        &:hover,
-        &:focus {
-            background: $color-cta-hover;
-            color: $color-heading-light;
-        }
-    }
-
-    // Responsive
-    @media only screen and (max-width: 900px) {
-        .bullet-list__image {
-            max-width: 70%;
-            margin: 0 auto;
-        }
-
-        .bullet-list__col--content {
-            gap: 0.25rem;
-            align-items: center;
-            max-width: 28rem !important;
-            
-            * {
-                max-width: 28rem !important;
-            }
-        }
-
-        .bullet-list__items {
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .bullet-list__cta {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .block-content {
-            &.bullet-list__container {
-                flex-direction: column;
-                gap: 2rem;
-                padding: 2.5rem $padding-base;
-            }
-        }
-
-        .bullet-list__col {
-            &--image {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
-    }
-
-    @media only screen and (max-width: 800px) {
-        .bullet-list__col--content {
-            align-items: center;
-            padding-bottom: 1.5rem;
-            max-width: 24rem !important;
-            
-            * {
-                max-width: 24rem !important;
-            }
-        }
-
-        .bullet-list__cta {
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 1.5rem !important;
-        }
-    }
-
-    @media only screen and (max-width: 600px) {
-        .block-content {
-            &.bullet-list__container {
-                padding: 2rem $padding-base * 0.75;
-                flex-direction: column !important;
-            }
-        }
         
-        .bullet-list__col--image {
-            order: 1;
-            flex: 0 0 100% !important;
-            max-width: 100% !important;
-            padding-left: 0 !important;
-        }
-        
-        .bullet-list__image {
-            max-width: 90% !important;
-            margin: 0;
-            margin-left: auto;
-            margin-right: 1rem;
-        }
-        
-        .bullet-list__col--content {
-            order: 2;
-            max-width: 32rem !important;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            
-            * {
-                max-width: 32rem !important;
-            }
-        }
-        
-        .bullet-list__items {
-            margin-left: -0.5rem;
-            flex-direction: row !important;
-            flex-wrap: wrap;
-            gap: 0.5rem !important;
-        }
-        
-        .bullet-list__item {
-            flex: 0 0 auto;
-            white-space: nowrap;
+        @media only screen and (max-width: 800px) {
+            display: flex !important;
+            margin: 0 auto !important; 
         }
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .block-bullet-list {
-        .block-content.bullet-list__container {
-            /* Vergroot de padding aan de zijkant om de tekst naar binnen te duwen */
-            padding: 2rem 2rem !important; 
-        }
-
-        .bullet-list__col--content {
-            /* Zet de breedte van de tekstkolom flink omlaag */
-            max-width: 16rem !important; 
-            margin: 0 auto !important;
-            padding: 0 !important;
-
-            * {
-                max-width: 100% !important;
-            }
-        }
-
-        .bullet-list__items {
-            /* Belangrijk: zet dit op column zodat ze niet proberen naast elkaar te staan */
-            flex-direction: column !important;
-            gap: 1rem !important;
-            width: 100%;
-        }
-
-        .bullet-list__item {
-            /* DIT IS DE OPLOSSING VOOR DE AFBEELDING: */
-            white-space: normal !important; /* Zorgt dat tekst afbreekt naar de volgende regel */
-            display: flex !important;
-            align-items: flex-start !important;
-            text-align: left !important;
-            width: 100%;
-        }
-
-        .bullet-list__item-text {
-            /* Zorg dat de tekst alle beschikbare ruimte pakt en dan afbreekt */
-            flex: 1;
-            font-size: 0.95rem; 
-            line-height: 1.4;
-        }
-    }
+// NAADLOZE AANSLUITING FIX
+.block-bullet-list + section, 
+.block-bullet-list + div,
+.block-bullet-list + .block-container,
+.block-bullet-list + [class*="block-"] {
+    margin-top: -2px !important; 
+    padding-top: 0 !important;
 }
 
 // CTA Register block
@@ -1642,48 +1350,56 @@ $filter-bg: #e6e0f0; // light lavender for tab background
       width: 100%;
     }
 
+    
     .cards-courses {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      align-items: stretch;
-      
-      @media only screen and (min-width: 1400px) {
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-      }
-    }
-  }
-
-  // Responsive
-  @media only screen and (max-width: 1100px) {
-    .output {
-      .cards-courses {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
         align-items: stretch;
-      }
+    
+        // Specifieke styling voor de range 1101px tot 1400px
+        @media only screen and (max-width: 1400px) and (min-width: 1101px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+    
+            & > * { 
+                /* Hier stel je de extra hoge kaarten in */
+                min-height: 650px; 
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between; // Zorgt dat content mooi verdeeld wordt over de hoogte
+            }
+        }
+    
+        // Voor de allergrootste schermen
+        @media only screen and (min-width: 1401px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
     }
-  }
+    
+    // Responsive voor mobiel/tablet (onder 1100px)
+        // Tussen 1100px en 801px: altijd 2 kolommen
+        @media only screen and (max-width: 1100px) and (min-width: 801px) {
+            .cards-courses {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                & > * {
+                    min-height: 650px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+            }
+        }
 
-  @media only screen and (max-width: 900px) {
-    margin-top: -$grid-gap * 1.5;
-    padding-top: $card-padding-v * 0.15;
-    padding: $card-padding-v * 0.15 $padding-base $card-padding-v $padding-base;
-
-    .filter-tabs {
-      gap: 0.5rem;
-      padding: 0.5rem;
-    }
-
-    .filter-tab {
-      padding: 0.5rem 1rem;
-      font-size: 0.9375rem;
-    }
-  }
-
-  @media only screen and (max-width: 600px) {
-    padding: $card-padding-v $padding-base * 0.75;
+        // Extra mobiel: altijd 1 kolom onder 800px
+        @media only screen and (max-width: 800px) {
+            .cards-courses {
+                grid-template-columns: 1fr !important;
+                gap: 1.25rem;
+            }
+        }
 
     .filter-tabs {
       gap: 0.5rem;

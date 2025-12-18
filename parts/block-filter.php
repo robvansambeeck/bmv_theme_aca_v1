@@ -11,7 +11,6 @@ $sub_terms = $parent_id ? get_terms([
     'hide_empty' => true,
 ]) : [];
 
-// URL sync: ?filter=type-a
 $current_filter = isset($_GET['filter']) ? sanitize_title(wp_unslash($_GET['filter'])) : 'all';
 $valid_slugs = array_map(fn($t) => $t->slug, $sub_terms);
 if ($current_filter !== 'all' && !in_array($current_filter, $valid_slugs, true)) {
@@ -25,7 +24,6 @@ if ($current_filter !== 'all' && !in_array($current_filter, $valid_slugs, true))
         <div class="input">
             <div class="inner">
                 <div class="filter-tabs">
-
                     <button class="filter-tab <?php echo $current_filter === 'all' ? 'is-active' : ''; ?>"
                         data-filter="all">
                         Alle
@@ -37,14 +35,13 @@ if ($current_filter !== 'all' && !in_array($current_filter, $valid_slugs, true))
                             <?php echo esc_html($term->name); ?>
                         </button>
                     <?php endforeach; ?>
-
                 </div>
             </div>
         </div>
 
         <div class="output">
             <div class="block-content">
-                <div class="cards cards-courses" data-cards-wrap>
+                <div class="cards cards-courses card-grid" data-cards-wrap>
 
                     <?php
                     $q = new WP_Query([
