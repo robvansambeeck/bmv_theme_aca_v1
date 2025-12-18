@@ -2834,6 +2834,9 @@ legend {
   z-index: 5000;
   width: 100%;
   background: #ffffff !important;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   border-bottom: none;
@@ -3290,6 +3293,9 @@ body {
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   overflow: hidden;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media only screen and (max-width: 600px) {
   .page-wrapper {
