@@ -2673,8 +2673,12 @@ meter {
   padding: 0.375rem 0.875rem;
   border-radius: 999px;
   font-size: 1.1rem;
+  z-index: 10;
+  pointer-events: none;
 }
 .card-course .card-img img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100% !important;
   object-fit: cover;
@@ -2741,18 +2745,7 @@ meter {
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.75rem;
-  width: 100% !important; /* Forceer volle breedte van de card */
-}
-@media only screen and (max-width: 600px) {
-  .card-course .card-info .tags {
-    display: flex !important;
-    justify-content: center !important; /* Horizontaal centreren */
-    align-items: center !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+  width: 100%;
 }
 .card-course .card-info .tags .tag {
   color: rgb(109, 84, 163);
@@ -2765,11 +2758,6 @@ meter {
   text-decoration: none;
   display: inline-block;
   margin: 0;
-}
-@media only screen and (max-width: 600px) {
-  .card-course .card-info .tags .tag {
-    margin: 0.25rem !important; /* Geef ze rondom wat ruimte om niet tegen elkaar te plakken */
-  }
 }
 @media only screen and (max-width: 600px) {
   .card-course .card-info {
