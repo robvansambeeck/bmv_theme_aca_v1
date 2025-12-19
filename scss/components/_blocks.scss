@@ -547,6 +547,13 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
     }
 }
 
+
+
+// Info block
+$info-bg: #EAEBF3; // Light purple-grey
+$info-title-color: rgb(109, 84, 163, 1.0); // Dark purple
+
+// Program block colors (match ACF select: oranje, paars, roze, licht grijs)
 // Info block
 $info-bg: #EAEBF3; // Light purple-grey
 $info-title-color: rgb(109, 84, 163, 1.0); // Dark purple
@@ -561,23 +568,37 @@ $program-text: $color-txt-dark;
 
 .block-info {
     max-width: $container-base;
-    margin: -$padding-base * 1.5 auto $card-padding-v * 2 auto;
+    // Gebruik gelijke marges boven en onder voor perfecte centrering tussen secties
+    margin: $card-padding-v * 2 auto !important; 
     padding: 0 $padding-base * 1.5;
     background: none;
+    display: block;
 
     .block-inner {
         background-color: $info-bg;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        padding: 6rem $padding-base * 4 8rem $padding-base * 4;
+        // AANGEPAST: Padding boven en onder nu exact gelijk voor visuele balans
+        padding: 7rem $padding-base * 4 !important; 
+        // AANGEPAST: Zorgt dat de inhoud altijd verticaal in het midden van het grijze vlak blijft
+        display: flex;
+        align-items: center;
+        
+        @media only screen and (max-width: 1200px) {
+            padding: 6rem $padding-base * 2 !important;
+        }
     }
 
     .block-content {
         &.block-info__content {
             display: flex;
+            width: 100%;
             gap: 3rem;
-            align-items: center;
+            // Zorgt dat de tekst en het logo verticaal precies op één lijn staan
+            align-items: center; 
+            justify-content: center;
+            min-height: 100%;
         }
     }
 
@@ -586,8 +607,14 @@ $program-text: $color-txt-dark;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 3rem;
+            justify-content: center; // Extra verticale centrering binnen de kolom
+            gap: 2.5rem;
             padding-left: $padding-base * 2.5;
+
+            // AANGEPAST: Verwijdert extra witruimte onder de knop voor betere centrering
+            *:last-child {
+                margin-bottom: 0;
+            }
         }
 
         &--logo {
@@ -599,7 +626,15 @@ $program-text: $color-txt-dark;
         }
     }
 
-    // ... (Titels en Text styling blijven ongewijzigd)
+    // Titels en Text styling
+    h2, .h2 {
+        margin: 0;
+        color: $color-txt-dark;
+        
+        strong {
+            color: $info-title-color;
+        }
+    }
 
     .block-info__cta {
         display: inline-flex;
@@ -613,7 +648,7 @@ $program-text: $color-txt-dark;
         text-decoration: none;
         white-space: nowrap;
         min-width: 16rem;
-        width: fit-content; // Voorkomt dat de button 100% breed wordt
+        width: fit-content;
         transition: background 0.3s ease;
 
         &:hover,
@@ -642,7 +677,7 @@ $program-text: $color-txt-dark;
         }
     }
 
-    // Responsive
+    // Responsive styling
     @media only screen and (max-width: 900px) {
         padding: 0;
         margin: $gap-cols auto 0 auto !important; 
@@ -650,7 +685,8 @@ $program-text: $color-txt-dark;
 
         .block-inner {
             border-radius: 0 !important;
-            padding: 4rem $padding-base * 1.5 5rem; 
+            padding: 4rem $padding-base * 1.5 !important; 
+            flex-direction: column;
         }
 
         .block-content {
@@ -663,15 +699,13 @@ $program-text: $color-txt-dark;
 
         .block-info__col {
             &--text {
-                align-items: center; // Centreert de inhoud (titel, tekst, button)
+                align-items: center;
                 padding-left: 0;
-                gap: 2.5rem;
                 order: 1; 
                 width: 100%;
             }
 
             &--logo {
-                justify-content: center;
                 padding-right: 0;
                 order: 2; 
                 width: 100%;
@@ -681,35 +715,16 @@ $program-text: $color-txt-dark;
         .block-info__logo-wrap {
             margin: 0 auto;
             width: 35vw; 
-            min-width: 8rem;
             max-width: 16rem;
         }
         
         .block-info__cta {
-            margin: 0 auto; // Forceert centrering van de button zelf
-            min-width: 16rem; 
-            width: auto;
-        }
-    }
-
-    @media only screen and (max-width: 775px) {
-        .block-info__logo-wrap {
-            width: 30vw;
-        }
-    }
-
-    @media only screen and (max-width: 600px) {
-        .block-info__logo-wrap {
-            width: 45vw; // Weer iets groter na 600px zoals gevraagd
-            max-width: 14rem;
-        }
-
-        .block-info__cta {
-            min-width: 14rem; // Iets smaller op hele kleine schermen zodat hij niet uit de box loopt
-            padding: 0.6875rem 2rem;
+            margin: 0 auto;
         }
     }
 }
+
+
 // Program block
 .block-program {
     max-width: $container-base;
