@@ -21,7 +21,6 @@ $text_buttom  = get_field('text_buttom');
     <div class="block-inner">
         <div class="image-grid-3">
 
-            <!-- Rij 1, Kolom 1: Grote afbeelding links boven -->
             <div class="image-grid-3__col image-grid-3__col--left-top">
                 <?php if ($left_image) : ?>
                     <figure class="image-grid-3__image-large">
@@ -31,7 +30,6 @@ $text_buttom  = get_field('text_buttom');
                 <?php endif; ?>
             </div>
 
-            <!-- Rij 1, Kolom 2: Top card rechts boven -->
             <div class="image-grid-3__col image-grid-3__col--right-top">
                 <?php if ($title_top || $text_top) : ?>
                     <div class="image-grid-3__card image-grid-3__card--top">
@@ -45,7 +43,6 @@ $text_buttom  = get_field('text_buttom');
                 <?php endif; ?>
             </div>
 
-            <!-- Rij 2, Kolom 1: Twee kaarten links onder -->
             <div class="image-grid-3__col image-grid-3__col--left-bottom">
                 <div class="image-grid-3__cards-bottom">
                     <?php if ($title_middle || $text_middle) : ?>
@@ -72,7 +69,6 @@ $text_buttom  = get_field('text_buttom');
                 </div>
             </div>
 
-            <!-- Rij 2, Kolom 2: Overlappende afbeelding rechts onder -->
             <div class="image-grid-3__col image-grid-3__col--right-bottom">
                 <?php if ($right_image) : ?>
                     <figure class="image-grid-3__image-small">
@@ -85,4 +81,3 @@ $text_buttom  = get_field('text_buttom');
         </div>
     </div>
 </div>
-<!-- /block-image-grid-3 -->
