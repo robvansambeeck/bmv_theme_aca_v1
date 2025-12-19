@@ -23,7 +23,8 @@ if ($current_filter !== 'all' && !in_array($current_filter, $valid_slugs, true))
 
         <div class="input">
             <div class="inner">
-                <div class="filter-tabs">
+                    <div class="filter-tabs-scroll">
+                      <div class="filter-tabs">
                     <button class="filter-tab <?php echo $current_filter === 'all' ? 'is-active' : ''; ?>"
                         data-filter="all">
                         Alle
@@ -35,7 +36,8 @@ if ($current_filter !== 'all' && !in_array($current_filter, $valid_slugs, true))
                             <?php echo esc_html($term->name); ?>
                         </button>
                     <?php endforeach; ?>
-                </div>
+                      </div>
+                    </div>
             </div>
         </div>
 

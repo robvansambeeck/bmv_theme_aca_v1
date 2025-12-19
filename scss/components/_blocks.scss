@@ -9,6 +9,53 @@
     margin-bottom: $grid-gap;
 }
 
+// Horizontaal scroll/swipe voor filter-tabs op mobiel
+.filter-tabs-scroll {
+    @media only screen and (max-width: 900px) {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        scrollbar-width: thin;
+        scrollbar-color: $color-primary $color-bg;
+        width: 100%;
+                /* Zorg dat de container niet shrinkt */
+                min-width: 0;
+    }
+}
+
+.filter-tabs {
+    @media only screen and (max-width: 900px) {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: nowrap;
+        width: max-content;
+                min-width: 100%;
+    }
+}
+
+.filter-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 2rem;
+    background: transparent;
+    color: $color-primary;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+
+    &.is-active {
+        background: $color-primary;
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
 // Header block (hero style)
 .block-header {
     text-align: center;

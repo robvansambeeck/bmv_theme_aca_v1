@@ -16,7 +16,107 @@ if (navMain) {
     toggleSticky(); // Check on load
 }
 
-// block-filter
+// Swipe/scroll voor filter-tabs op mobiel & tablet (wanneer nodig)
+document.addEventListener('DOMContentLoaded', () => {
+  const filterTabsScroll = document.querySelector('.filter-tabs-scroll');
+  const filterTabs = filterTabsScroll ? filterTabsScroll.querySelector('.filter-tabs') : null;
+
+  if (filterTabsScroll && filterTabs) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let isSwiperActive = false;
+
+    const checkAndEnableSwipe = () => {
+      // Reset eerst stijlen om de natuurlijke breedte te kunnen meten
+      filterTabsScroll.style.overflowX = '';
+      filterTabs.style.display = 'inline-flex'; 
+      filterTabs.style.width = 'max-content';
+
+      // Controleer of de inhoud breder is dan de container
+      const needsSwipe = filterTabs.scrollWidth > filterTabsScroll.offsetWidth;
+
+      if (needsSwipe) {
+        isSwiperActive = true;
+        filterTabsScroll.style.overflowX = 'auto';
+        filterTabsScroll.style.webkitOverflowScrolling = 'touch';
+        filterTabsScroll.style.scrollbarWidth = 'none'; 
+        filterTabsScroll.style.cursor = 'grab';
+        
+        filterTabs.style.display = 'flex';
+        filterTabs.style.gap = '0.5rem';
+        filterTabs.style.flexWrap = 'nowrap';
+        // Behoud de margin/padding zoals in je SCSS (margin: 0 15px)
+
+        if (!document.getElementById('hide-scrollbar-style')) {
+          const style = document.createElement('style');
+          style.id = 'hide-scrollbar-style';
+          style.innerHTML = '.filter-tabs-scroll::-webkit-scrollbar { display: none; }';
+          document.head.appendChild(style);
+        }
+      } else {
+        isSwiperActive = false;
+        filterTabsScroll.style.overflowX = '';
+        filterTabsScroll.style.cursor = '';
+        filterTabs.style.display = ''; // Terug naar default (grid/flex uit CSS)
+        filterTabs.style.width = '';
+        filterTabs.style.gap = '';
+        filterTabs.style.flexWrap = '';
+      }
+    };
+
+    // Muis-sleep functionaliteit (alleen als swiper actief is)
+    filterTabsScroll.addEventListener('mousedown', (e) => {
+      if (!isSwiperActive) return;
+      isDown = true;
+      startX = e.pageX - filterTabsScroll.offsetLeft;
+      scrollLeft = filterTabsScroll.scrollLeft;
+      filterTabsScroll.style.cursor = 'grabbing';
+    });
+
+    filterTabsScroll.addEventListener('mouseleave', () => {
+      if (isSwiperActive) filterTabsScroll.style.cursor = 'grab';
+      isDown = false;
+    });
+
+    filterTabsScroll.addEventListener('mouseup', () => {
+      if (isSwiperActive) filterTabsScroll.style.cursor = 'grab';
+      isDown = false;
+    });
+
+    filterTabsScroll.addEventListener('mousemove', (e) => {
+      if (!isDown || !isSwiperActive) return;
+      e.preventDefault();
+      const x = e.pageX - filterTabsScroll.offsetLeft;
+      const walk = (x - startX) * 2;
+      filterTabsScroll.scrollLeft = scrollLeft - walk;
+    });
+
+    // Initial check + resize
+    checkAndEnableSwipe();
+    window.addEventListener('resize', checkAndEnableSwipe);
+
+    // Centreer actieve tab bij laden (alleen als swiper nodig is)
+    const activeTab = filterTabs.querySelector('.filter-tab.is-active');
+    if (activeTab) {
+      setTimeout(() => {
+        if (isSwiperActive) {
+          const containerWidth = filterTabsScroll.offsetWidth;
+          const tabWidth = activeTab.offsetWidth;
+          const tabLeft = activeTab.offsetLeft;
+          const scrollPos = tabLeft - (containerWidth / 2) + (tabWidth / 2);
+          
+          filterTabsScroll.scrollTo({
+            left: scrollPos,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    }
+  }
+});
+
+// block-filter (Filtering logica)
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.filter-tab');
   const wrap = document.querySelector('[data-cards-wrap]');
@@ -24,11 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!tabs.length || !wrap || !cards.length) return;
 
   const STAGGER = true;
-  const STAGGER_STEP = 40; // iets trager/relaxter
-
-  const FLIP_DURATION = 650; // langzamer
-  const FLIP_EASING = 'cubic-bezier(.22,1,.36,1)'; // “easeOutQuint”-achtig
-
+  const STAGGER_STEP = 40; 
+  const FLIP_DURATION = 650; 
+  const FLIP_EASING = 'cubic-bezier(.22,1,.36,1)'; 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const getFilterFromURL = () => {
@@ -62,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return map;
   };
 
-  // helper: “collapse” hidden items zonder display:none
   const collapseHidden = () => {
     cards.forEach(card => {
       if (!card.classList.contains('is-hidden')) {
@@ -71,12 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.marginBottom = '';
         return;
       }
-      // netjes inklappen zodat er geen gaten blijven
-      const cs = getComputedStyle(card);
       card.style.height = '0px';
       card.style.marginTop = '0px';
       card.style.marginBottom = '0px';
-      // padding via inner wrappers? dan laten we die met opacity wegvallen, layout blijft clean
     });
   };
 
@@ -88,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // zet alle cards die matchen vooraan in de DOM zodat ze visueel opschuiven
   const reorderCards = (filter) => {
     const matching = [];
     const nonMatching = [];
@@ -97,18 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const applyFilter = (filter, { updateURL = false } = {}) => {
-    // 1) uncollapse eerst zodat we goede metingen hebben
     uncollapseAll();
-
     const first = measure();
-
-    // 2) zorg dat de matchende kaarten fysiek vooraan staan
     reorderCards(filter);
 
-    // 2) toggle hidden class (zachte fade/scale/blur)
     cards.forEach((card, i) => {
       const show = matches(card, filter);
-
       card.classList.toggle('is-hidden', !show);
 
       if (STAGGER) {
@@ -121,38 +208,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 3) na een korte tick: collapse hidden zodat layout echt sluit
-    // (zonder harde cut in zichtbaarheid)
     if (!prefersReduced) {
       setTimeout(() => {
         collapseHidden();
-
-        // 4) FLIP reflow animatie (relaxed)
         const last = measure();
-
         cards.forEach(card => {
           if (card.classList.contains('is-hidden')) return;
-
           const a = first.get(card);
           const b = last.get(card);
           if (!a || !b) return;
-
           const dx = a.left - b.left;
           const dy = a.top - b.top;
           if (!dx && !dy) return;
-
           card.animate(
-  [
-    { transform: `translate(${dx}px, ${dy}px)` },
-    { transform: 'translate(0, 0)' }
-  ],
-  {
-    duration: FLIP_DURATION,
-    easing: FLIP_EASING,
-    composite: 'add' // <-- voorkomt dat dit de CSS transform "overschrijft"
-  }
-);
-
+            [
+              { transform: `translate(${dx}px, ${dy}px)` },
+              { transform: 'translate(0, 0)' }
+            ],
+            {
+              duration: FLIP_DURATION,
+              easing: FLIP_EASING,
+              composite: 'add'
+            }
+          );
         });
       }, 60);
     } else {
@@ -185,12 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // Mobile Menu Toggle
 const btn = document.querySelector('.toggle');
 const menu = document.querySelector('.nav-mobile');
-
 let scrollY = 0;
 
 btn.addEventListener('click', () => {
   const open = document.body.classList.toggle('mobile-menu-open');
-
   if (open) {
     scrollY = window.scrollY;
     document.body.style.top = `-${scrollY}px`;
@@ -205,23 +281,16 @@ btn.addEventListener('click', () => {
   }
 });
 
-
 // FAQ Accordion
 document.addEventListener('DOMContentLoaded', () => {
   const questions = document.querySelectorAll('.accordion-list__question');
-  
   questions.forEach(question => {
     question.addEventListener('click', () => {
       const isExpanded = question.getAttribute('aria-expanded') === 'true';
       const answerId = question.getAttribute('aria-controls');
       const answer = document.getElementById(answerId);
-      
       if (!answer) return;
-      
-      // Toggle aria-expanded
       question.setAttribute('aria-expanded', !isExpanded);
-      
-      // Toggle hidden attribute
       if (isExpanded) {
         answer.setAttribute('hidden', '');
       } else {
@@ -231,18 +300,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// SCROLL REVEAL - OPTIMIZED FOR PERFORMANCE - FIXED: Don't hide already visible elements
+// SCROLL REVEAL
 (function() {
   'use strict';
-  
   var processed = {};
   var observer = null;
   var isRunning = false;
   
-  // Create observer ONCE
   function getObserver() {
     if (observer) return observer;
-    
     observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -252,86 +318,53 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(el);
         }
       });
-    }, { 
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-    
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     return observer;
   }
   
   function doReveal() {
-    // Prevent multiple simultaneous runs
     if (isRunning) return;
     isRunning = true;
-    
     var blocks = document.querySelectorAll('.block');
-    if (!blocks.length) {
-      isRunning = false;
-      return;
-    }
-    
+    if (!blocks.length) { isRunning = false; return; }
     var obs = getObserver();
     var count = 0;
-    
     for (var i = 0; i < blocks.length; i++) {
       var block = blocks[i];
       if (block.closest('nav, .nav-main, header')) continue;
-      
       var container = block.querySelector('.block-content') || block.querySelector('.block-inner');
       if (!container) continue;
-      
-      // Only get content elements, not all divs
       var all = container.querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, button, img, .row, [class*="title"], [class*="text"], [class*="description"]');
-      
       for (var j = 0; j < all.length; j++) {
         var el = all[j];
         var elId = el.getAttribute('data-reveal-id');
-        
-        // Create unique ID if not exists
         if (!elId) {
           elId = 'reveal-' + count++;
           el.setAttribute('data-reveal-id', elId);
         }
-        
-        // Skip if already processed
         if (processed[elId]) continue;
-        if (el.closest('nav')) continue;
-        
-        // Check if already visible BEFORE applying styles
         var rect = el.getBoundingClientRect();
         var isAlreadyVisible = rect.top < window.innerHeight + 100 && rect.top > -100;
-        
-        // If element is already visible, skip it entirely (don't hide it!)
         if (isAlreadyVisible && !processed[elId]) {
           processed[elId] = true;
-          continue; // Skip this element - it's already visible
+          continue;
         }
-        
         processed[elId] = true;
-        
-        // Apply styles only to elements that are not yet visible
         el.style.opacity = '0';
         el.style.transform = 'translateY(40px)';
         el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
         el.style.willChange = 'opacity, transform';
-        
-        // Observe for scroll
         obs.observe(el);
       }
     }
-    
     isRunning = false;
   }
   
-  // Run on load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', doReveal);
   } else {
     doReveal();
   }
-  
-  // Run once more after delay for dynamic content
   setTimeout(doReveal, 1000);
   window.addEventListener('load', doReveal);
 })();
