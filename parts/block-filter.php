@@ -63,3 +63,5 @@ if ($current_filter !== 'all' && !in_array($current_filter, $valid_slugs, true))
 
     </div>
 </div>
+
+<!-- /block-filter -->

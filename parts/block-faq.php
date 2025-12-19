@@ -56,3 +56,4 @@ $link_text   = "Neem dan contact met ons op!";
         </div>
     </div>
 </div>
+<!-- /block-faq -->

@@ -10,11 +10,10 @@
 }
 
 
-// Header block (hero style)
+// block-header
 .block-header {
     text-align: center;
 
-    // Voeg hier de margin-top toe voor mobiel
     @media only screen and (max-width: 900px) {
         margin-top: 4rem; 
     }
@@ -54,17 +53,15 @@
             text-align: center;
             width: 100%;
 
-            // Target de tags die uit de WYSIWYG komen (zoals je H2)
             h1, h2, h3, h4, h5, h6, p {
                 margin: 0;
                 color: $color-heading-dark;
                 text-align: center;
-                font-weight: 300; // De basis is dun (normaal)
+                font-weight: 300;
 
-                // DIT IS DE FIX: Exact zoals bij je bullet-list
                 strong, b {
-                    color: #6D54A3 !important; // Hardcoded paars om zeker te zijn
-                    font-weight: 700 !important; // Forceer dikgedrukt
+                    color: #6D54A3 !important;
+                    font-weight: 700 !important;
                 }
             }
         }
@@ -77,7 +74,6 @@
             font-size: 1rem;
             text-align: center;
 
-            // Zorg dat p-tags uit de editor hier ook goed staan
             p { margin: 0; color: inherit; }
             
             strong, b {
@@ -126,9 +122,10 @@
         }
     }
 }
+//einde block-header
 
 
-// Image Grid 1 block
+// .block-image-grid-1
 $card-lavender: rgba(230, 220, 250, 1);
 $card-peach: rgba(255, 235, 205, 1);
 $quote-orange: rgba(255, 140, 0, 1);
@@ -248,8 +245,6 @@ $card-padding-h: 2rem;
         line-height: 1;
     }
 
-    // Responsive Herstel
-// Responsive Herstel
     @media only screen and (max-width: 900px) {
         .block-inner {
             max-width: 85%;
@@ -298,16 +293,20 @@ $card-padding-h: 2rem;
         }
     }
 }
+//einde block-image-grid-1
 
-// Steps block
-$steps-icon-bg: rgba(255, 235, 205, 1); // Light peach background for icons (same as $card-peach)
 
-// Image Grid 2 block
-$card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
+
+// block-steps
+$steps-icon-bg: rgba(255, 235, 205, 1);
+//einde block-steps
+
+// block-image-grid-2
+$card-blue-gray: rgba(244, 244, 246, 1);
 
 .block-image-grid-2 {
     margin-bottom: 0;
-    margin-top: -$grid-gap * 3.0; // Behoudt afstand tot header boven
+    margin-top: -$grid-gap * 3.0;
 
     .block-inner {
         max-width: calc(#{$container-base} + 4rem);
@@ -408,26 +407,26 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
     }
 
 
-// Responsive
+
     @media only screen and (max-width: 1155px) and (min-width: 901px) {
         .image-grid-2 {
             display: flex !important;
-            flex-direction: row !important; // Houd ze naast elkaar
-            align-items: stretch !important; // Zorg dat de kolommen even hoog blijven
-            gap: 2rem; // Of gebruik je $gap-cols variabele
+            flex-direction: row !important;
+            align-items: stretch !important;
+            gap: 2rem;
         }
 
         .image-grid-2__col {
             &--left {
-                flex: 0 0 65% !important; // Foto behoudt 65% breedte
+                flex: 0 0 65% !important;
                 height: auto !important;
             }
 
             &--right {
-                flex: 0 0 30% !important; // Kaarten behouden 30% breedte (totaal ~95% + gap)
+                flex: 0 0 30% !important;
                 display: flex !important;
                 flex-direction: column !important;
-                justify-content: space-between; // Verdeelt de 3 kaarten over de volledige hoogte
+                justify-content: space-between;
                 height: auto !important;
             }
         }
@@ -437,16 +436,16 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             
             img {
                 height: 100% !important;
-                object-fit: cover; // Voorkomt vervorming van de foto
+                object-fit: cover;
             }
         }
 
         .image-grid-2__card {
-            flex: 1; // Zorgt dat de kaarten de beschikbare ruimte verticaal eerlijk verdelen
+            flex: 1; 
             display: flex;
             flex-direction: column;
-            justify-content: center; // Centreert tekst in de kaart als er weinig tekst is
-            padding: 1.5rem !important; // Iets minder padding zodat het niet te "propperig" wordt
+            justify-content: center;
+            padding: 1.5rem !important;
         }
     }
 
@@ -457,7 +456,6 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
 
         .image-grid-2 {
             flex-direction: column;
-            // FIX: Voeg hier een gap toe zodat de img niet tegen de cards aanplakt
             gap: 1.5rem; 
         }
 
@@ -466,15 +464,14 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
                 flex: 1;
                 min-height: 28rem;
                 max-width: 100%;
-                // Verwijder de negatieve margin die de overlap veroorzaakt
                 margin-bottom: 0; 
             }
 
             &--right {
                 flex: 1;
                 max-width: 100%;
-                min-height: auto; // Verander naar auto zodat de cards hun eigen hoogte bepalen
-                gap: 1rem; // Ruimte tussen de kleine kaarten onderling
+                min-height: auto;
+                gap: 1rem;
             }
         }
 
@@ -482,7 +479,7 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             min-height: 28rem;
             max-width: 100%;
             width: 100%;
-            margin-bottom: 0; // Reset margin
+            margin-bottom: 0;
         }
     }
 
@@ -490,7 +487,6 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
         .image-grid-2 {
             display: flex !important;
             flex-direction: column !important;
-            // Gap op 0.75rem voor een minimale, strakke scheiding
             gap: 0.75rem !important; 
         }
         
@@ -521,7 +517,7 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             max-width: 100%;
             display: flex !important;
             flex-direction: column !important;
-            gap: 0.75rem !important; // Ook de ruimte tussen de kaarten iets verkleind voor balans
+            gap: 0.75rem !important;
         }
         
         .image-grid-2__card {
@@ -535,15 +531,14 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
         .image-grid-2__card { padding: 1.25rem !important; }
     }
 
-    // FIX VOOR 460PX
     @media only screen and (max-width: 460px) {
         .image-grid-2 {
-            gap: 0.75rem !important; // De "mini beetje ruimte" tussen img en cards
+            gap: 0.75rem !important;
         }
 
         .image-grid-2__col {
             &--left, &--right {
-                min-height: auto !important; // Verwijdert het zweven/lege ruimte
+                min-height: auto !important;
                 height: auto !important;
             }
         }
@@ -552,24 +547,17 @@ $card-blue-gray: rgba(244, 244, 246, 1); // Light blue-gray for bottom card
             min-height: auto !important;
             img {
                 height: auto !important;
-                max-height: 250px; // Voorkomt dat de afbeelding te hoog wordt op mobiel
+                max-height: 250px;
             }
         }
     }
 }
+//einde block-image-grid-2
 
 
-
-// Info block
-$info-bg: #EAEBF3; // Light purple-grey
-$info-title-color: rgb(109, 84, 163, 1.0); // Dark purple
-
-// Program block colors (match ACF select: oranje, paars, roze, licht grijs)
-// Info block
-$info-bg: #EAEBF3; // Light purple-grey
-$info-title-color: rgb(109, 84, 163, 1.0); // Dark purple
-
-// Program block colors (match ACF select: oranje, paars, roze, licht grijs)
+// block-info
+$info-bg: #EAEBF3; 
+$info-title-color: rgb(109, 84, 163, 1.0);
 $program-oranje: #fbe8d7;
 $program-paars: #e6e0f0;
 $program-roze: #f8eafa;
@@ -579,7 +567,6 @@ $program-text: $color-txt-dark;
 
 .block-info {
     max-width: $container-base;
-    // Gebruik gelijke marges boven en onder voor perfecte centrering tussen secties
     margin: $card-padding-v * 2 auto !important; 
     padding: 0 $padding-base * 1.5;
     background: none;
@@ -590,9 +577,7 @@ $program-text: $color-txt-dark;
         border-radius: $border-radius-card;
         max-width: 100%;
         margin: 0;
-        // AANGEPAST: Padding boven en onder nu exact gelijk voor visuele balans
         padding: 7rem $padding-base * 4 !important; 
-        // AANGEPAST: Zorgt dat de inhoud altijd verticaal in het midden van het grijze vlak blijft
         display: flex;
         align-items: center;
         
@@ -606,7 +591,6 @@ $program-text: $color-txt-dark;
             display: flex;
             width: 100%;
             gap: 3rem;
-            // Zorgt dat de tekst en het logo verticaal precies op één lijn staan
             align-items: center; 
             justify-content: center;
             min-height: 100%;
@@ -618,11 +602,10 @@ $program-text: $color-txt-dark;
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center; // Extra verticale centrering binnen de kolom
+            justify-content: center;
             gap: 2.5rem;
             padding-left: $padding-base * 2.5;
 
-            // AANGEPAST: Verwijdert extra witruimte onder de knop voor betere centrering
             *:last-child {
                 margin-bottom: 0;
             }
@@ -637,7 +620,6 @@ $program-text: $color-txt-dark;
         }
     }
 
-    // Titels en Text styling
     h2, .h2 {
         margin: 0;
         color: $color-txt-dark;
@@ -688,7 +670,6 @@ $program-text: $color-txt-dark;
         }
     }
 
-    // Responsive styling
     @media only screen and (max-width: 900px) {
         padding: 0;
         margin: $gap-cols auto 0 auto !important; 
@@ -734,6 +715,7 @@ $program-text: $color-txt-dark;
         }
     }
 }
+//einde block-info
 
 
 // Program block
@@ -816,7 +798,6 @@ $program-text: $color-txt-dark;
             }
         }
 
-        // Variants
         &--oranje, &--Oranje, &--orange, &--Orange, &--peach, &--Peach { background: $program-oranje; }
         &--paars, &--Paars, &--purple, &--Purple { background: $program-paars; }
         &--roze, &--Roze, &--pink, &--Pink { background: $program-roze; }
@@ -824,7 +805,6 @@ $program-text: $color-txt-dark;
         &--wit, &--Wit, &--white, &--White { background: $program-white; }
     }
 
-    // Responsive
     @media only screen and (max-width: 1100px) {
         padding: $card-padding-v * 0.9 $padding-base * 1.125;
         max-width: 900px;
@@ -888,9 +868,10 @@ $program-text: $color-txt-dark;
         }
     }
 }
+//einde block-program
 
-// Bullet list block
-// Bullet list block
+
+// block-bullet-list
 .block-bullet-list {
     width: 100%;
     margin: 0 !important;
@@ -1084,7 +1065,6 @@ $program-text: $color-txt-dark;
     }
 }
 
-// NAADLOZE AANSLUITING FIX
 .block-bullet-list + section, 
 .block-bullet-list + div,
 .block-bullet-list + .block-container,
@@ -1093,9 +1073,8 @@ $program-text: $color-txt-dark;
     padding-top: 0 !important;
 }
 
-// CTA Register block
-$cta-register-bg: $color-cta; // Purple background
-$cta-register-strip: #1a1a2e; // Dark blue strip
+$cta-register-bg: $color-cta;
+$cta-register-strip: #1a1a2e;
 
 .block-cta-register {
     position: relative;
@@ -1263,7 +1242,6 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
             }
         }
 
-        // Standaard: alles light/thin, alleen strong/b bold
         *,
         & {
             color: #ffffff !important;
@@ -1274,7 +1252,7 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         strong,
         b {
             font-weight: $font-bold !important;
-            color: #ffffff !important; // bold maar wel wit blijven
+            color: #ffffff !important;
         }
     }
 
@@ -1283,8 +1261,8 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         color: $color-cta;
         border: none;
         border-radius: 999px;
-        padding: 0.6875rem 3.5rem; //zelfde als header buttons
-        min-width: 16rem; //zelfde als header buttons
+        padding: 0.6875rem 3.5rem;
+        min-width: 16rem;
         font-weight: $font-medium;
         display: inline-flex;
         align-items: center;
@@ -1302,7 +1280,6 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         }
     }
 
-    // Responsive
     @media only screen and (max-width: 900px) {
         .block-inner {
             padding: 3rem $padding-base;
@@ -1342,9 +1319,10 @@ $cta-register-strip: #1a1a2e; // Dark blue strip
         }
     }
 }
+//einde block-cta-register
 
 // Filter block
-$filter-bg: #e6e0f0; // light lavender for tab background
+$filter-bg: #e6e0f0; 
 .block-filter {
   max-width: $container-base;
   margin: 0 auto;
@@ -1421,29 +1399,24 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         gap: 2rem;
         align-items: stretch;
     
-        // Specifieke styling voor de range 1101px tot 1400px
         @media only screen and (max-width: 1400px) and (min-width: 1101px) {
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
     
             & > * { 
-                /* Hier stel je de extra hoge kaarten in */
                 min-height: 650px; 
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between; // Zorgt dat content mooi verdeeld wordt over de hoogte
+                justify-content: space-between;
             }
         }
     
-        // Voor de allergrootste schermen
         @media only screen and (min-width: 1401px) {
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
     }
     
-    // Responsive voor mobiel/tablet (onder 1100px)
-        // Tussen 1100px en 801px: altijd 2 kolommen
         @media only screen and (max-width: 1100px) and (min-width: 801px) {
             .cards-courses {
                 grid-template-columns: repeat(2, 1fr);
@@ -1457,7 +1430,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             }
         }
 
-        // Extra mobiel: altijd 1 kolom onder 800px
         @media only screen and (max-width: 800px) {
             .cards-courses {
                 grid-template-columns: 1fr !important;
@@ -1484,12 +1456,11 @@ $filter-bg: #e6e0f0; // light lavender for tab background
   }
 }
 
-// No animation styles needed anymore
+
 [data-course-card] {
-  // intentionally empty (kept for hook/clarity)
 }
 
-/* verborgen: alleen fade + mini shift naar beneden */
+
 [data-course-card].is-hidden {
   opacity: 0;
   transform: translateY(12px);
@@ -1509,9 +1480,9 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 }
 
 
-// Steps block
+// block-steps
 .block-steps {
-    margin-bottom: $grid-gap * 3; // Even more space below block
+    margin-bottom: $grid-gap * 3;
 
     .block-inner {
         max-width: $container-base;
@@ -1560,8 +1531,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         overflow: visible;
 
         img {
-            width: 7rem; // iets kleiner icon zonder circle
-            height: 7rem; // iets kleiner icon zonder circle
+            width: 7rem;
+            height: 7rem;
             object-fit: contain;
             display: block;
         }
@@ -1595,7 +1566,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Responsive
     @media only screen and (max-width: 900px) {
         .steps__grid {
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -1619,13 +1589,14 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 }
+//einde block-steps
 
-// Students block
+// block-students
 .block-students {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: $card-padding-v * 3 $padding-base * 1.5 $card-padding-v * 3 $padding-base * 1.5; // nog meer padding boven en onder
+    padding: $card-padding-v * 3 $padding-base * 1.5 $card-padding-v * 3 $padding-base * 1.5;
     background-color: $info-bg;
 
     .block-inner {
@@ -1643,8 +1614,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
         strong,
         b {
-            color: $color-cta; // paars
-            font-weight: 700; // vet
+            color: $color-cta;
+            font-weight: 700;
         }
 
         &-highlight {
@@ -1663,17 +1634,15 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         background-color: #ffffff;
         border-radius: $border-radius-card;
         padding: 2rem 1.5rem;
-        min-height: 20rem; // basis hoogte
-        height: 100%;      // vul altijd de volledige beschikbare rij-hoogte
+        min-height: 20rem;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 1rem;
-        // subtiele schaduw links, rechts en onder
         box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.06);
 
-        // Middle card (2nd child) gets orange border
         &:nth-child(2) {
             border: 0.125rem solid $color-badge-orange;
         }
@@ -1706,7 +1675,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             font-size: 0.9375rem;
             font-weight: $font-regular;
             color: rgba(64, 64, 64, 0.7);
-            margin: -1rem 0 0 0; // negatieve margin om dichter bij naam te komen
+            margin: -1rem 0 0 0;
             line-height: 1.4;
         }
 
@@ -1723,7 +1692,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Responsive
     @media only screen and (max-width: 900px) {
         padding: $card-padding-v $padding-base;
 
@@ -1751,11 +1719,12 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 }
+//einde block-students
 
-// Image Grid 3 block
+// block-image-grid-3
 .block-image-grid-3 {
     margin-bottom: 0;
-    margin-top: -$grid-gap * 0.5; // minder ruimte boven
+    margin-top: -$grid-gap * 0.5;
 
     .block-inner {
         max-width: $container-base;
@@ -1765,7 +1734,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     
     .image-grid-3 {
         display: grid;
-        // 12 kolommen zodat we per rij andere breedtes kunnen geven
         grid-template-columns: repeat(12, minmax(0, 1fr));
         grid-template-rows: auto auto;
         gap: $gap-cols;
@@ -1774,27 +1742,22 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     .image-grid-3__col {
-        // TOP RIJ
         &--left-top {
-            // linker top image: minder dan de helft
-            grid-column: 1 / span 5; // 5/12
+            grid-column: 1 / span 5;
             grid-row: 1;
             display: flex;
             align-items: stretch;
         }
 
         &--right-top {
-            // rechter top card: meer dan de helft
-            grid-column: 6 / span 7; // 7/12
+            grid-column: 6 / span 7;
             grid-row: 1;
             display: flex;
             align-items: stretch;
         }
 
-        // BOTTOM RIJ
         &--left-bottom {
-            // linker bottom cards: veel meer dan de helft
-            grid-column: 1 / span 8; // 8/12
+            grid-column: 1 / span 8;
             grid-row: 2;
             display: flex;
             align-items: stretch;
@@ -1803,15 +1766,14 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
 
         &--right-bottom {
-            // rechter bottom image: nog iets smaller
-            grid-column: 9 / span 4; // 4/12 (vergroot zodat de afbeelding breder wordt)
+            grid-column: 9 / span 4;
             grid-row: 2;
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
             position: relative;
             z-index: 2;
-            padding-top: 0; // verwijder extra ruimte boven de afbeelding
+            padding-top: 0;
         }
     }
 
@@ -1906,7 +1868,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Responsive
     @media only screen and (max-width: 900px) {
         .block-inner {
             max-width: 85%;
@@ -2074,13 +2035,14 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 }
+//einde image-grid-3__card
 
-// FAQ block
+
+// block-faq
 .block-faq {
     .block-inner {
         max-width: $container-base;
         margin: 0 auto;
-        // iets meer ruimte onder het FAQ-blok
         padding: $card-padding-v $padding-base * 1.5 $card-padding-v * 1.6;
     }
 
@@ -2104,11 +2066,9 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
     .faq__content {
         width: 100%;
-        // volledige dropdown-gedeelte iets naar rechts
         margin-left: 0.5rem;
     }
 
-    // Linkerkolom (titel, intro, contact)
     .faq__sidebar h2 {
         font-size: clamp(2rem, 2.6vw, 2.75rem);
         line-height: 1.2;
@@ -2131,7 +2091,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         color: $color-txt-dark;
     }
 
-    // Contactlink onderaan links
     .faq__sidebar a[href] {
         color: $color-cta;
         font-weight: $font-medium;
@@ -2148,7 +2107,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Rechterkolom: accordion-lijst
+
     .accordion-list {
         border-top: 1px solid rgba(0, 0, 0, 0.08);
         width: 100%;
@@ -2165,7 +2124,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
     .accordion-list__question {
         width: 100%;
-        // iets meer hoogte & horizontale ruimte
         padding: 1.25rem 0;
         display: flex;
         align-items: flex-start;
@@ -2181,28 +2139,27 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
     .accordion-list__icon {
         flex: 0 0 auto;
-        font-size: 0; // verberg tekstknoop; alleen pseudo toont icoon
+        font-size: 0; 
         line-height: 1;
         color: $color-badge-orange;
         display: inline-flex;
         align-items: center;
         justify-content: center;
 
-        // teken zelf via pseudo zodat we + en - kunnen wisselen
+
         &::before {
             content: "+";
-            font-size: 1.6rem; // icoonformaat
+            font-size: 1.6rem;
             line-height: 1;
         }
     }
 
     // Vraagtekst
     .accordion-list__question {
-        font-size: 1.3rem; // iets grotere vraagtekst
-        font-weight: $font-bold; // duidelijk bold
+        font-size: 1.3rem;
+        font-weight: $font-bold;
     }
 
-    // Open state: min-teken (titel blijft zwart)
     .accordion-list__question[aria-expanded="true"] {
         color: $color-txt-dark;
 
@@ -2211,9 +2168,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Antwoord
     .accordion-list__answer {
-        padding: 0 0 1.4rem 2.5rem; // uitlijnen onder de vraagtekst
+        padding: 0 0 1.4rem 2.5rem;
         font-size: 0.9375rem;
         line-height: 1.7;
         color: $color-txt-dark;
@@ -2227,7 +2183,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Responsive
     @media only screen and (max-width: 900px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
@@ -2263,6 +2218,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 }
+//einde block-faq
+
 
 // Contact block
 .block-contact {
@@ -2323,9 +2280,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
     .contact-grid__faq-link {
         color: $color-cta;
-        font-weight: $font-bold; // link extra duidelijk/bold
+        font-weight: $font-bold;
         text-decoration: none;
-        // op eigen regel direct onder de voorafgaande zin
         display: inline-flex;
         width: 100%;
         margin-left: 0;
@@ -2365,7 +2321,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Rechter kolom: formulier
     .contact-grid__col--right {
         display: flex;
         flex-direction: column;
@@ -2380,7 +2335,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 
     .contact-grid__form-wrapper {
-        // Basis Gravity Forms styling binnen dit blok
         .gform_wrapper,
         form {
             width: 100%;
@@ -2433,7 +2387,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             text-align: center;
         }
 
-        // Form CTA-button: zelfde stijl als andere paarse CTA's (bijv. .block-info__cta)
         .gform_button,
         input[type="submit"] {
             margin: 0;
@@ -2441,8 +2394,8 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             color: $color-heading-light;
             border: none;
             border-radius: 999px;
-            padding: 0.6875rem 3.5rem; //zelfde als header/CTA buttons
-            min-width: 16rem; //zelfde als header/CTA buttons
+            padding: 0.6875rem 3.5rem;
+            min-width: 16rem;
             font-weight: $font-medium;
             display: inline-flex;
             align-items: center;
@@ -2451,8 +2404,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
             white-space: nowrap;
             text-decoration: none;
 
-
-            // centreren onder het formulier
             margin-left: auto;
             margin-right: auto;
 
@@ -2464,7 +2415,6 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         }
     }
 
-    // Zorg dat alle GF-velden binnen dit blok onder elkaar staan (override 2-koloms widths)
     .gform_wrapper .gfield {
         width: 100% !important;
         float: none !important;
@@ -2472,7 +2422,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         margin: 0 !important;
     }
 
-    // Responsive
+
     @media only screen and (max-width: 900px) {
         .block-inner {
             padding: $card-padding-v $padding-base;
@@ -2495,45 +2445,36 @@ $filter-bg: #e6e0f0; // light lavender for tab background
     }
 }
 
-// =========================================
-// Mobile overrides (home page specific)
-// Alleen toevoegingen; desktop blijft gelijk
-// =========================================
     @media only screen and (max-width: 600px) {
         .block-inner {
-            // Minder padding boven en onder voor een compactere sectie
             padding: ($card-padding-v * 0.5) ($padding-base * 0.75);
         }
 
         .contact-grid {
             grid-template-columns: 1fr;
-            // Ruimte tussen het tekstblok en het formulier zelf
             gap: 1.5rem !important; 
         }
 
         .contact-grid__col--left {
             text-align: center;
             align-items: center;
-            // Ruimte tussen de verschillende tekst-onderdelen (titel, intro, adres)
             gap: 0.75rem !important; 
         }
 
         .contact-grid__title {
             margin-bottom: 0.25rem;
-            // Forceer een kleinere line-height voor de titel
             line-height: 1.1; 
         }
 
         .contact-grid__intro {
             p {
-                // Verwijder de standaard browser margin van paragrafen bijna volledig
                 margin-bottom: 0.35rem !important; 
                 line-height: 1.4;
             }
         }
 
         .contact-grid__faq-link-wrapper {
-            margin-top: -0.25rem; // Trekt de FAQ link dichter naar de tekst erboven
+            margin-top: -0.25rem;
         }
 
         .contact-grid__faq-link {
@@ -2543,7 +2484,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
 
         .contact-grid__address-info {
             margin-top: 0.5rem;
-            gap: 0.15rem; // Adresregels plakken bijna aan elkaar
+            gap: 0.15rem;
             
             .contact-grid__address-title {
                 margin-bottom: 0.15rem;
@@ -2557,7 +2498,7 @@ $filter-bg: #e6e0f0; // light lavender for tab background
         
         .contact-grid__form-wrapper {
             .gform_fields {
-                gap: 0.5rem; // Invoervelden van het formulier dichter op elkaar
+                gap: 0.5rem;
             }
             
             .gform_footer {

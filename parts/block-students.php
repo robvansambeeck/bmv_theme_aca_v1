@@ -56,3 +56,4 @@ if ($content) {
 
     </div>
 </div>
+<!-- /block-students -->

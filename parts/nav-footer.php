@@ -54,3 +54,4 @@
     All rights reserved 2025 | Design en ontwikkeling
     <a target="_blank" href="https://redrockagency.nl/">Red Rock Agency</a>
 </div>
+<!-- /block-nav-footer -->

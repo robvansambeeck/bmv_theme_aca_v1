@@ -5,7 +5,7 @@
 .nav-main {
     position: sticky;
     top: 0;
-    /* explicit CSS variable for navbar height used by mobile dropdown */
+
     --nav-height: 4rem;
     z-index: $z-nav;
     width: 100%;
@@ -13,10 +13,10 @@
     max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
-    border-top-left-radius: 1.5rem; // minder border radius
-    border-top-right-radius: 1.5rem; // minder border radius
-    border-bottom: none; // geen streep onder navbar
-    box-shadow: none; // geen shadow die streep kan veroorzaken
+    border-top-left-radius: 1.5rem; 
+    border-top-right-radius: 1.5rem; 
+    border-bottom: none; 
+    box-shadow: none;
     display: flex;
     align-items: center;
     min-height: 3rem;
@@ -58,7 +58,7 @@
     .nav-content {
         display: flex;
         align-items: center;
-        justify-content: space-between; // logo links, toggle rechts
+        justify-content: space-between;
         gap: 2.25rem;
         width: 100%;
         flex: 1;
@@ -67,10 +67,10 @@
     .logo {
         display: flex;
         align-items: center;
-        flex-shrink: 0; // logo mag niet krimpen
+        flex-shrink: 0;
 
         img {
-            max-height: 1.75rem; // iets kleiner logo
+            max-height: 1.75rem;
             width: auto;
             display: block;
         }
@@ -138,7 +138,7 @@
             color: $color-heading-light;
             border: none;
             border-radius: 999px;
-            padding: 0.5rem 3.4rem; // nog iets platter en breder
+            padding: 0.5rem 3.4rem;
             font-weight: $font-medium;
             display: inline-flex;
             align-items: center;
@@ -162,44 +162,41 @@
         background: none;
         border: none;
         padding: 0;
-        margin-left: auto; // push naar rechts
+        margin-left: auto; 
         position: relative;
-        flex-shrink: 0; // toggle mag niet krimpen
+        flex-shrink: 0; 
 
         .toggle-icon {
             position: absolute;
             top: 50%;
-            left: calc(50% - 0.75rem); // nog iets meer naar links
+            left: calc(50% - 0.75rem); 
             transform: translate(-50%, -50%);
             transition: opacity 0.2s ease;
 
             &--open {
                 display: block;
-                transform: translate(-50%, -50%) scaleX(-1); // horizontaal spiegelen
+                transform: translate(-50%, -50%) scaleX(-1);
             }
 
             &--close {
                 display: none;
-                transform: translate(-50%, -50%); // behoud positie voor kruisje
+                transform: translate(-50%, -50%);
             }
         }
 
         &[aria-expanded="true"] {
-            // Verberg alleen het hamburger icoon, toon het kruisje op dezelfde plek
             .toggle-icon--open {
                 display: none;
             }
             .toggle-icon--close {
                 display: block;
             }
-            // Behoud dezelfde positie - toggle blijft zichtbaar
             opacity: 1;
             pointer-events: auto;
             visibility: visible;
         }
     }
 
-    // Responsiveness
     @media only screen and (max-width: 1100px) {
         .nav-inner {
             padding: 0.5rem 1.125rem;
@@ -236,14 +233,13 @@
     }
 
     @media only screen and (max-width: 600px) {
-        border: none !important; // geen border op navbar op mobiel
-        border-bottom: none !important; // geen lijn onder navbar op mobiel
-        border-top: none !important; // geen lijn boven navbar op mobiel
-        box-shadow: none !important; // geen shadow op mobiel
-        outline: none !important; // geen outline op mobiel
-        margin-bottom: -1px !important; // overlap met page-wrapper om lijn te verbergen
+        border: none !important;
+        border-bottom: none !important;
+        border-top: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        margin-bottom: -1px !important;
         
-        // Verwijder alle borders van child elementen, behalve toggle button
         *:not(.toggle):not(.toggle *) {
             border-top: none !important;
             border-bottom: none !important;
@@ -251,9 +247,9 @@
         
         .nav-inner {
             padding: 0.5rem 0.875rem;
-            justify-content: space-between; // logo links, toggle rechts
-            border: none !important; // geen border op nav-inner op mobiel
-            border-bottom: none !important; // geen lijn onder nav-inner op mobiel
+            justify-content: space-between;
+            border: none !important;
+            border-bottom: none !important;
             box-shadow: none !important;
             outline: none !important;
         }
@@ -261,12 +257,12 @@
         .nav-content {
             display: flex;
             align-items: center;
-            justify-content: space-between; // logo links, toggle rechts op mobiel
+            justify-content: space-between;
             width: 100%;
-            gap: 0; // geen gap op mobiel
+            gap: 0;
             flex: 1;
-            border: none !important; // geen border op nav-content op mobiel
-            border-bottom: none !important; // geen lijn onder nav-content op mobiel
+            border: none !important;
+            border-bottom: none !important;
             box-shadow: none !important;
             outline: none !important;
         }
@@ -279,9 +275,9 @@
         }
 
         .logo {
-            flex-shrink: 0; // logo mag niet krimpen
-            order: 1; // logo eerst
-            margin-right: auto; // push naar links
+            flex-shrink: 0;
+            order: 1;
+            margin-right: auto; 
         }
 
         .items,
@@ -295,27 +291,25 @@
             flex: 0 0 0 !important;
             margin: 0 !important;
             padding: 0 !important;
-            order: 3; // items en cta helemaal achteraan
+            order: 3;
         }
 
         .toggle {
             display: flex !important;
             align-items: center;
             justify-content: center;
-            margin-left: auto; // push naar rechts op mobiel
-            flex-shrink: 0; // toggle mag niet krimpen
-            order: 2; // toggle na logo
-            position: relative; // voor absolute positioning van iconen
-            cursor: pointer !important; // zorg dat cursor pointer blijft
-            pointer-events: auto !important; // zorg dat button klikbaar blijft
-            z-index: 1; // zorg dat button boven andere elementen staat
+            margin-left: auto;
+            flex-shrink: 0;
+            order: 2;
+            position: relative;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            z-index: 1;
             
-            // Zorg dat toggle button zelf klikbaar blijft
             border: none !important;
             background: transparent !important;
             
             &[aria-expanded="true"] {
-                // Behoud exact dezelfde positie wanneer menu open is
                 opacity: 1 !important;
                 pointer-events: auto !important;
                 visibility: visible !important;
@@ -365,12 +359,12 @@ body.mobile-menu-open {
 }
 
 // Footer navigation
-$footer-bg: #282865; // Purple background
+$footer-bg: #282865;
 
 .nav-footer {
     background-color: $footer-bg;
     width: 100%;
-    padding: 3rem 0 1rem 0; // nog minder padding onder, logo dichter bij tekst
+    padding: 3rem 0 1rem 0;
     position: relative;
     z-index: 2;
     margin-top: 1.5rem;
@@ -405,10 +399,10 @@ $footer-bg: #282865; // Purple background
         &.logo {
             align-items: center;
             gap: 1rem;
-            margin-top: 1rem; // logo iets naar boven, tekst blijft op plek
+            margin-top: 1rem;
 
             img {
-                max-width: 22rem; // groter logo
+                max-width: 22rem;
                 height: auto;
                 display: block;
             }
@@ -425,7 +419,7 @@ $footer-bg: #282865; // Purple background
         padding: 0;
         display: flex;
         flex-direction: column;
-        gap: 0.35rem; // nog iets dichter op elkaar
+        gap: 0.35rem;
 
         li {
             list-style: none;
@@ -456,7 +450,6 @@ $footer-bg: #282865; // Purple background
         align-items: flex-end;
     }
 
-    // Responsive
     @media only screen and (max-width: 900px) {
         .nav-inner {
             padding: 0 $padding-base;
@@ -476,25 +469,25 @@ $footer-bg: #282865; // Purple background
 
         .nav-content {
             flex-direction: column;
-            gap: 1.5rem; // ruimte tussen logo en menu's
+            gap: 1.5rem;
             align-items: center;
         }
 
         .col {
             &.logo {
-                order: 1; // logo eerst
+                order: 1;
             }
 
             &.pages {
-                order: 2; // pages menu tweede
+                order: 2;
                 align-items: center;
 
             }
 
             &.legal {
-                order: 3; // legal menu derde
+                order: 3;
                 align-items: center;
-                margin-top: -1rem; // negatieve margin om gap tussen menu's te verwijderen
+                margin-top: -1rem;
             }
         }
 
@@ -505,15 +498,14 @@ $footer-bg: #282865; // Purple background
     }
 }
 
-// Copyright section
 .copyright {
     background-color: $footer-bg;
     width: 100%;
-    padding: 1.25rem 0 1.5rem 0; // meer ruimte tussen logo en tekst
+    padding: 1.25rem 0 1.5rem 0;
     text-align: center;
     color: #ffffff;
     font-size: 0.875rem;
-    font-weight: $font-thin; // dunne copyright-tekst
+    font-weight: $font-thin;
 
     a {
         color: #ffffff;
