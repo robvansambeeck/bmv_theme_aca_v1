@@ -173,16 +173,15 @@ meter {
   text-align: center;
   width: 100%;
 }
-.block-header .row.title * {
+.block-header .row.title h1, .block-header .row.title h2, .block-header .row.title h3, .block-header .row.title h4, .block-header .row.title h5, .block-header .row.title h6, .block-header .row.title p {
   margin: 0;
   color: rgb(64, 64, 64), 1;
   text-align: center;
   font-weight: 300;
 }
-.block-header .row.title strong,
-.block-header .row.title b {
-  color: rgb(109, 84, 163);
-  font-weight: 700;
+.block-header .row.title h1 strong, .block-header .row.title h1 b, .block-header .row.title h2 strong, .block-header .row.title h2 b, .block-header .row.title h3 strong, .block-header .row.title h3 b, .block-header .row.title h4 strong, .block-header .row.title h4 b, .block-header .row.title h5 strong, .block-header .row.title h5 b, .block-header .row.title h6 strong, .block-header .row.title h6 b, .block-header .row.title p strong, .block-header .row.title p b {
+  color: #6D54A3 !important;
+  font-weight: 700 !important;
 }
 .block-header .row.description {
   max-width: 120ch;
@@ -191,6 +190,14 @@ meter {
   line-height: 1.5;
   font-size: 1rem;
   text-align: center;
+}
+.block-header .row.description p {
+  margin: 0;
+  color: inherit;
+}
+.block-header .row.description strong, .block-header .row.description b {
+  color: #6D54A3 !important;
+  font-weight: 700 !important;
 }
 .block-header .row.cta {
   display: flex;

@@ -9,52 +9,6 @@
     margin-bottom: $grid-gap;
 }
 
-// Horizontaal scroll/swipe voor filter-tabs op mobiel
-.filter-tabs-scroll {
-    @media only screen and (max-width: 900px) {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 0.5rem;
-        scrollbar-width: thin;
-        scrollbar-color: $color-primary $color-bg;
-        width: 100%;
-                /* Zorg dat de container niet shrinkt */
-                min-width: 0;
-    }
-}
-
-.filter-tabs {
-    @media only screen and (max-width: 900px) {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: nowrap;
-        width: max-content;
-                min-width: 100%;
-    }
-}
-
-.filter-tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    padding: 0.5rem 1.2rem;
-    font-size: 1rem;
-    text-align: center;
-    white-space: nowrap;
-    border-radius: 2rem;
-    background: transparent;
-    color: $color-primary;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-
-    &.is-active {
-        background: $color-primary;
-        color: #fff;
-        font-weight: 600;
-    }
-}
 
 // Header block (hero style)
 .block-header {
@@ -62,28 +16,28 @@
 
     // Voeg hier de margin-top toe voor mobiel
     @media only screen and (max-width: 900px) {
-        margin-top: 4rem; // De ruimte BOVEN het blok
+        margin-top: 4rem; 
     }
 
     .block-inner {
         max-width: 100%;
         margin: 0 auto;
-        padding: 3rem $padding-base * 2 4.5rem;
+        padding: 3rem ($padding-base * 2) 4.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         
         @media only screen and (max-width: 1100px) {
-            padding: 2.75rem $padding-base * 1.75 4rem;
+            padding: 2.75rem ($padding-base * 1.75) 4rem;
         }
         
         @media only screen and (max-width: 900px) {
             max-width: 90%;
-            padding: 2.5rem $padding-base * 1.5 3.5rem;
+            padding: 2.5rem ($padding-base * 1.5) 3.5rem;
         }
         
         @media only screen and (max-width: 800px) {
-            padding: 2.25rem $padding-base * 1.25 3rem;
+            padding: 2.25rem ($padding-base * 1.25) 3rem;
         }
     }
 
@@ -100,17 +54,18 @@
             text-align: center;
             width: 100%;
 
-            * {
+            // Target de tags die uit de WYSIWYG komen (zoals je H2)
+            h1, h2, h3, h4, h5, h6, p {
                 margin: 0;
                 color: $color-heading-dark;
                 text-align: center;
-                font-weight: 300;
-            }
+                font-weight: 300; // De basis is dun (normaal)
 
-            strong,
-            b {
-                color: $color-cta;
-                font-weight: 700;
+                // DIT IS DE FIX: Exact zoals bij je bullet-list
+                strong, b {
+                    color: #6D54A3 !important; // Hardcoded paars om zeker te zijn
+                    font-weight: 700 !important; // Forceer dikgedrukt
+                }
             }
         }
 
@@ -121,6 +76,14 @@
             line-height: 1.5;
             font-size: 1rem;
             text-align: center;
+
+            // Zorg dat p-tags uit de editor hier ook goed staan
+            p { margin: 0; color: inherit; }
+            
+            strong, b {
+                color: #6D54A3 !important;
+                font-weight: 700 !important;
+            }
         }
 
         &.cta {
@@ -163,6 +126,7 @@
         }
     }
 }
+
 
 // Image Grid 1 block
 $card-lavender: rgba(230, 220, 250, 1);
