@@ -864,6 +864,7 @@ $program-text: $color-txt-dark;
 }
 
 // Bullet list block
+// Bullet list block
 .block-bullet-list {
     width: 100%;
     margin: 0 !important;
@@ -895,7 +896,7 @@ $program-text: $color-txt-dark;
             right: 50%;
             margin-left: -50vw !important;
             margin-right: -50vw !important;
-            padding: 4rem 2rem 0 2rem !important; // Padding aan zijkant geforceerd
+            padding: 4rem 2rem 0 2rem !important; 
             gap: 3rem;
         }
     }
@@ -916,7 +917,7 @@ $program-text: $color-txt-dark;
                 flex: 0 0 100% !important;
                 max-width: 100% !important;
                 order: 1;
-                padding: 0 1rem; // Iets naar binnen op mobiel
+                padding: 0 1rem;
             }
         }
 
@@ -924,7 +925,7 @@ $program-text: $color-txt-dark;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 2.5rem; // Meer ruimte tussen tekstblokken
+            gap: 2.5rem;
             
             @media only screen and (max-width: 800px) {
                 max-width: 100% !important;
@@ -933,6 +934,16 @@ $program-text: $color-txt-dark;
                 padding: 0 1.5rem 5rem 1.5rem !important; 
                 align-items: center !important; 
                 text-align: center !important;
+            }
+
+            h2 {
+                margin: 0;
+                color: $color-txt-dark; 
+                
+                strong {
+                    color: #6D54A3 !important; 
+                    font-weight: 700;
+                }
             }
         }
     }
@@ -960,17 +971,17 @@ $program-text: $color-txt-dark;
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 1.75rem; // MEER RUIMTE tussen de items na 800px
+        gap: 1.75rem; 
         width: 100%;
 
         @media only screen and (max-width: 800px) {
-            align-items: flex-start; // Items zelf links uitlijnen voor betere leesbaarheid
-            max-width: 450px; // MEER RUIMTE in de breedte na 800px
+            align-items: flex-start;
+            max-width: 450px;
             margin: 0 auto;
         }
         
         @media only screen and (max-width: 480px) {
-            max-width: 100%; // Op hele kleine schermen mag hij de volle padding-breedte pakken
+            max-width: 100%; 
             gap: 1.5rem;
         }
     }
@@ -984,27 +995,54 @@ $program-text: $color-txt-dark;
         width: 100%;
 
         &-icon {
-            flex: 0 0 1.75rem; // Iets grotere icon container voor meer witruimte
-            font-size: 1.5rem;
-            color: #6D54A3;
+            flex: 0 0 1.75rem;
+            height: 1.75rem;
             display: flex;
             justify-content: center;
+            align-items: center;
+            background-color: #6D54A3 !important; // De donkerpaarse cirkel
+            border-radius: 50%;
+            position: relative;
+            margin-top: 0.15rem; // Zorgt voor betere uitlijning met de eerste regel tekst
+            
+            // Verberg het originele icoon met de verkeerde kleuren
+            font-size: 0 !important;
+            svg, img, i {
+                display: none !important;
+            }
+
+            // Teken een nieuw wit vinkje in de paarse cirkel
+            &:after {
+                content: '';
+                display: block;
+                width: 0.4rem;
+                height: 0.7rem;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+                margin-top: -2px; // Fine-tuning positie vinkje
+            }
         }
 
         &-text {
             flex: 1;
             font-size: 1.1rem;
-            line-height: 1.6; // Meer regelafstand voor rust
+            line-height: 1.6;
             color: $color-txt-dark;
+
+            strong {
+                color: #6D54A3 !important;
+                font-weight: 700;
+            }
         }
     }
 
     .bullet-list__cta {
-        margin-top: 1.5rem; // Meer afstand tot de lijst
+        margin-top: 1.5rem;
         background: $color-cta;
         color: #fff;
         border-radius: 999px;
-        padding: 1.1rem 4.5rem; // Iets grotere knop voor mobiel comfort
+        padding: 1.1rem 4.5rem;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
