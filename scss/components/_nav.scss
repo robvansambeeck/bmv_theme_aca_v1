@@ -16,14 +16,17 @@
     border-top-left-radius: 1.5rem; 
     border-top-right-radius: 1.5rem; 
     border-bottom: none; 
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     box-shadow: none;
     display: flex;
     align-items: center;
     min-height: 3rem;
+    overflow: visible;
 
     &.is-sticky {
         background: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: none;
+        backdrop-filter: none;
         min-height: 3rem;
         display: flex;
         align-items: center;

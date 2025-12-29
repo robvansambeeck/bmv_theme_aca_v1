@@ -8,7 +8,8 @@ console.log("js start");
 const navMain = document.querySelector('.nav-main');
 if (navMain) {
     const toggleSticky = () => {
-        const isStuck = window.scrollY > 0;
+        // Voeg alleen sticky class toe na een kleine threshold om visuele flits te voorkomen
+        const isStuck = window.scrollY > 10;
         navMain.classList.toggle('is-sticky', isStuck);
     };
 
