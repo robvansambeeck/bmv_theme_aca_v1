@@ -9,6 +9,17 @@
     margin-bottom: $grid-gap;
 }
 
+// Verwijder alle vaste heights voor tekstcontainers om overlap te voorkomen
+.block-inner,
+.block-content,
+.faq__sidebar,
+.faq__content,
+.accordion-list__item {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+}
+
 
 // block-header
 .block-header {
@@ -70,7 +81,7 @@
             max-width: 120ch;
             margin: 0 auto 2rem auto;
             color: $color-txt-dark;
-            line-height: 1.5;
+            line-height: calc(1em + 10px);
             font-size: 1rem;
             text-align: center;
 
@@ -100,7 +111,7 @@
                     color: $color-heading-light;
                     border: none;
                     border-radius: 999px;
-                    padding: 0.6875rem 3.5rem;
+                    padding: 0.5rem 3.5rem;
                     font-weight: $font-medium;
                     display: inline-flex;
                     align-items: center;
@@ -116,7 +127,7 @@
 
                 &.btn-secondary {
                     margin: 0;
-                    padding: 0.6875rem 3.5rem;
+                    padding: 0.5rem 3.5rem;
                 }
             }
         }
@@ -203,7 +214,7 @@ $card-padding-h: 2rem;
         border-radius: $border-radius-card;
         color: $color-txt-dark;
         font-size: 1rem;
-        line-height: 1.5;
+        line-height: calc(1em + 10px);
         text-align: left;
         box-sizing: border-box;
         margin: 0;
@@ -233,7 +244,7 @@ $card-padding-h: 2rem;
             margin: 0;
             font-size: 1.5rem; 
             font-weight: 600; 
-            line-height: 1.5;
+            line-height: calc(1em + 10px);
             color: $color-txt-dark;
         }
     }
@@ -377,7 +388,7 @@ $card-blue-gray: rgba(244, 244, 246, 1);
         border-radius: $border-radius-card;
         color: $color-txt-dark;
         font-size: 1rem;
-        line-height: 1.6;
+        line-height: calc(1em + 10px);
         text-align: left;
         box-sizing: border-box;
         margin: 0;
@@ -397,7 +408,7 @@ $card-blue-gray: rgba(244, 244, 246, 1);
         p {
             margin: 0;
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: calc(1em + 10px);
             color: $color-txt-dark;
         }
 
@@ -593,7 +604,9 @@ $program-text: $color-txt-dark;
             gap: 3rem;
             align-items: center; 
             justify-content: center;
-            min-height: 100%;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
         }
     }
 
@@ -620,7 +633,7 @@ $program-text: $color-txt-dark;
         }
     }
 
-    h2, .h2 {
+    h1, .h1 {
         margin: 0;
         color: $color-txt-dark;
         
@@ -635,7 +648,7 @@ $program-text: $color-txt-dark;
         justify-content: center;
         background: $color-cta;
         color: $color-heading-light;
-        padding: 0.6875rem 3.5rem;
+        padding: 0.5rem 3.5rem;
         border-radius: 999px;
         font-weight: $font-medium;
         text-decoration: none;
@@ -751,7 +764,7 @@ $program-text: $color-txt-dark;
         max-width: 18.5rem;
         width: 100%;
         padding: 1.75rem 2rem;
-        min-height: 15rem;
+        min-height: auto;
         border-radius: $border-radius-card;
         display: flex;
         flex-direction: column;
@@ -790,7 +803,7 @@ $program-text: $color-txt-dark;
         &__text {
             margin: 0;
             font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: calc(1em + 10px);
             color: $program-text;
 
             p {
@@ -943,13 +956,12 @@ $program-text: $color-txt-dark;
                 text-align: center !important;
             }
 
-            h2 {
+            h1, .h1 {
                 margin: 0;
-                color: $color-txt-dark; 
+                color: $color-txt-dark;
                 
                 strong {
-                    color: #6D54A3 !important; 
-                    font-weight: 700;
+                    color: $info-title-color;
                 }
             }
         }
@@ -1034,7 +1046,7 @@ $program-text: $color-txt-dark;
         &-text {
             flex: 1;
             font-size: 1.1rem;
-            line-height: 1.6;
+            line-height: calc(1em + 10px);
             color: $color-txt-dark;
 
             strong {
@@ -1045,22 +1057,24 @@ $program-text: $color-txt-dark;
     }
 
     .bullet-list__cta {
-        margin-top: 1.5rem;
-        background: $color-cta;
-        color: #fff;
-        border-radius: 999px;
-        padding: 1.1rem 4.5rem;
-        text-decoration: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        background: $color-cta;
+        color: $color-heading-light;
+        padding: 0.5rem 3.5rem;
+        border-radius: 999px;
         font-weight: $font-medium;
-        width: fit-content; 
+        text-decoration: none;
         white-space: nowrap;
-        
-        @media only screen and (max-width: 800px) {
-            display: flex !important;
-            margin: 0 auto !important; 
+        min-width: 16rem;
+        width: fit-content;
+        transition: background 0.3s ease;
+
+        &:hover,
+        &:focus {
+            background: $color-cta-hover;
+            color: $color-heading-light;
         }
     }
 }
@@ -1138,29 +1152,27 @@ $cta-register-strip: #1a1a2e;
         max-width: $container-base;
         margin: 0 auto;
         padding: 4rem $padding-base * 1.5;
-        min-height: 20rem;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
         display: flex;
         align-items: center;
         justify-content: center;
         
         @media only screen and (max-width: 1100px) {
             padding: 3.5rem $padding-base * 1.25;
-            min-height: 18rem;
         }
         
         @media only screen and (max-width: 900px) {
             padding: 3rem $padding-base;
-            min-height: 16rem;
         }
         
         @media only screen and (max-width: 800px) {
             padding: 2.75rem $padding-base * 0.875;
-            min-height: 15rem;
         }
         
         @media only screen and (max-width: 600px) {
             padding: 2.5rem $padding-base * 0.75;
-            min-height: 14rem;
         }
     }
 
@@ -1261,7 +1273,7 @@ $cta-register-strip: #1a1a2e;
         color: $color-cta;
         border: none;
         border-radius: 999px;
-        padding: 0.6875rem 3.5rem;
+        padding: 0.5rem 3.5rem;
         min-width: 16rem;
         font-weight: $font-medium;
         display: inline-flex;
@@ -1283,7 +1295,9 @@ $cta-register-strip: #1a1a2e;
     @media only screen and (max-width: 900px) {
         .block-inner {
             padding: 3rem $padding-base;
-            min-height: 18rem;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
         }
 
         .cta-register__title {
@@ -1300,7 +1314,9 @@ $cta-register-strip: #1a1a2e;
     @media only screen and (max-width: 600px) {
         .block-inner {
             padding: 2.5rem $padding-base * 0.75;
-            min-height: 16rem;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
         }
 
         .cta-register__title {
@@ -1547,7 +1563,7 @@ $filter-bg: #e6e0f0;
 
     .steps__text {
         font-size: 1rem;
-        line-height: 1.6;
+        line-height: calc(1em + 10px);
         color: $color-txt-dark;
         margin: 0;
         max-width: 20rem;
@@ -1634,8 +1650,8 @@ $filter-bg: #e6e0f0;
         background-color: #ffffff;
         border-radius: $border-radius-card;
         padding: 2rem 1.5rem;
-        min-height: 20rem;
-        height: 100%;
+        min-height: auto;
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1676,7 +1692,7 @@ $filter-bg: #e6e0f0;
             font-weight: $font-regular;
             color: rgba(64, 64, 64, 0.7);
             margin: -1rem 0 0 0;
-            line-height: 1.4;
+            line-height: calc(1em + 10px);
         }
 
         &__desc {
@@ -1684,7 +1700,7 @@ $filter-bg: #e6e0f0;
             font-weight: $font-regular;
             color: rgba(64, 64, 64, 0.6);
             margin: 0;
-            line-height: 1.5;
+            line-height: calc(1em + 10px);
 
             p {
                 margin: 0;
@@ -1828,10 +1844,11 @@ $filter-bg: #e6e0f0;
         border-radius: $border-radius-card;
         color: $color-txt-dark;
         font-size: 1rem;
-        line-height: 1.5;
+        line-height: calc(1em + 10px);
         text-align: left;
         box-sizing: border-box;
         margin: 0;
+        min-height: auto;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -2062,14 +2079,20 @@ $filter-bg: #e6e0f0;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
     }
 
     .faq__content {
         width: 100%;
         margin-left: 0.5rem;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
     }
 
-    .faq__sidebar h2 {
+    .faq__sidebar h1 {
         font-size: clamp(2rem, 2.6vw, 2.75rem);
         line-height: 1.2;
         font-weight: 300;
@@ -2087,7 +2110,7 @@ $filter-bg: #e6e0f0;
     .faq__sidebar > div {
         margin: 0 0 0.75rem 0;
         font-size: 0.9375rem;
-        line-height: 1.6;
+        line-height: calc(1em + 10px);
         color: $color-txt-dark;
     }
 
@@ -2119,12 +2142,15 @@ $filter-bg: #e6e0f0;
     }
 
     .accordion-list__item {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid #d1d1d1;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
     }
 
     .accordion-list__question {
         width: 100%;
-        padding: 1.25rem 0;
+        padding: 1.25rem 2rem 1.25rem 0;
         display: flex;
         align-items: flex-start;
         gap: 1.25rem;
@@ -2135,6 +2161,7 @@ $filter-bg: #e6e0f0;
         text-align: left;
         font: inherit;
         color: $color-txt-dark;
+        position: relative;
     }
 
     .accordion-list__icon {
@@ -2145,7 +2172,11 @@ $filter-bg: #e6e0f0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 0;
+        top: 1.25rem;
 
         &::before {
             content: "+";
@@ -2171,7 +2202,7 @@ $filter-bg: #e6e0f0;
     .accordion-list__answer {
         padding: 0 0 1.4rem 2.5rem;
         font-size: 0.9375rem;
-        line-height: 1.7;
+        line-height: calc(1em + 10px);
         color: $color-txt-dark;
 
         p {
@@ -2259,7 +2290,7 @@ $filter-bg: #e6e0f0;
 
     .contact-grid__intro {
         font-size: 1rem;
-        line-height: 1.7;
+        line-height: calc(1em + 10px);
         color: $color-txt-dark;
 
         p {
@@ -2271,10 +2302,11 @@ $filter-bg: #e6e0f0;
         }
     }
 
+    
     .contact-grid__faq-link-wrapper {
         margin: 0;
         font-size: 0.95rem;
-        line-height: 1.5;
+        line-height: calc(1em + 10px);
         color: $color-txt-dark;
     }
 
@@ -2300,7 +2332,7 @@ $filter-bg: #e6e0f0;
         flex-direction: column;
         gap: 0.4rem;
         font-size: 0.9375rem;
-        line-height: 1.6;
+        line-height: calc(1em + 10px);
         color: $color-txt-dark;
     }
 
@@ -2360,7 +2392,7 @@ $filter-bg: #e6e0f0;
             background-color: #f8f8fb;
             padding: 1rem 1.25rem;
             font-size: 0.95rem;
-            line-height: 1.4;
+            line-height: calc(1em + 10px);
             color: $color-txt-dark;
             outline: none;
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02);
@@ -2469,7 +2501,7 @@ $filter-bg: #e6e0f0;
         .contact-grid__intro {
             p {
                 margin-bottom: 0.35rem !important; 
-                line-height: 1.4;
+                line-height: calc(1em + 10px);
             }
         }
 

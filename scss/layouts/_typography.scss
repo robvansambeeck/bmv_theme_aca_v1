@@ -9,7 +9,7 @@ body {
     font-family: $font-body;
     font-weight: $font-regular;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: calc(1em + 10px);
     color: $color-txt-dark;
     text-align: left;
     
@@ -96,6 +96,7 @@ h2 {
 p{
     font-weight: $font-regular;
     font-size: 1rem;
+    line-height: calc(1em + 10px);
     font-style: normal;
     color: $color-txt-dark;
     
@@ -138,7 +139,7 @@ ul {
 li {
     font-weight: $font-regular;
     font-size: inherit;
-    line-height: auto;
+    line-height: calc(1em + 10px);
     font-style: normal;
     list-style-position: inside;
     list-style-type: disc;

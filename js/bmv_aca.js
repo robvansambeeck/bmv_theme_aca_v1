@@ -300,73 +300,85 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
 // SCROLL REVEAL
 (function() {
   'use strict';
   var processed = {};
   var observer = null;
-  var isRunning = false;
-  
+
+  function revealElement(el) {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+    el.style.willChange = 'opacity, transform';
+  }
+
+  function hideElement(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px)';
+    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+    el.style.willChange = 'opacity, transform';
+  }
+
   function getObserver() {
     if (observer) return observer;
     observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          var el = entry.target;
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-          observer.unobserve(el);
+          revealElement(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.1 });
     return observer;
   }
-  
+
   function doReveal() {
-    if (isRunning) return;
-    isRunning = true;
     var blocks = document.querySelectorAll('.block');
-    if (!blocks.length) { isRunning = false; return; }
+    if (!blocks.length) return;
     var obs = getObserver();
     var count = 0;
-    for (var i = 0; i < blocks.length; i++) {
-      var block = blocks[i];
-      if (block.closest('nav, .nav-main, header')) continue;
+
+    blocks.forEach(function(block) {
       var container = block.querySelector('.block-content') || block.querySelector('.block-inner');
-      if (!container) continue;
-      var all = container.querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, button, img, .row, [class*="title"], [class*="text"], [class*="description"]');
-      for (var j = 0; j < all.length; j++) {
-        var el = all[j];
+      if (!container) return;
+
+      var all = container.querySelectorAll('h1,h2,h3,h4,h5,h6,p,ul,ol,li,a,button,img,.row,[class*="title"],[class*="text"],[class*="description"]');
+      
+      all.forEach(function(el) {
         var elId = el.getAttribute('data-reveal-id');
         if (!elId) {
           elId = 'reveal-' + count++;
           el.setAttribute('data-reveal-id', elId);
         }
-        if (processed[elId]) continue;
-        var rect = el.getBoundingClientRect();
-        var isAlreadyVisible = rect.top < window.innerHeight + 100 && rect.top > -100;
-        if (isAlreadyVisible && !processed[elId]) {
-          processed[elId] = true;
-          continue;
-        }
+        if (processed[elId]) return;
         processed[elId] = true;
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(40px)';
-        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-        el.style.willChange = 'opacity, transform';
-        obs.observe(el);
-      }
-    }
-    isRunning = false;
+
+        var rect = el.getBoundingClientRect();
+        var isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          // direct zichtbaar maken voor content bovenaan (geen animatie delay)
+          revealElement(el);
+        } else {
+          // eerst verborgen, observer voor scroll
+          hideElement(el);
+          obs.observe(el);
+        }
+      });
+    });
   }
-  
+
+  // Run on DOMContentLoaded
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', doReveal);
   } else {
     doReveal();
   }
-  setTimeout(doReveal, 1000);
-  window.addEventListener('load', doReveal);
+  
+  // Also run on window.onload to ensure content bovenaan direct zichtbaar is
+  window.addEventListener('load', function() {
+    doReveal();
+  });
 })();
-
-console.log("js end");
