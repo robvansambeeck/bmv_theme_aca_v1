@@ -1710,7 +1710,7 @@ meter {
   display: block;
 }
 .block-image-grid-3 .image-grid-3__card {
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 2rem;
   border-radius: 0.75rem;
   color: rgb(64, 64, 64), 1;
   font-size: 1rem;
@@ -1733,6 +1733,47 @@ meter {
 .block-image-grid-3 .image-grid-3__card p {
   margin: 0;
   color: rgb(64, 64, 64), 1;
+}
+.block-image-grid-3 .image-grid-3__card ul,
+.block-image-grid-3 .image-grid-3__card ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+}
+.block-image-grid-3 .image-grid-3__card ul li,
+.block-image-grid-3 .image-grid-3__card ol li {
+  margin-bottom: 0.5rem;
+  line-height: calc(1em + 10px);
+  color: rgb(64, 64, 64), 1;
+}
+.block-image-grid-3 .image-grid-3__card ul li:last-child,
+.block-image-grid-3 .image-grid-3__card ol li:last-child {
+  margin-bottom: 0;
+}
+.block-image-grid-3 .image-grid-3__card ul {
+  list-style-type: disc;
+}
+.block-image-grid-3 .image-grid-3__card ol {
+  list-style-type: decimal;
+}
+.block-image-grid-3 .image-grid-3__card ul, .block-image-grid-3 .image-grid-3__card ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+}
+.block-image-grid-3 .image-grid-3__card ul li, .block-image-grid-3 .image-grid-3__card ol li {
+  margin-bottom: 0.5rem;
+  line-height: calc(1em + 10px);
+  color: rgb(64, 64, 64), 1;
+}
+.block-image-grid-3 .image-grid-3__card ul li:last-child, .block-image-grid-3 .image-grid-3__card ol li:last-child {
+  margin-bottom: 0;
+}
+.block-image-grid-3 .image-grid-3__card ul {
+  list-style-type: disc;
+}
+.block-image-grid-3 .image-grid-3__card ol {
+  list-style-type: decimal;
 }
 .block-image-grid-3 .image-grid-3__card--top {
   background-color: rgba(231, 168, 241, 0.2);
@@ -1875,11 +1916,17 @@ meter {
     padding: 0 !important;
   }
   .block-image-grid-3 .image-grid-3__card {
-    padding: 1.5rem 1.25rem;
+    padding: 2rem 1.5rem;
     margin: 0 !important;
   }
   .block-image-grid-3 .image-grid-3__card h3 {
     font-size: 1.125rem;
+  }
+  .block-image-grid-3 .image-grid-3__card ul, .block-image-grid-3 .image-grid-3__card ol {
+    padding-left: 1.25rem;
+  }
+  .block-image-grid-3 .image-grid-3__card ul li, .block-image-grid-3 .image-grid-3__card ol li {
+    margin-bottom: 0.5rem;
   }
 }
 
