@@ -43,6 +43,9 @@
 <!-- Nav-main-mobile -->
 <div class="nav-mobile">
     <div class="nav-inner">
+        <button class="mobile-close" aria-label="Close menu">
+            <i class="fa-light fa-xmark"></i>
+        </button>
         <div class="nav-content">
             <nav class="menu">
                 <?php

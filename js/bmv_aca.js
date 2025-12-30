@@ -5,17 +5,42 @@
 console.log("js start");
 
 // Sticky nav
-const navMain = document.querySelector('.nav-main');
-if (navMain) {
+(function() {
+    const navMain = document.querySelector('.nav-main');
+    if (!navMain) return;
+    
+    // Zorg dat de class niet aanwezig is bij het laden
+    navMain.classList.remove('is-sticky');
+    
     const toggleSticky = () => {
-        // Voeg alleen sticky class toe na een kleine threshold om visuele flits te voorkomen
-        const isStuck = window.scrollY > 10;
-        navMain.classList.toggle('is-sticky', isStuck);
+        // Gebruik de daadwerkelijke hoogte van de navbar
+        const navHeight = navMain.offsetHeight;
+        const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Alleen sticky class toevoegen als er echt meer dan de nav height is gescrolld
+        if (scrollY > navHeight) {
+            navMain.classList.add('is-sticky');
+        } else {
+            navMain.classList.remove('is-sticky');
+        }
     };
 
-    window.addEventListener('scroll', toggleSticky, { passive: true });
-    toggleSticky(); // Check on load
-}
+    // Initialiseer na volledige pagina load
+    const initSticky = () => {
+        toggleSticky();
+        window.addEventListener('scroll', toggleSticky, { passive: true });
+        window.addEventListener('resize', toggleSticky, { passive: true });
+    };
+
+    // Wacht tot alles geladen is
+    if (document.readyState === 'complete') {
+        setTimeout(initSticky, 100);
+    } else {
+        window.addEventListener('load', () => {
+            setTimeout(initSticky, 100);
+        });
+    }
+})();
 
 // Swipe/scroll voor filter-tabs op mobiel & tablet (wanneer nodig)
 document.addEventListener('DOMContentLoaded', () => {
@@ -266,21 +291,49 @@ const btn = document.querySelector('.toggle');
 const menu = document.querySelector('.nav-mobile');
 let scrollY = 0;
 
-btn.addEventListener('click', () => {
-  const open = document.body.classList.toggle('mobile-menu-open');
-  if (open) {
-    scrollY = window.scrollY;
-    document.body.style.top = `-${scrollY}px`;
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-  } else {
-    document.body.classList.remove('mobile-menu-open');
-    document.body.style.top = '';
-    window.scrollTo(0, scrollY);
+const closeMenu = () => {
+  if (menu) {
     menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      document.body.classList.remove('mobile-menu-open');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollY);
+    }, 400); // Match transition duration
+    if (btn) {
+      btn.setAttribute('aria-expanded', 'false');
+    }
   }
-});
+};
+
+if (btn && menu) {
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.contains('is-open');
+    
+    if (!isOpen) {
+      // Open menu - slide down from top
+      scrollY = window.scrollY;
+      document.body.classList.add('mobile-menu-open');
+      document.body.style.top = `-${scrollY}px`;
+      // Force reflow
+      void menu.offsetHeight;
+      // Trigger animation
+      requestAnimationFrame(() => {
+        menu.classList.add('is-open');
+      });
+      btn.setAttribute('aria-expanded', 'true');
+    } else {
+      closeMenu();
+    }
+  });
+}
+
+// Close button in mobile menu
+const closeBtn = document.querySelector('.mobile-close');
+if (closeBtn && menu) {
+  closeBtn.addEventListener('click', () => {
+    closeMenu();
+  });
+}
 
 // FAQ Accordion
 document.addEventListener('DOMContentLoaded', () => {
@@ -291,11 +344,68 @@ document.addEventListener('DOMContentLoaded', () => {
       const answerId = question.getAttribute('aria-controls');
       const answer = document.getElementById(answerId);
       if (!answer) return;
+      
       question.setAttribute('aria-expanded', !isExpanded);
+      
       if (isExpanded) {
-        answer.setAttribute('hidden', '');
+        // Sluiten - smooth slide up met transition
+        // Fade out text eerst (sneller dan container)
+        const textElements = answer.querySelectorAll('p, ul, ol');
+        textElements.forEach(el => {
+          el.style.transition = 'opacity 0.2s ease-out, transform 0.2s ease-out';
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(-5px)';
+        });
+        // Korte delay voor text fade
+        setTimeout(() => {
+          // Meet eerst de huidige hoogte
+          const currentHeight = answer.scrollHeight;
+          // Zet max-height naar huidige hoogte
+          answer.style.maxHeight = currentHeight + 'px';
+          // Force reflow zodat browser de state ziet
+          void answer.offsetHeight;
+          // Nu animeren naar 0
+          requestAnimationFrame(() => {
+            answer.style.maxHeight = '0px';
+          });
+          setTimeout(() => {
+            answer.setAttribute('hidden', '');
+            // Reset text state
+            textElements.forEach(el => {
+              el.style.opacity = '';
+              el.style.transform = '';
+              el.style.transition = '';
+            });
+          }, 500);
+        }, 50);
       } else {
+        // Openen - smooth slide down met transition
         answer.removeAttribute('hidden');
+        // Reset text reveal state
+        const textElements = answer.querySelectorAll('p, ul, ol');
+        textElements.forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(10px)';
+        });
+        // Zet eerst op 0px (start state)
+        answer.style.maxHeight = '0px';
+        // Force reflow
+        void answer.offsetHeight;
+        // Meet de volledige hoogte
+        const targetHeight = answer.scrollHeight;
+        // Animeer naar volledige hoogte
+        answer.style.maxHeight = targetHeight + 'px';
+        // Reveal text na korte delay
+        setTimeout(() => {
+          textElements.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        }, 150);
+        // Na animatie, reset zodat het natuurlijk kan groeien
+        setTimeout(() => {
+          answer.style.maxHeight = '';
+        }, 350);
       }
     });
   });

@@ -26,6 +26,36 @@
     max-height: none !important;
 }
 
+// Block tekst font-size op mobiel
+@media only screen and (max-width: 600px) {
+    .block {
+        p {
+            font-size: 0.95rem !important;
+            line-height: calc(1em + 10px) !important;
+        }
+        
+        li {
+            font-size: 0.95rem !important;
+            line-height: calc(1em + 10px) !important;
+        }
+        
+        // Algemene H2 en H3 styling voor alle blocks
+        h2 {
+            font-size: 1.5rem !important; // 24px - overal evengroot
+        }
+        
+        h3 {
+            font-size: 1.1rem !important; // 17px
+        }
+    }
+    
+    // Student card tekst
+    .student-card__desc {
+        font-size: 0.95rem !important;
+        line-height: calc(1em + 10px) !important;
+    }
+}
+
 
 // block-header
 .block-header {
@@ -80,6 +110,16 @@
                 strong, b {
                     color: #6D54A3 !important;
                     font-weight: 700 !important;
+                }
+            }
+            
+            @media only screen and (max-width: 600px) {
+                h2 {
+                    font-size: 1.5rem !important;
+                }
+                
+                h3 {
+                    font-size: 1.1rem !important;
                 }
             }
         }
@@ -251,6 +291,10 @@ $card-padding-h: 2rem;
             font-weight: 600; 
             line-height: calc(1em + 10px);
             color: $color-txt-dark;
+            
+            @media only screen and (max-width: 600px) {
+                font-size: 1.1rem !important; // 17px voor quotes
+            }
         }
     }
 
@@ -407,6 +451,10 @@ $card-blue-gray: rgba(244, 244, 246, 1);
             font-weight: $font-bold;
             color: $color-txt-dark;
             line-height: 1.3;
+            
+            @media only screen and (max-width: 600px) {
+                font-size: 1.1rem !important;
+            }
         }
 
         p {
@@ -1057,6 +1105,10 @@ $program-text: $color-txt-dark;
             line-height: calc(1em + 10px);
             color: $color-txt-dark;
 
+            @media only screen and (max-width: 600px) {
+                font-size: 0.95rem !important; // Gelijk aan body font op mobiel
+            }
+
             strong {
                 color: #6D54A3 !important;
                 font-weight: 700;
@@ -1245,7 +1297,19 @@ $cta-register-strip: #1a1a2e;
         @media only screen and (max-width: 600px) {
             font-size: 2rem !important;
             
-            h1, h2, h3, h4, h5, h6,
+            h1 {
+                font-size: 2rem !important; // 32px - blijft zoals het is
+            }
+            
+            h2 {
+                font-size: 1.5rem !important; // 24px
+            }
+            
+            h3 {
+                font-size: 1.1rem !important; // 17px
+            }
+            
+            h4, h5, h6,
             p,
             * {
                 font-size: 2rem !important;
@@ -1867,6 +1931,10 @@ $filter-bg: #e6e0f0;
             color: $color-txt-dark;
             margin: 0;
             line-height: 1.3;
+            
+            @media only screen and (max-width: 600px) {
+                font-size: 1.1rem !important;
+            }
         }
 
         p {
@@ -2080,6 +2148,10 @@ $filter-bg: #e6e0f0;
 
             h3 {
                 font-size: 1.125rem;
+                
+                @media only screen and (max-width: 600px) {
+                    font-size: 1.1rem !important;
+                }
             }
 
             ul, ol {
@@ -2190,7 +2262,7 @@ $filter-bg: #e6e0f0;
 
     .accordion-list__question {
         width: 100%;
-        padding: 1.25rem 2rem 1.25rem 0;
+        padding: 1.25rem 0 1.25rem 2rem;
         display: flex;
         align-items: flex-start;
         gap: 1.25rem;
@@ -2215,20 +2287,26 @@ $filter-bg: #e6e0f0;
         width: 24px;
         height: 24px;
         position: absolute;
-        right: 0;
+        left: 0;
         top: 1.25rem;
+        transition: transform 0.3s ease;
 
         &::before {
             content: "+";
             font-size: 1.6rem;
             line-height: 1;
+            transition: transform 0.3s ease;
         }
     }
 
     // Vraagtekst
     .accordion-list__question {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
         font-weight: $font-bold;
+        
+        @media only screen and (max-width: 600px) {
+            font-size: 1.1rem !important;
+        }
     }
 
     .accordion-list__question[aria-expanded="true"] {
@@ -2236,21 +2314,56 @@ $filter-bg: #e6e0f0;
 
         .accordion-list__icon::before {
             content: "–";
+            transform: rotate(0deg);
+        }
+    }
+
+    .accordion-list__question[aria-expanded="false"] {
+        .accordion-list__icon::before {
+            transform: rotate(0deg);
         }
     }
 
     .accordion-list__answer {
-        padding: 0 0 1.4rem 2.5rem;
         font-size: 0.9375rem;
         line-height: calc(1em + 10px);
         color: $color-txt-dark;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 0 0 2.5rem;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+        &[hidden] {
+            max-height: 0 !important;
+            padding-bottom: 0;
+            
+            p, ul, ol, * {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        &:not([hidden]) {
+            padding-bottom: 1.4rem;
+            
+            p, ul, ol, * {
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.4s ease-out 0.15s, transform 0.4s ease-out 0.15s;
+            }
+        }
 
         p {
             margin: 0 0 0.75rem 0;
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+        
+        ul, ol {
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
     }
 
@@ -2281,7 +2394,11 @@ $filter-bg: #e6e0f0;
         }
 
         .accordion-list__question {
-            padding: 0.9rem 0;
+            padding: 0.9rem 0 0.9rem 2rem;
+        }
+
+        .accordion-list__icon {
+            top: 0.9rem;
         }
 
         .accordion-list__answer {

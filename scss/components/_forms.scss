@@ -41,34 +41,58 @@ body img.gform_ajax_spinner {
 	}
 }
 
+
 body .gform_wrapper .gform_footer input[type="submit"] {
+    background: $color-cta !important;
+    color: $color-heading-light !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 0.5rem 3.4rem !important;
+    font-weight: $font-medium !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    white-space: nowrap !important;
+
     text-align: center !important;
     min-width: 300px !important;
     max-width: 400px !important;
-    border-radius: 999px !important;
+    // border-radius: 999px !important;
     font-size: 1rem !important;
     margin: 1rem 0 !important;
-    padding: 0.5rem 2rem !important;
-    font-weight: $font-regular !important;
-    display: grid !important;
-    place-items: center !important;
+    // padding: 0.5rem 2rem !important;
+    // font-weight: $font-regular !important;
+    // display: grid !important;
+    // place-items: center !important;
     font-style: normal !important;
     letter-spacing: 1px !important;
     text-shadow: none !important;
     transition: background-color 0.3s ease !important;
-    border: 2px solid transparent !important;
-    color: #fff !important;
-    border-color: $color-cta !important;
-    background-color: $color-cta !important;
-    &:hover {
-        background-color: $color-cta-hover;
-        border-color: $color-cta-hover;
+    // border: 2px solid transparent !important;
+    // color: #fff !important;
+    // border-color: $color-cta !important;
+    // background-color: $color-cta !important;
+
+    &:hover,
+    &:focus {
+        background: $color-cta-hover;
+        color: $color-heading-light;
     }
+
+
+    // &:hover {
+    //     background-color: $color-cta-hover !important;
+    //     border-color: $color-cta-hover !important;
+    // }
     @media only screen and (max-width: 600px) {
         font-size: 0.9rem;
         padding: 0.5rem 0.5rem;
         width: 100%;
     }
+}
+
+#gform_submit_button_1 {
+    padding: 1em 3.4rem !important;
 }
 
 .gform_wrapper label.gfield_label,
