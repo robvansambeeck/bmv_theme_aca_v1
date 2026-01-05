@@ -10,6 +10,7 @@
         background-color: $color-bg-dark;
         top: 0;
     }
+    max-width: $container-base; 
     position: relative;
     position: sticky;
     top: 0;
@@ -25,7 +26,6 @@
     display: flex;
     align-items: center;
     min-height: 3rem;
-    max-width: 1600px;
     isolation: isolate;
     
     // 100% witte achtergrond achter de navbar (blijft altijd 100% wit)

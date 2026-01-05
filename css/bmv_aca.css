@@ -281,7 +281,7 @@ meter {
   margin-bottom: 0;
 }
 .block-image-grid-1 .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 1.5rem 1.5rem 3rem 1.5rem;
 }
@@ -415,7 +415,7 @@ meter {
   margin-top: -6rem;
 }
 .block-image-grid-2 .block-inner {
-  max-width: calc(1200px + 4rem);
+  max-width: calc(1600px + 4rem);
   margin: 0 auto;
   padding: 3rem 0;
 }
@@ -633,7 +633,7 @@ meter {
 }
 
 .block-info {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 3rem auto !important;
   padding: 0 1.5rem;
   background: none;
@@ -764,12 +764,12 @@ meter {
 }
 
 .block-program {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.25rem;
 }
 .block-program .block-inner {
-  max-width: calc(1200px + 8rem);
+  max-width: calc(1600px + 8rem);
   margin-left: -3.25rem;
   margin-right: -3.25rem;
 }
@@ -1153,7 +1153,7 @@ meter {
 .block-cta-register .block-inner {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 4rem 1.5rem;
   height: auto !important;
@@ -1333,7 +1333,7 @@ meter {
 }
 
 .block-filter {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   margin-top: -2rem;
   margin-bottom: 4rem;
@@ -1468,7 +1468,7 @@ meter {
   margin-bottom: 6rem;
 }
 .block-steps .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
@@ -1571,7 +1571,7 @@ meter {
   background-color: #EAEBF3;
 }
 .block-students .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 .block-students .title {
@@ -1679,7 +1679,7 @@ meter {
   margin-top: -1rem;
 }
 .block-image-grid-3 .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
@@ -1973,7 +1973,7 @@ meter {
 }
 
 .block-faq .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4.8rem;
 }
@@ -2175,7 +2175,7 @@ meter {
 }
 
 .block-contact .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4.5rem;
 }
@@ -2733,6 +2733,7 @@ legend {
 }
 
 .nav-main {
+  max-width: 1600px;
   position: relative;
   position: sticky;
   top: 0;
@@ -2748,7 +2749,6 @@ legend {
   display: flex;
   align-items: center;
   min-height: 3rem;
-  max-width: 1600px;
   isolation: isolate;
   background: #ffffff !important;
 }
@@ -2804,12 +2804,12 @@ legend {
 }
 @media only screen and (max-width: 1400px) {
   .nav-main .nav-inner {
-    max-width: calc(1200px + 8rem);
+    max-width: calc(1600px + 8rem);
   }
 }
 @media only screen and (max-width: 1200px) {
   .nav-main .nav-inner {
-    max-width: 1200px;
+    max-width: 1600px;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -3104,7 +3104,7 @@ body.mobile-menu-open .nav-mobile {
   margin-top: 1.5rem;
 }
 .nav-footer .nav-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -3327,7 +3327,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   padding: 0 1.5rem;
   margin: 0 auto;
   overflow: hidden;
