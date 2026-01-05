@@ -2733,6 +2733,7 @@ legend {
 }
 
 .nav-main {
+  position: relative;
   position: sticky;
   top: 0;
   --nav-height: 4rem;
@@ -2748,8 +2749,14 @@ legend {
   display: flex;
   align-items: center;
   min-height: 3rem;
-  overflow: hidden;
   isolation: isolate;
+  background: #ffffff !important;
+}
+.nav-main .bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 40, 101);
 }
 .nav-main::before {
   content: "";
@@ -2763,9 +2770,6 @@ legend {
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   pointer-events: none;
-}
-.nav-main {
-  background: #ffffff !important;
 }
 .nav-main .nav-inner,
 .nav-main .nav-content,
@@ -2787,6 +2791,9 @@ legend {
   display: none;
 }
 .nav-main .nav-inner {
+  background-color: #fff;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
   max-width: calc(1200px + 12rem);
   margin: 0 auto;
   padding: 0.5rem 1.75rem;
@@ -2934,16 +2941,16 @@ legend {
   display: none;
   transform: translate(-50%, -50%);
 }
+.nav-main .toggle[aria-expanded=true] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
 .nav-main .toggle[aria-expanded=true] .toggle-icon--open {
   display: none;
 }
 .nav-main .toggle[aria-expanded=true] .toggle-icon--close {
   display: block;
-}
-.nav-main .toggle[aria-expanded=true] {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
 }
 @media only screen and (max-width: 1100px) {
   .nav-main .nav-inner {

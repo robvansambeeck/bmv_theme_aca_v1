@@ -1,4 +1,6 @@
 <div class="nav nav-main">
+    <div class="bg">
+    </div>
     <div class="nav-inner">
         <div class="nav-content">
             <div class="logo">
