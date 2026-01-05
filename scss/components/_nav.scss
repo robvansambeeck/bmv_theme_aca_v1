@@ -372,6 +372,11 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
+    // Verberg de tweede X button op mobiel
+    .mobile-close {
+        display: none !important;
+    }
+
     .menu {
         padding: $padding-base;
 

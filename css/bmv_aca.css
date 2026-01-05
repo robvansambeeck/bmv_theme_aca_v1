@@ -3058,6 +3058,9 @@ legend {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+.nav-mobile .mobile-close {
+  display: none !important;
+}
 .nav-mobile .menu {
   padding: 1rem;
 }
