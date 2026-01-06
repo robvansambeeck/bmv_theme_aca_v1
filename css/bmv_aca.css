@@ -501,13 +501,13 @@ meter {
   line-height: calc(1em + 10px);
   color: rgb(64, 64, 64), 1;
 }
-.block-image-grid-2 .image-grid-2__card--top {
+.block-image-grid-2 .image-grid-2__card--1 {
   background-color: rgba(231, 168, 241, 0.2);
 }
-.block-image-grid-2 .image-grid-2__card--middle {
+.block-image-grid-2 .image-grid-2__card--2 {
   background-color: rgb(255, 235, 205);
 }
-.block-image-grid-2 .image-grid-2__card--bottom {
+.block-image-grid-2 .image-grid-2__card--3 {
   background-color: rgb(244, 244, 246);
 }
 @media only screen and (max-width: 1155px) and (min-width: 901px) {
@@ -1567,23 +1567,37 @@ meter {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 9rem 1.5rem 9rem 1.5rem;
+  padding: 4.5rem 1.5rem 4.5rem 1.5rem;
   background-color: #EAEBF3;
 }
 .block-students .block-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
+.block-students .block-students__header {
+  margin-bottom: 3.5rem;
+}
+.block-students h1, .block-students .h1 {
+  margin: 0;
+  color: rgb(64, 64, 64), 1;
+  line-height: calc(1em + 10px);
+}
+.block-students h1 strong, .block-students .h1 strong {
+  color: rgb(109, 84, 163);
+}
+.block-students h2, .block-students .h2 {
+  margin: 0;
+  color: rgb(64, 64, 64), 1;
+  line-height: calc(1em + 10px);
+}
+.block-students h2 strong, .block-students .h2 strong {
+  color: rgb(109, 84, 163);
+}
 .block-students .title {
   font-size: 2rem;
   line-height: 1.2;
-  margin: 0 0 2rem 0;
+  margin: 0;
   text-align: left;
-}
-.block-students .title strong,
-.block-students .title b {
-  color: rgb(109, 84, 163);
-  font-weight: 700;
 }
 .block-students .title-highlight {
   color: rgb(109, 84, 163);
@@ -1593,6 +1607,7 @@ meter {
   grid-template-columns: repeat(3, 1fr);
   gap: 3.75rem;
   align-items: stretch;
+  margin-top: 0;
 }
 .block-students .student-card {
   background-color: #ffffff;

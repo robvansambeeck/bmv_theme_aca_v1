@@ -464,9 +464,9 @@ $card-blue-gray: rgba(244, 244, 246, 1);
             color: $color-txt-dark;
         }
 
-        &--top { background-color: $card-top-purple; }
-        &--middle { background-color: $card-peach; }
-        &--bottom { background-color: $card-blue-gray; }
+        &--1 { background-color: $card-top-purple; }
+        &--2 { background-color: $card-peach; }
+        &--3 { background-color: $card-blue-gray; }
     }
 
 
@@ -1692,19 +1692,35 @@ $filter-bg: #e6e0f0;
         margin: 0 auto;
     }
 
+    .block-students__header {
+        margin-bottom: 3.5rem;
+    }
+
+    h1, .h1 {
+        margin: 0;
+        color: $color-txt-dark;
+        line-height: calc(1em + 10px);
+        
+        strong {
+            color: $info-title-color;
+        }
+    }
+
+    h2, .h2 {
+        margin: 0;
+        color: $color-txt-dark;
+        line-height: calc(1em + 10px);
+        
+        strong {
+            color: $info-title-color;
+        }
+    }
+
     .title {
         font-size: 2rem;
         line-height: 1.2;
-        margin: 0 0 2rem 0;
+        margin: 0;
         text-align: left;
-
-  
-
-        strong,
-        b {
-            color: $color-cta;
-            font-weight: 700;
-        }
 
         &-highlight {
             color: $color-cta;
@@ -1716,6 +1732,7 @@ $filter-bg: #e6e0f0;
         grid-template-columns: repeat(3, 1fr);
         gap: $gap-cols * 2.5;
         align-items: stretch;
+        margin-top: 0;
     }
 
     .student-card {
