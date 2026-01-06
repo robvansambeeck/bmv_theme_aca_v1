@@ -2732,21 +2732,13 @@ legend {
   font-size: 30px !important; /* Size of the checkmark */
 }
 
-.nav-main .bg {
-  position: absolute;
-  width: 100%;
-  height: 95%;
-  background-color: rgb(40, 40, 101);
-  top: 0;
-}
 .nav-main {
-  max-width: 1600px;
-  position: relative;
   position: sticky;
   top: 0;
   --nav-height: 4rem;
   z-index: 5000;
   width: 100%;
+  max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
   border-top-left-radius: 1.5rem;
@@ -2756,6 +2748,7 @@ legend {
   display: flex;
   align-items: center;
   min-height: 3rem;
+  overflow: hidden;
   isolation: isolate;
 }
 .nav-main::before {
@@ -2794,11 +2787,9 @@ legend {
   display: none;
 }
 .nav-main .nav-inner {
-  background-color: #fff;
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
+  max-width: calc(1200px + 12rem);
   margin: 0 auto;
-  padding: 0.5rem 1.75rem;
+  padding: 0.5rem 2.25rem;
   display: flex;
   align-items: center;
   width: 100%;
@@ -2816,22 +2807,22 @@ legend {
 }
 @media only screen and (max-width: 1100px) {
   .nav-main .nav-inner {
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.75rem;
   }
 }
 @media only screen and (max-width: 900px) {
   .nav-main .nav-inner {
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1.5rem;
   }
 }
 @media only screen and (max-width: 800px) {
   .nav-main .nav-inner {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
   }
 }
 @media only screen and (max-width: 600px) {
   .nav-main .nav-inner {
-    padding: 0.5rem 0.875rem;
+    padding: 0.5rem 1rem;
   }
 }
 .nav-main .nav-content {
@@ -3060,12 +3051,25 @@ legend {
 }
 
 .nav-mobile {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: #fff;
   z-index: 5000;
   height: 100dvh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  display: block;
+  visibility: hidden;
+}
+.nav-mobile.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 .nav-mobile .mobile-close {
   display: none !important;
@@ -3092,9 +3096,6 @@ body.mobile-menu-open {
   overflow: hidden;
   position: fixed;
   width: 100%;
-}
-body.mobile-menu-open .nav-mobile {
-  display: block;
 }
 
 .nav-footer {
