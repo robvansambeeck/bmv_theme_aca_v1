@@ -1710,6 +1710,8 @@ meter {
   grid-row: 2;
   position: relative;
   z-index: 1;
+  align-self: stretch;
+  height: 100%;
 }
 .block-image-grid-3 .image-grid-3__col--right-bottom {
   grid-column: 9/span 4;

@@ -1850,6 +1850,8 @@ $filter-bg: #e6e0f0;
             grid-row: 2;
             position: relative;
             z-index: 1;
+            align-self: stretch;
+            height: 100%;
         }
 
         &--right-bottom {
@@ -2698,5 +2700,4 @@ $filter-bg: #e6e0f0;
                 margin-top: 1rem;
             }
         }
-    }
     }
