@@ -1,46 +1,63 @@
-<div class="nav nav-footer">
+<?php
+/**
+ * Block Name: Footer Navigation
+ */
+
+// Footer logo uit ACF options
+$footer_logo = function_exists('get_field') ? get_field('footer_logo', 'option') : null;
+$socials     = function_exists('get_field') ? get_field('social_media', 'option') : null; // Optionele repeater voor socials
+?>
+
+<footer class="nav-footer">
     <div class="nav-inner">
         <div class="nav-content">
 
-            <div class="col pages">
+            <?php // Kolom 1: Algemene Pagina's ?>
+            <div class="col col--pages">
                 <?php
                 wp_nav_menu([
                     'theme_location'  => 'footer_pages_alg',
                     'container'       => 'nav',
-                    'container_class' => 'footer-nav footer-nav--pages',
-                    'menu_class'      => 'footer-menu footer-menu--pages',
+                    'container_class' => 'footer-nav',
+                    'menu_class'      => 'footer-menu',
                     'fallback_cb'     => false,
                 ]);
                 ?>
             </div>
 
-            <div class="col logo">
-                <?php
-                // Footer logo uit ACF options (Nav - footer > Footer Logo)
-                $footer_logo = function_exists('get_field') ? get_field('footer_logo', 'option') : null;
+            <?php // Kolom 2: Logo & Socials ?>
+            <div class="col col--branding">
+                <div class="footer-logo-wrap">
+                    <?php if ($footer_logo && !empty($footer_logo['url'])) : ?>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-logo">
+                            <img src="<?php echo esc_url($footer_logo['url']); ?>" 
+                                 alt="<?php echo esc_attr($footer_logo['alt'] ?: get_bloginfo('name')); ?>"
+                                 loading="lazy">
+                        </a>
+                    <?php elseif (function_exists('the_custom_logo')) : ?>
+                        <?php the_custom_logo(); ?>
+                    <?php endif; ?>
+                </div>
 
-                if ($footer_logo && is_array($footer_logo) && !empty($footer_logo['url'])) :
-                    $footer_logo_url = esc_url($footer_logo['url']);
-                    $footer_logo_alt = esc_attr($footer_logo['alt'] ?? get_bloginfo('name'));
-                ?>
-                    <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-logo">
-                        <img src="<?php echo $footer_logo_url; ?>" alt="<?php echo $footer_logo_alt; ?>">
-                    </a>
-                <?php
-                // Fallback: gebruik site identity logo als ACF nog niet is gevuld
-                elseif (function_exists('the_custom_logo')) :
-                    the_custom_logo();
-                endif;
-                ?>
+                <?php if ($socials) : ?>
+                    <div class="footer-socials">
+                        <?php foreach ($socials as $social) : ?>
+                            <a href="<?php echo esc_url($social['url']); ?>" target="_blank" rel="noopener">
+                                <i class="<?php echo esc_attr($social['icon_class']); ?>"></i>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
-            <div class="col legal">
+            <?php // Kolom 3: Juridische Pagina's ?>
+            <div class="col col--legal">
                 <?php
                 wp_nav_menu([
                     'theme_location'  => 'footer_pages_legal',
                     'container'       => 'nav',
-                    'container_class' => 'footer-nav footer-nav--legal',
-                    'menu_class'      => 'footer-menu footer-menu--legal',
+                    'container_class' => 'footer-nav',
+                    'menu_class'      => 'footer-menu',
                     'fallback_cb'     => false,
                 ]);
                 ?>
@@ -48,10 +65,12 @@
 
         </div>
     </div>
-</div>
 
-<div class="copyright">
-    All rights reserved 2025 | Design en ontwikkeling
-    <a target="_blank" href="https://redrockagency.nl/">Red Rock Agency</a>
-</div>
-<!-- /block-nav-footer -->
+    <div class="footer-bottom">
+        <div class="copyright">
+            &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?> | All rights reserved | 
+            Design en ontwikkeling <a target="_blank" rel="nofollow" href="https://redrockagency.nl/">Red Rock Agency</a>
+        </div>
+    </div>
+</footer>
+<!-- .nav-footer -->

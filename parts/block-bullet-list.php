@@ -1,28 +1,36 @@
 <?php
+/**
+ * Block Name: Bullet List
+ */
+
 $image       = get_field('bullet_list_image');
-$title       = get_field('bullet_list_titel');        // WYSIWYG
-$description = get_field('bullet_list_discription');  // WYSIWYG
+$title       = get_field('bullet_list_titel'); 
+$description = get_field('bullet_list_discription');
 $cta         = get_field('bullet_list_cta');
+
+// Valideer de CTA link
+$has_cta = ($cta && !empty($cta['url']) && !empty($cta['title']));
 ?>
 
 <div class="block block-bullet-list">
     <div class="block-inner">
         <div class="block-content bullet-list__container">
 
-            <div class="bullet-list__col bullet-list__col--image">
-                <?php if ($image) : ?>
+            <?php if ($image) : ?>
+                <div class="bullet-list__col bullet-list__col--image">
                     <figure class="bullet-list__image">
                         <img src="<?php echo esc_url($image['url']); ?>"
-                            alt="<?php echo esc_attr($image['alt']); ?>">
+                             alt="<?php echo esc_attr($image['alt'] ?: ''); ?>"
+                             loading="lazy">
                     </figure>
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
 
             <div class="bullet-list__col bullet-list__col--content">
 
                 <?php if ($title) : ?>
                     <div class="bullet-list__title">
-                        <?php echo wp_kses_post($title); // WYSIWYG, laat HTML toe ?>
+                        <?php echo wp_kses_post($title); ?>
                     </div>
                 <?php endif; ?>
 
@@ -34,9 +42,9 @@ $cta         = get_field('bullet_list_cta');
 
                 <?php if (have_rows('bullet_list_items')) : ?>
                     <ul class="bullet-list__items">
-                        <?php while (have_rows('bullet_list_items')) : the_row(); ?>
-                            <?php $item_text = get_sub_field('item_text'); ?>
-                            <?php if ($item_text) : ?>
+                        <?php while (have_rows('bullet_list_items')) : the_row(); 
+                            $item_text = get_sub_field('item_text');
+                            if ($item_text) : ?>
                                 <li class="bullet-list__item">
                                     <span class="bullet-list__item-icon">
                                         <i class="fa-sharp-duotone fa-solid fa-check-circle"></i>
@@ -45,27 +53,19 @@ $cta         = get_field('bullet_list_cta');
                                         <?php echo esc_html($item_text); ?>
                                     </span>
                                 </li>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
+                            <?php endif; 
+                        endwhile; ?>
                     </ul>
                 <?php endif; ?>
 
-                <?php 
-                // ACF Link field returns array with url, title, target
-                if ($cta && is_array($cta)) : 
-                    $cta_url = isset($cta['url']) ? $cta['url'] : '';
-                    $cta_title = isset($cta['title']) ? $cta['title'] : '';
-                    $cta_target = isset($cta['target']) ? $cta['target'] : '_self';
-                    
-                    if (!empty($cta_url) && !empty($cta_title)) : ?>
-                        <div style="margin-top: 1rem; display: block !important;">
-                            <a class="bullet-list__cta"
-                                href="<?php echo esc_url($cta_url); ?>"
-                                target="<?php echo esc_attr($cta_target); ?>">
-                                <?php echo esc_html($cta_title); ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
+                <?php if ($has_cta) : ?>
+                    <div class="bullet-list__cta-wrapper">
+                        <a class="btn bullet-list__cta"
+                           href="<?php echo esc_url($cta['url']); ?>"
+                           target="<?php echo esc_attr($cta['target'] ?: '_self'); ?>">
+                            <?php echo esc_html($cta['title']); ?>
+                        </a>
+                    </div>
                 <?php endif; ?>
 
             </div>
@@ -73,4 +73,4 @@ $cta         = get_field('bullet_list_cta');
         </div>
     </div>
 </div>
-<!-- /block-bullet-list -->
+<!-- .block-bullet-list -->
