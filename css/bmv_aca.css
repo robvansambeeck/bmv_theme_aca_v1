@@ -281,7 +281,7 @@ meter {
   margin-bottom: 0;
 }
 .block-image-grid-1 .block-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem 1.5rem 3rem 1.5rem;
 }
@@ -415,7 +415,7 @@ meter {
   margin-top: -6rem;
 }
 .block-image-grid-2 .block-inner {
-  max-width: calc(1600px + 4rem);
+  max-width: calc(1200px + 4rem);
   margin: 0 auto;
   padding: 3rem 0;
 }
@@ -633,7 +633,7 @@ meter {
 }
 
 .block-info {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 3rem auto !important;
   padding: 0 1.5rem;
   background: none;
@@ -764,12 +764,12 @@ meter {
 }
 
 .block-program {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.25rem;
 }
 .block-program .block-inner {
-  max-width: calc(1600px + 8rem);
+  max-width: calc(1200px + 8rem);
   margin-left: -3.25rem;
   margin-right: -3.25rem;
 }
@@ -1153,7 +1153,7 @@ meter {
 .block-cta-register .block-inner {
   position: relative;
   z-index: 2;
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 1.5rem;
   height: auto !important;
@@ -1333,7 +1333,7 @@ meter {
 }
 
 .block-filter {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: -2rem;
   margin-bottom: 4rem;
@@ -1468,7 +1468,7 @@ meter {
   margin-bottom: 6rem;
 }
 .block-steps .block-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
@@ -1571,7 +1571,7 @@ meter {
   background-color: #EAEBF3;
 }
 .block-students .block-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .block-students .title {
@@ -1679,7 +1679,7 @@ meter {
   margin-top: -1rem;
 }
 .block-image-grid-3 .block-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
@@ -1973,7 +1973,7 @@ meter {
 }
 
 .block-faq .block-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4.8rem;
 }
@@ -2175,7 +2175,7 @@ meter {
 }
 
 .block-contact .block-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4.5rem;
 }
@@ -2732,6 +2732,13 @@ legend {
   font-size: 30px !important; /* Size of the checkmark */
 }
 
+.nav-main .bg {
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  background-color: rgb(40, 40, 101);
+  top: 0;
+}
 .nav-main {
   max-width: 1600px;
   position: relative;
@@ -2750,14 +2757,6 @@ legend {
   align-items: center;
   min-height: 3rem;
   isolation: isolate;
-  background: #ffffff !important;
-}
-.nav-main .bg {
-  position: absolute;
-  width: 100%;
-  height: 95%;
-  background-color: rgb(40, 40, 101);
-  top: 0;
 }
 .nav-main::before {
   content: "";
@@ -2771,6 +2770,9 @@ legend {
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   pointer-events: none;
+}
+.nav-main {
+  background: #ffffff !important;
 }
 .nav-main .nav-inner,
 .nav-main .nav-content,
@@ -2804,12 +2806,12 @@ legend {
 }
 @media only screen and (max-width: 1400px) {
   .nav-main .nav-inner {
-    max-width: calc(1600px + 8rem);
+    max-width: calc(1200px + 8rem);
   }
 }
 @media only screen and (max-width: 1200px) {
   .nav-main .nav-inner {
-    max-width: 1600px;
+    max-width: 1200px;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -2941,16 +2943,16 @@ legend {
   display: none;
   transform: translate(-50%, -50%);
 }
-.nav-main .toggle[aria-expanded=true] {
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-}
 .nav-main .toggle[aria-expanded=true] .toggle-icon--open {
   display: none;
 }
 .nav-main .toggle[aria-expanded=true] .toggle-icon--close {
   display: block;
+}
+.nav-main .toggle[aria-expanded=true] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 @media only screen and (max-width: 1100px) {
   .nav-main .nav-inner {
@@ -3104,7 +3106,7 @@ body.mobile-menu-open .nav-mobile {
   margin-top: 1.5rem;
 }
 .nav-footer .nav-inner {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -3327,7 +3329,7 @@ body {
 }
 
 .container {
-  max-width: 1600px;
+  max-width: 1200px;
   padding: 0 1.5rem;
   margin: 0 auto;
   overflow: hidden;
