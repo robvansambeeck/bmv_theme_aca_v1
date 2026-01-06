@@ -15,8 +15,8 @@ $title_middle = get_field('title_middle');
 $text_middle  = get_field('text_middle');
 
 // Kaart 3 (Bottom)
-$title_bottom = get_field('title_bottom');
-$text_bottom  = get_field('text_bottom');
+$title_bottom = get_field('title_buttom') ?: get_field('title_bottom');
+$text_bottom  = get_field('text_buttom') ?: get_field('text_bottom');
 ?>
 
 <div class="block block-image-grid-3">
@@ -64,16 +64,19 @@ $text_bottom  = get_field('text_bottom');
                             </div>
                         <?php endif; ?>
 
-                        <?php if ($title_bottom || $text_bottom) : ?>
-                            <div class="image-grid-3__card image-grid-3__card--bottom">
-                                <?php if ($title_bottom) : ?>
-                                    <h3><?php echo esc_html($title_bottom); ?></h3>
-                                <?php endif; ?>
-                                <?php if ($text_bottom) : ?>
-                                    <div class="image-grid-3__card-text"><?php echo wp_kses_post($text_bottom); ?></div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
+                        <?php // Kaart 3 (Bottom) - altijd renderen voor test ?>
+                        <div class="image-grid-3__card image-grid-3__card--bottom">
+                            <?php if ($title_bottom) : ?>
+                                <h3><?php echo esc_html($title_bottom); ?></h3>
+                            <?php else : ?>
+                                <h3>Altijd begeleiding, altijd groei</h3>
+                            <?php endif; ?>
+                            <?php if ($text_bottom) : ?>
+                                <div class="image-grid-3__card-text"><?php echo wp_kses_post($text_bottom); ?></div>
+                            <?php else : ?>
+                                <div class="image-grid-3__card-text"><p>Je krijgt persoonlijke begeleiding van ervaren professionals die je helpen groeien in je vak. Of je nu net begint of al ervaring hebt, we zorgen ervoor dat je de juiste ondersteuning krijgt om succesvol te zijn in je carrière.</p></div>
+                            <?php endif; ?>
+                        </div>
 
                     </div>
                 </div>
