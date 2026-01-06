@@ -97,4 +97,4 @@ $faq_target = $faq_link_array['target'] ?: '_self';
         </div>
     </div>
 </div>
-<-- .block-contact -->
+<!-- .block-contact -->
