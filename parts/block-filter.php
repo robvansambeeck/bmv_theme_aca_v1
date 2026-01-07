@@ -47,7 +47,7 @@ $q = new WP_Query($args);
 ?>
 
 <div class="block block-filter">
-    <div class="block-inner container">
+    <div class="block-inner container-small">
 
         <div class="filter-controls">
             <div class="filter-tabs-scroll">

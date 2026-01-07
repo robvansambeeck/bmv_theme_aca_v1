@@ -2,6 +2,7 @@
 //layout
 $container-base: 1600px;
 $container-small: 75%;
+$container-medium: 90%;
 
 //spacing
 $padding-base: 1rem;
@@ -62,3 +63,13 @@ $gap-cols: 1.5rem;
 $gap-cards: 0.75rem;
 $card-padding-v: 3rem;
 $card-padding-h: 2rem;
+$filter-bg: #e6e0f0; 
+
+//filter
+$Filter-padding: $card-padding-v * 0.25 $padding-base * 1.5 $card-padding-v $padding-base * 1.5;
+
+$steps-icon-bg: rgba(255, 235, 205, 1);
+//einde block-steps
+
+// block-image-grid-2
+$card-blue-gray: rgba(244, 244, 246, 1);

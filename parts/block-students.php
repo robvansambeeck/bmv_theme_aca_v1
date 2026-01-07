@@ -8,7 +8,7 @@ $students = get_field('students');
 ?>
 
 <div class="block block-students">
-    <div class="block-inner container">
+    <div class="block-inner container-medium">
 
         <?php if ($title) : ?>
             <div class="block-students__header">

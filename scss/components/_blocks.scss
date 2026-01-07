@@ -348,13 +348,7 @@ $card-padding-h: 2rem;
 
 
 
-// block-steps
-$steps-icon-bg: rgba(255, 235, 205, 1);
-//einde block-steps
-
 // block-image-grid-2
-$card-blue-gray: rgba(244, 244, 246, 1);
-
 .block-image-grid-2 {
     margin-bottom: 0;
     margin-top: -$grid-gap * 3.0;
@@ -384,22 +378,23 @@ $card-blue-gray: rgba(244, 244, 246, 1);
         &--right {
             flex: 0 0 25%;
             gap: $gap-cards;
-            justify-content: stretch;
-            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 0; // Zorg dat flexbox correct werkt
         }
     }
 
     .image-grid-2__image {
         position: relative;
         width: 100%;
-        height: 100%;
         border-radius: $border-radius-card;
         overflow: hidden;
         margin: 0;
+        flex-shrink: 0; // Voorkom dat de afbeelding krimpt
 
         img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
             display: block;
             border-radius: $border-radius-card;
@@ -434,7 +429,8 @@ $card-blue-gray: rgba(244, 244, 246, 1);
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
-        flex: 1;
+        flex: 1 1 0; // Verdeel de ruimte gelijkmatig tussen de cards
+        min-height: 0; // Zorg dat flexbox correct werkt
 
         h3 {
             margin: 0;
@@ -1373,13 +1369,13 @@ $cta-register-strip: #1a1a2e;
 //einde block-cta-register
 
 // Filter block
-$filter-bg: #e6e0f0; 
 .block-filter {
   max-width: $container-base;
+  padding: $Filter-padding;
   margin: 0 auto;
   margin-top: -$grid-gap;
   margin-bottom: $grid-gap * 2;
-  padding: $card-padding-v * 0.25 $padding-base * 1.5 $card-padding-v $padding-base * 1.5;
+
   
   @media only screen and (min-width: 1400px) {
     max-width: 95%;
@@ -1536,29 +1532,20 @@ $filter-bg: #e6e0f0;
     margin-bottom: $grid-gap * 3;
 
     .block-inner {
-        max-width: $container-base;
+        max-width: $container-small;
         margin: 0 auto;
-        padding: $card-padding-v $padding-base * 1.5;
     }
 
     .steps {
-        width: 100%;
-
         .steps__grid {
             display: grid !important;
             grid-template-columns: repeat(4, 1fr) !important;
             gap: $gap-cols;
-            align-items: start;
-            width: 100%;
+            align-items: start; 
             list-style: none;
             margin: 0;
             padding: 0;
             grid-auto-flow: row;
-            
-            @media only screen and (max-width: 1100px) {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: $gap-cards * 1.2;
-            }
         }
     }
 
@@ -1567,9 +1554,7 @@ $filter-bg: #e6e0f0;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 0.75rem;
-        width: 100%;
-        max-width: 100%;
+        gap: 0.80rem !important;
     }
 
     .steps__icon {
@@ -1601,42 +1586,11 @@ $filter-bg: #e6e0f0;
         line-height: calc(1em + 10px);
         color: $color-txt-dark;
         margin: 0;
-        max-width: 20rem;
+        max-width: 14rem !important;
 
         p {
             margin: 0;
             color: $color-txt-dark;
-        }
-        
-        @media only screen and (max-width: 1100px) {
-            max-width: 18rem;
-        }
-        
-        @media only screen and (max-width: 600px) {
-            max-width: 100%;
-        }
-    }
-
-    @media only screen and (max-width: 900px) {
-        .steps__grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            gap: $gap-cards * 1.25;
-        }
-    }
-
-    @media only screen and (max-width: 600px) {
-        .block-inner {
-            padding: $card-padding-v $padding-base;
-        }
-
-        .steps__grid {
-            grid-template-columns: 1fr;
-            gap: $gap-cards * 1.25;
-        }
-
-        .steps__icon {
-            width: 4.5rem;
-            height: 4.5rem;
         }
     }
 }
@@ -1644,14 +1598,12 @@ $filter-bg: #e6e0f0;
 
 // block-students
 .block-students {
-    width: 100%;
-    max-width: 100%;
     margin: 0 auto;
     padding: $card-padding-v * 3 $padding-base * 1.5 $card-padding-v * 3 $padding-base * 1.5;
     background-color: $info-bg;
 
     .block-inner {
-        max-width: $container-base;
+        max-width: $container-medium;
         margin: 0 auto;
     }
 
@@ -1795,7 +1747,7 @@ $filter-bg: #e6e0f0;
     margin-top: -$grid-gap * 0.5;
 
     .block-inner {
-        max-width: $container-base;
+        max-width: $container-medium;
         margin: 0 auto;
         padding: $card-padding-v $padding-base * 1;
     }
@@ -1845,18 +1797,14 @@ $filter-bg: #e6e0f0;
     }
 
     .image-grid-3__cards-stack {
-        width: 100%;
         display: flex;
         flex-direction: column;
         gap: $gap-cards;
-        height: 100%;
         min-height: 0;
         flex: 1;
     }
 
     .image-grid-3__image-large {
-        width: 100%;
-        height: 100%;
         min-height: 0;
         border-radius: $border-radius-card;
         overflow: hidden;
@@ -1864,16 +1812,12 @@ $filter-bg: #e6e0f0;
         display: flex;
 
         img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
             display: block;
         }
     }
 
     .image-grid-3__image-small {
-        width: 100%;
-        height: 100%;
         min-height: 0;
         border-radius: $border-radius-card;
         overflow: hidden;
@@ -1882,8 +1826,6 @@ $filter-bg: #e6e0f0;
         align-self: stretch;
 
         img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
             display: block;
         }
@@ -2153,7 +2095,7 @@ $filter-bg: #e6e0f0;
 // block-faq
 .block-faq {
     .block-inner {
-        max-width: $container-base;
+        max-width: $container-small;
         margin: 0 auto;
         padding: $card-padding-v $padding-base * 1.5 $card-padding-v * 1.6;
     }
@@ -2162,12 +2104,7 @@ $filter-bg: #e6e0f0;
         display: grid;
         grid-template-columns: minmax(0, 32%) minmax(0, 68%);
         gap: 5.75rem;
-        align-items: flex-start;
-        
-        @media only screen and (max-width: 1100px) {
-            grid-template-columns: minmax(0, 35%) minmax(0, 65%);
-            gap: 4rem;
-        }
+        align-items: flex-start;    
     }
 
     .faq__sidebar {
@@ -2396,7 +2333,7 @@ $filter-bg: #e6e0f0;
 // Contact block
 .block-contact {
     .block-inner {
-        max-width: $container-base;
+        max-width: $container-medium;
         margin: 0 auto;
         padding: $card-padding-v $padding-base * 1.5 $card-padding-v * 1.5;
     }

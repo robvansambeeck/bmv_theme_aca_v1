@@ -48,7 +48,7 @@ if ($course_date) {
    data-course-card 
    data-terms="<?php echo esc_attr($data_terms); ?>">
 
-    <div class="card-inner">
+    <div class="card-inner container-medium">
         <div class="card-content">
             
             <div class="card-img">

@@ -14,7 +14,7 @@ $link_text   = "Neem dan contact met ons op!";
 ?>
 
 <div class="block block-faq">
-    <div class="block-inner container">
+    <div class="block-inner container-small">
         <div class="faq">
             
             <?php // Sidebar sectie ?>

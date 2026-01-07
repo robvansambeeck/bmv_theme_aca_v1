@@ -27,7 +27,7 @@ $faq_target = $faq_link_array['target'] ?: '_self';
 ?>
 
 <div class="block block-contact">
-    <div class="block-inner container">
+    <div class="block-inner container-medium">
         <div class="contact-grid">
 
             <div class="contact-grid__col contact-grid__col--left">
