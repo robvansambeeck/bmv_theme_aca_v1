@@ -685,13 +685,14 @@ $program-text: $color-txt-dark;
         }
     }
 
-    h1, .h1 {
+    h1, h2, .h1 {
         margin: 0;
         color: $color-txt-dark;
         line-height: calc(1em + 10px);
         
-        strong {
+        strong, b {
             color: $info-title-color;
+            font-weight: 700;
         }
     }
 
@@ -1011,13 +1012,14 @@ $program-text: $color-txt-dark;
                 text-align: center !important;
             }
 
-            h1, .h1 {
+            h1, h2, .h1 {
                 margin: 0;
                 color: $color-txt-dark;
                 line-height: calc(1em + 10px);
                 
-                strong {
+                strong, b {
                     color: $info-title-color;
+                    font-weight: 700;
                 }
             }
         }
@@ -2224,7 +2226,8 @@ $filter-bg: #e6e0f0;
         max-height: none !important;
     }
 
-    .faq__sidebar h1 {
+    .faq__sidebar h1,
+    .faq__sidebar h2 {
         font-size: clamp(2rem, 2.6vw, 2.75rem);
         line-height: 1.2;
         font-weight: 300;

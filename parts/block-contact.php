@@ -33,7 +33,7 @@ $faq_target = $faq_link_array['target'] ?: '_self';
             <div class="contact-grid__col contact-grid__col--left">
                 
                 <?php if ($title) : ?>
-                    <h1 class="contact-grid__title"><?php echo esc_html($title); ?></h1>
+                    <h2 class="contact-grid__title"><?php echo wp_kses_post($title); ?></h2>
                 <?php endif; ?>
                 
                 <?php if ($intro) : ?>
