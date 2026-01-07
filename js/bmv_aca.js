@@ -6,7 +6,7 @@ console.log("js start");
 
 // Sticky nav
 (function() {
-    const navMain = document.querySelector('.nav-main');
+const navMain = document.querySelector('.nav-main');
     if (!navMain) return;
     
     // Zorg dat de class niet aanwezig is bij het laden
@@ -28,7 +28,7 @@ console.log("js start");
     // Initialiseer na volledige pagina load
     const initSticky = () => {
         toggleSticky();
-        window.addEventListener('scroll', toggleSticky, { passive: true });
+    window.addEventListener('scroll', toggleSticky, { passive: true });
         window.addEventListener('resize', toggleSticky, { passive: true });
     };
 
@@ -39,7 +39,7 @@ console.log("js start");
         window.addEventListener('load', () => {
             setTimeout(initSticky, 100);
         });
-    }
+}
 })();
 
 // Swipe/scroll voor filter-tabs op mobiel & tablet (wanneer nodig)

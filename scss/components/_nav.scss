@@ -14,9 +14,11 @@
     position: relative;
     position: sticky;
     top: 0;
+
     --nav-height: 4rem;
     z-index: $z-nav;
     width: 100%;
+    max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
     border-top-left-radius: 1.5rem; 
@@ -26,6 +28,7 @@
     display: flex;
     align-items: center;
     min-height: 3rem;
+    overflow: hidden;
     isolation: isolate;
     
     // 100% witte achtergrond achter de navbar (blijft altijd 100% wit)
@@ -73,11 +76,9 @@
 
     .nav-inner {
         // Bredere grid voor nav buttons
-        background-color: #fff;
-        border-top-left-radius: 1.5rem;
-        border-top-right-radius: 1.5rem;
+        max-width: calc(#{$container-base} + 12rem);
         margin: 0 auto;
-        padding: 0.5rem 1.75rem;
+        padding: 0.5rem 2.25rem;
         display: flex;
         align-items: center;
         width: 100%;
@@ -92,19 +93,19 @@
         }
         
         @media only screen and (max-width: 1100px) {
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 1.75rem;
         }
         
         @media only screen and (max-width: 900px) {
-            padding: 0.5rem 1.25rem;
+            padding: 0.5rem 1.5rem;
         }
         
         @media only screen and (max-width: 800px) {
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.25rem;
         }
         
         @media only screen and (max-width: 600px) {
-            padding: 0.5rem 0.875rem;
+            padding: 0.5rem 1rem;
         }
     }
 
@@ -373,16 +374,33 @@
 
 // nav-mobile
 .nav-mobile {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #fff;
     z-index: $z-nav;
     height: 100dvh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    
+    // Start state: verborgen boven het scherm
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    display: block;
+    visibility: hidden;
 
     // Verberg de tweede X button op mobiel
     .mobile-close {
         display: none !important;
+        }
+
+    // Open state: smooth slide down
+    &.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
 
     .menu {
@@ -411,9 +429,6 @@ body.mobile-menu-open {
     overflow: hidden;
     position: fixed;
     width: 100%;
-    .nav-mobile {
-        display: block;
-    }
 }
 
 // Footer navigation
