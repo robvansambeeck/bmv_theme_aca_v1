@@ -7,7 +7,7 @@ $cta_2 = get_field('header_cta_2'); // idem
 ?>
 
 <div class="block block-header">
-    <div class="block-inner">
+    <div class="block-inner container-small">
         <div class="block-content">
 
             <div class="row title">

@@ -8,7 +8,7 @@ $no_bg_class = ($bg_active === 'no bg' || $bg_active === 'no_bg') ? 'block-info-
 ?>
 
 <div class="block block-info <?php echo esc_attr($no_bg_class); ?>">
-    <div class="block-inner">
+    <div class="block-inner container-small">
         <div class="block-content block-info__content">
 
             <div class="block-info__col block-info__col--text">

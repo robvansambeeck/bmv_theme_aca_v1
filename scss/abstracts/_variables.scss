@@ -1,12 +1,18 @@
 @use "sass:math";
 //layout
 $container-base: 1600px;
+$container-small: 75%;
 
 //spacing
 $padding-base: 1rem;
 
 // grid 
 $grid-gap: 2rem;
+
+// border radius
+$border-radius-base: 1.5rem;
+$border-radius-button: 999px;
+$border-radius-card: 0.75rem;
 
 //font-family
 $font-heading:"Source Sans 3", sans-serif;
@@ -44,3 +50,15 @@ $z-bg: -2000;
 $z-cta: 1000;
 $z-nav: 5000;
 $z-modal: 10000; 
+
+// cards
+$card-lavender: rgba(230, 220, 250, 1);
+$card-peach: rgba(255, 235, 205, 1);
+$quote-orange: rgba(255, 140, 0, 1);
+$card-top-purple: rgba(231, 168, 241, 0.2); // #E7A8F1 with 20% opacity
+$card-middle-orange: rgba(246, 139, 31, 0.2); // #F68B1F with 20% opacity
+$card-bottom-gray: #EAEBF3;
+$gap-cols: 1.5rem;
+$gap-cards: 0.75rem;
+$card-padding-v: 3rem;
+$card-padding-h: 2rem;

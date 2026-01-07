@@ -6,7 +6,7 @@ $cta         = get_field('bullet_list_cta');
 ?>
 
 <div class="block block-bullet-list">
-    <div class="block-inner">
+    <div class="block-inner container-small">
         <div class="block-content bullet-list__container">
 
             <div class="bullet-list__col bullet-list__col--image">
@@ -22,7 +22,8 @@ $cta         = get_field('bullet_list_cta');
 
                 <?php if ($title) : ?>
                     <div class="bullet-list__title">
-                        <?php echo wp_kses_post($title); // WYSIWYG, laat HTML toe ?>
+                        <?php echo wp_kses_post($title); // WYSIWYG, laat HTML toe 
+                        ?>
                     </div>
                 <?php endif; ?>
 
@@ -50,13 +51,13 @@ $cta         = get_field('bullet_list_cta');
                     </ul>
                 <?php endif; ?>
 
-                <?php 
+                <?php
                 // ACF Link field returns array with url, title, target
-                if ($cta && is_array($cta)) : 
+                if ($cta && is_array($cta)) :
                     $cta_url = isset($cta['url']) ? $cta['url'] : '';
                     $cta_title = isset($cta['title']) ? $cta['title'] : '';
                     $cta_target = isset($cta['target']) ? $cta['target'] : '_self';
-                    
+
                     if (!empty($cta_url) && !empty($cta_title)) : ?>
                         <div style="margin-top: 1rem; display: block !important;">
                             <a class="bullet-list__cta"

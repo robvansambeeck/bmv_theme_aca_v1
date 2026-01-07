@@ -174,28 +174,10 @@ meter {
   }
 }
 .block-header .block-inner {
-  max-width: 100%;
-  margin: 0 auto;
   padding: 3rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-@media only screen and (max-width: 1100px) {
-  .block-header .block-inner {
-    padding: 2.75rem 1.75rem 1.75rem;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .block-header .block-inner {
-    max-width: 90%;
-    padding: 2.5rem 1.5rem 1.5rem;
-  }
-}
-@media only screen and (max-width: 800px) {
-  .block-header .block-inner {
-    padding: 2.25rem 1.25rem 1.25rem;
-  }
 }
 .block-header .block-content {
   width: 100%;
@@ -279,11 +261,6 @@ meter {
 
 .block-image-grid-1 {
   margin-bottom: 0;
-}
-.block-image-grid-1 .block-inner {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 1.5rem 1.5rem 3rem 1.5rem;
 }
 .block-image-grid-1 .block-content.image-grid-1 {
   display: flex;
@@ -372,9 +349,6 @@ meter {
   line-height: 1;
 }
 @media only screen and (max-width: 900px) {
-  .block-image-grid-1 .block-inner {
-    max-width: 85%;
-  }
   .block-image-grid-1 .block-content.image-grid-1 {
     flex-direction: column;
     gap: 1.25rem;
@@ -635,23 +609,15 @@ meter {
 .block-info {
   max-width: 1600px;
   margin: 3rem auto !important;
-  padding: 0 1.5rem;
   background: none;
   display: block;
 }
 .block-info .block-inner {
   background-color: #EAEBF3;
   border-radius: 0.75rem;
-  max-width: 100%;
-  margin: 0;
   padding: 7rem 4rem !important;
   display: flex;
   align-items: center;
-}
-@media only screen and (max-width: 1200px) {
-  .block-info .block-inner {
-    padding: 6rem 2rem !important;
-  }
 }
 .block-info .block-content.block-info__content {
   display: flex;
@@ -733,7 +699,6 @@ meter {
     max-width: 100% !important;
   }
   .block-info .block-inner {
-    border-radius: 0 !important;
     padding: 4rem 1.5rem !important;
     flex-direction: column;
   }
@@ -767,18 +732,6 @@ meter {
   max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.25rem;
-}
-.block-program .block-inner {
-  max-width: calc(1600px + 8rem);
-  margin-left: -3.25rem;
-  margin-right: -3.25rem;
-}
-@media only screen and (max-width: 1400px) {
-  .block-program .block-inner {
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
 }
 .block-program .block-content.program-grid {
   display: grid;
@@ -905,25 +858,18 @@ meter {
 }
 
 .block-bullet-list {
-  width: 100%;
-  margin: 0 !important;
   padding: 3rem 0 0 !important;
   overflow: hidden;
-}
-.block-bullet-list .block-inner {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  background-color: #EAEBF3;
+  margin-bottom: 0;
 }
 .block-bullet-list .block-content.bullet-list__container {
   display: flex;
   gap: 4rem;
   align-items: center;
-  background-color: #EAEBF3;
   width: 100%;
   margin: 0;
-  padding: 8rem 5rem;
+  padding: 8rem 0rem;
   box-sizing: border-box;
 }
 @media only screen and (max-width: 800px) {
@@ -1102,8 +1048,6 @@ meter {
   width: 100%;
   background-color: rgb(109, 84, 163);
   overflow: visible;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
   margin-top: 0;
   margin-bottom: -1.5rem;
   z-index: 1;
@@ -1130,8 +1074,6 @@ meter {
   width: 100%;
   height: 100%;
   z-index: 0;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
   overflow: hidden;
 }
 .block-cta-register .block-bg img {
@@ -2755,7 +2697,7 @@ legend {
 .nav-main .bg {
   position: absolute;
   width: 100%;
-  height: 95%;
+  height: 60%;
   background-color: rgb(40, 40, 101);
   top: 0;
 }
@@ -3239,6 +3181,33 @@ body {
 @media only screen and (max-width: 600px) {
   body {
     padding: 0.75rem;
+  }
+}
+
+.container {
+  display: block;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.container-small {
+  display: block;
+  max-width: 75%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 900px) {
+  .container-small {
+    max-width: 85%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .container-small {
+    max-width: 90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container-small {
+    max-width: 95%;
   }
 }
 

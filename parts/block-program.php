@@ -3,7 +3,7 @@ $items = get_field('program_items');
 ?>
 
 <div class="block block-program">
-    <div class="block-inner">
+    <div class="block-inner container-small">
         <div class="block-content program-grid">
 
             <?php if ($items) : ?>

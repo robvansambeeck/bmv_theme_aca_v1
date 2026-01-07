@@ -7,7 +7,7 @@ $show_quote   = get_field('show_quote_icon');
 ?>
 
 <div class="block block-image-grid-1">
-    <div class="block-inner">
+    <div class="block-inner container-small">
         <div class="block-content image-grid-1">
 
             <div class="image-grid-1__col image-grid-1__col--left">

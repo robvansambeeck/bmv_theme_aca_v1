@@ -19,10 +19,32 @@ body{
     }
 }
 
+.container {
+    display: block;
+    max-width: $container-base;
+    margin: 0 auto;
+}
+
+.container-small {
+    display: block;
+    max-width: $container-small;
+    margin: 0 auto;
+        @media only screen and (max-width: 900px) {
+         max-width: 85%;
+    }
+         @media only screen and (max-width: 700px) {
+         max-width: 90%;
+    }
+       @media only screen and (max-width: 600px) {
+         max-width: 95%;
+    }
+}
+
+
 .page-wrapper{
     background-color: #ffffff;
-    border-bottom-left-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
+    border-bottom-left-radius: $border-radius-base;
+    border-bottom-right-radius: $border-radius-base;
     overflow: hidden;
     max-width: $container-base; 
     margin-left: auto;
@@ -50,7 +72,6 @@ body{
     }
 }
 
-// site-label
 // site-label
 .site-label {
     // Layout & Positionering
