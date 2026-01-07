@@ -460,27 +460,25 @@ $footer-bg: #282865;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
 
-        &.pages {
+    .col-pages {
             align-items: flex-start;
         }
 
-        &.legal {
+        .col-legal {
             align-items: flex-end;
         }
 
-        &.logo {
+        .col-branding {
             align-items: center;
             gap: 1rem;
-            margin-top: 1rem;
-
             img {
                 max-width: 22rem;
                 height: auto;
                 display: block;
             }
         }
-    }
 
     .footer-nav {
         width: 100%;
