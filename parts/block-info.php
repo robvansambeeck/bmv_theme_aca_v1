@@ -17,7 +17,7 @@ $has_cta = ($cta && !empty($cta['url']) && !empty($cta['title']));
 ?>
 
 <div class="block block-info <?php echo esc_attr($no_bg_class); ?>">
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="block-content block-info__content">
 
             <div class="block-info__col block-info__col--text">

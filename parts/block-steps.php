@@ -7,7 +7,7 @@ $steps = get_field('steps');
 ?>
 
 <div class="block block-steps">
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="steps">
 
             <?php if (!empty($steps) && is_array($steps)) : ?>

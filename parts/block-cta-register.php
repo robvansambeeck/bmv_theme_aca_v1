@@ -20,7 +20,7 @@ $has_button = ($button && !empty($button['url']) && !empty($button['title']));
         <?php endif; ?>
     </div>
 
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="block-content cta-register">
             <?php if ($title) : ?>
                 <div class="cta-register__title">

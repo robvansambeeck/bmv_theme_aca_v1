@@ -13,7 +13,7 @@ $has_cta = ($cta && !empty($cta['url']) && !empty($cta['title']));
 ?>
 
 <div class="block block-bullet-list">
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="block-content bullet-list__container">
 
             <?php if ($image) : ?>

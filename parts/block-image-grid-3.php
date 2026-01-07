@@ -20,7 +20,7 @@ $text_bottom  = get_field('text_buttom') ?: get_field('text_bottom');
 ?>
 
 <div class="block block-image-grid-3">
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="image-grid-3">
 
             <?php // Linksboven: Grote afbeelding ?>

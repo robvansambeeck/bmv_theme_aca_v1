@@ -15,7 +15,7 @@ $has_cta2 = ($cta_2 && !empty($cta_2['url']));
 ?>
 
 <div class="block block-header">
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="block-content">
 
             <?php if ($title) : ?>

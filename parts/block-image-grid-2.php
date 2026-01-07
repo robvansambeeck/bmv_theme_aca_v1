@@ -21,7 +21,7 @@ $has_right_content = ($card_1_title || $card_1_text || $card_2_title || $card_2_
 ?>
 
 <div class="block block-image-grid-2">
-    <div class="block-inner">
+    <div class="block-inner container">
         <div class="image-grid-2">
 
             <?php // LINKER KOLOM: Grote afbeelding met optioneel label ?>
