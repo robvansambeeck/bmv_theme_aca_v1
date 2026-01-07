@@ -281,7 +281,7 @@ meter {
   margin-bottom: 0;
 }
 .block-image-grid-1 .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 1.5rem 1.5rem 3rem 1.5rem;
 }
@@ -415,7 +415,7 @@ meter {
   margin-top: -6rem;
 }
 .block-image-grid-2 .block-inner {
-  max-width: calc(1200px + 4rem);
+  max-width: calc(1600px + 4rem);
   margin: 0 auto;
   padding: 3rem 0;
 }
@@ -633,7 +633,7 @@ meter {
 }
 
 .block-info {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 3rem auto !important;
   padding: 0 1.5rem;
   background: none;
@@ -764,12 +764,12 @@ meter {
 }
 
 .block-program {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.25rem;
 }
 .block-program .block-inner {
-  max-width: calc(1200px + 8rem);
+  max-width: calc(1600px + 8rem);
   margin-left: -3.25rem;
   margin-right: -3.25rem;
 }
@@ -1153,7 +1153,7 @@ meter {
 .block-cta-register .block-inner {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 4rem 1.5rem;
   height: auto !important;
@@ -1333,7 +1333,7 @@ meter {
 }
 
 .block-filter {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   margin-top: -2rem;
   margin-bottom: 4rem;
@@ -1468,7 +1468,7 @@ meter {
   margin-bottom: 6rem;
 }
 .block-steps .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
@@ -1567,11 +1567,11 @@ meter {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 4.5rem 1.5rem 4.5rem 1.5rem;
+  padding: 9rem 1.5rem 9rem 1.5rem;
   background-color: #EAEBF3;
 }
 .block-students .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 .block-students .block-students__header {
@@ -1694,7 +1694,7 @@ meter {
   margin-top: -1rem;
 }
 .block-image-grid-3 .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
@@ -1791,17 +1791,8 @@ meter {
   height: 100%;
   min-height: 0;
 }
-.block-image-grid-3 .image-grid-3__card--middle,
-.block-image-grid-3 .image-grid-3__card--bottom {
+.block-image-grid-3 .image-grid-3__card--middle, .block-image-grid-3 .image-grid-3__card--bottom {
   padding: 2rem 2rem;
-}
-.block-image-grid-3 .image-grid-3__card--middle h3,
-.block-image-grid-3 .image-grid-3__card--bottom h3 {
-  margin-bottom: 0;
-}
-.block-image-grid-3 .image-grid-3__card--middle .image-grid-3__card-text,
-.block-image-grid-3 .image-grid-3__card--bottom .image-grid-3__card-text {
-  margin-top: 0;
 }
 .block-image-grid-3 .image-grid-3__card h3 {
   font-size: 1.25rem;
@@ -1833,6 +1824,12 @@ meter {
 }
 .block-image-grid-3 .image-grid-3__card .image-grid-3__card-text > *:last-child {
   margin-bottom: 0;
+}
+.block-image-grid-3 .image-grid-3__card--middle h3, .block-image-grid-3 .image-grid-3__card--bottom h3 {
+  margin-bottom: 0;
+}
+.block-image-grid-3 .image-grid-3__card--middle .image-grid-3__card-text, .block-image-grid-3 .image-grid-3__card--bottom .image-grid-3__card-text {
+  margin-top: 0;
 }
 .block-image-grid-3 .image-grid-3__card ul, .block-image-grid-3 .image-grid-3__card ol {
   margin: 0.75rem 0;
@@ -1887,7 +1884,7 @@ meter {
   .block-image-grid-3 .image-grid-3 {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
-    gap: 0.5rem !important;
+    gap: 0.5rem;
   }
   .block-image-grid-3 .image-grid-3__col {
     margin: 0;
@@ -1969,6 +1966,13 @@ meter {
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
   }
+}
+@media only screen and (max-width: 600px) and (max-width: 600px) {
+  .block-image-grid-3 .image-grid-3__card h3 {
+    font-size: 1.1rem !important;
+  }
+}
+@media only screen and (max-width: 600px) {
   .block-image-grid-3 .image-grid-3__card p {
     margin-bottom: 0.75rem;
   }
@@ -1986,7 +1990,7 @@ meter {
 }
 
 .block-faq .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4.8rem;
 }
@@ -2188,7 +2192,7 @@ meter {
 }
 
 .block-contact .block-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4.5rem;
 }
@@ -2800,7 +2804,7 @@ legend {
   display: none;
 }
 .nav-main .nav-inner {
-  max-width: calc(1200px + 12rem);
+  max-width: calc(1600px + 12rem);
   margin: 0 auto;
   padding: 0.5rem 2.25rem;
   display: flex;
@@ -2810,12 +2814,12 @@ legend {
 }
 @media only screen and (max-width: 1400px) {
   .nav-main .nav-inner {
-    max-width: calc(1200px + 8rem);
+    max-width: calc(1600px + 8rem);
   }
 }
 @media only screen and (max-width: 1200px) {
   .nav-main .nav-inner {
-    max-width: 1200px;
+    max-width: 1600px;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -3079,13 +3083,13 @@ legend {
   display: block;
   visibility: hidden;
 }
+.nav-mobile .mobile-close {
+  display: none !important;
+}
 .nav-mobile.is-open {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
-}
-.nav-mobile .mobile-close {
-  display: none !important;
 }
 .nav-mobile .menu {
   padding: 1rem;
@@ -3120,7 +3124,7 @@ body.mobile-menu-open {
   margin-top: 1.5rem;
 }
 .nav-footer .nav-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -3343,7 +3347,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   padding: 0 1.5rem;
   margin: 0 auto;
   overflow: hidden;
