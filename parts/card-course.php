@@ -15,14 +15,56 @@ $parent_course = get_term_by('slug', 'opleiding', 'category');
 $parent_level  = get_term_by('slug', 'level', 'category');
 
 if ($all_categories && !is_wp_error($all_categories)) {
+    // EERST: Zoek naar level termen (prioriteit)
     foreach ($all_categories as $term) {
-        // Verzamel slugs voor de JS filter
-        if ($parent_course && (int) $term->parent === (int) $parent_course->term_id) {
-            $filter_slugs[] = $term->slug;
-        }
-        // Zoek naar het niveau (level)
+        $slug_lower = strtolower($term->slug);
+        $name_lower = strtolower($term->name);
+        
+        // Strategie 1: Check of term een child is van 'level' parent (hoogste prioriteit)
         if ($parent_level && (int) $term->parent === (int) $parent_level->term_id) {
             $level_name = $term->name;
+            break;
+        }
+    }
+    
+    // Strategie 2-4: Als nog geen level gevonden, probeer andere methoden
+    if (empty($level_name)) {
+        foreach ($all_categories as $term) {
+            $slug_lower = strtolower($term->slug);
+            $name_lower = strtolower($term->name);
+            
+            // Strategie 2: Check of slug exact 'niveau' + nummer is (bijv. niveau-1, niveau-2, etc.)
+            if (preg_match('/^niveau[\s\-_]?(\d+)$/i', $slug_lower, $matches) || 
+                preg_match('/^level[\s\-_]?(\d+)$/i', $slug_lower, $matches)) {
+                $level_name = $term->name;
+                break;
+            }
+            
+            // Strategie 3: Check of name begint met "Niveau" of "Level" gevolgd door een nummer
+            if (preg_match('/^(niveau|level)[\s\-_]?(\d+)/i', $name_lower, $matches)) {
+                $level_name = $term->name;
+                break;
+            }
+            
+            // Strategie 4: Check of slug of name 'niveau' of 'level' bevat (maar niet de parent zelf)
+            if ((stripos($slug_lower, 'niveau') !== false || stripos($slug_lower, 'level') !== false ||
+                 stripos($name_lower, 'niveau') !== false || stripos($name_lower, 'level') !== false)) {
+                // Skip de parent 'level' term zelf
+                if ($parent_level && (int) $term->term_id !== (int) $parent_level->term_id) {
+                    $level_name = $term->name;
+                    break;
+                } elseif (!$parent_level) {
+                    $level_name = $term->name;
+                    break;
+                }
+            }
+        }
+    }
+    
+    // Verzamel slugs voor de JS filter
+    foreach ($all_categories as $term) {
+        if ($parent_course && (int) $term->parent === (int) $parent_course->term_id) {
+            $filter_slugs[] = $term->slug;
         }
     }
 }
@@ -50,7 +92,7 @@ if ($course_date) {
 
     <div class="card-inner container-medium">
         <div class="card-content">
-            
+                
             <div class="card-img">
                 <?php if ($date_display) : ?>
                     <div class="card-date">

@@ -6,8 +6,8 @@
     .bg {
         position: absolute;
         width: 100%;
-        height: 60%;
-        background-color: $color-bg-dark;
+        height: 100%;
+        background-color: #ffffff;
         top: 0;
     }
     max-width: $container-base; 
@@ -48,6 +48,7 @@
     
     // Navbar bovenaan: 100% wit (geen opacity)
     background: #ffffff !important;
+    transition: background-color 0.3s ease;
     
     // Zorg dat content 100% ondoorzichtig blijft
     .nav-inner,
@@ -76,7 +77,6 @@
 
     .nav-inner {
         // Bredere grid voor nav buttons
-        max-width: calc(#{$container-base} + 12rem);
         margin: 0 auto;
         padding: 0.5rem 2.25rem;
         display: flex;
@@ -96,7 +96,7 @@
             padding: 0.5rem 1.75rem;
         }
         
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: 950px) {
             padding: 0.5rem 1.5rem;
         }
         
@@ -128,12 +128,18 @@
             width: auto;
             display: block;
         }
+
+        @media only screen and (max-width: 400px) {
+            img {
+                max-height: 1.5rem !important; // Kleinere logo vanaf 400px
+            }
+        }
     }
 
     .items {
         flex: 1;
         
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: 950px) {
             display: none;
         }
     }
@@ -186,19 +192,32 @@
         align-items: center;
     }
 
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: auto; // Zorg dat nav-actions altijd rechts blijft
+        flex-shrink: 0;
+        position: relative;
+    }
+
     .btn {
         &.nav-cta {
             background: $color-cta;
             color: $color-heading-light;
             border: none;
             border-radius: 999px;
-            padding: 0.5rem 3.4rem;
+            padding: 0.5rem 3.5rem; // Zelfde als andere buttons (was 3.4rem)
+            min-width: 16rem; // Zelfde als andere buttons
             font-weight: $font-medium;
             display: inline-flex;
             align-items: center;
+            justify-content: center; // Center de tekst
             gap: 0.5rem;
             white-space: nowrap;
-
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-shadow: none;
 
             &:hover,
             &:focus {
@@ -261,9 +280,16 @@
         }
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 950px) {
+        position: relative; // Zorg dat nav-main position context geeft
+
+        .nav-inner {
+            position: relative;
+        }
+
         .nav-content {
             gap: 1rem;
+            justify-content: flex-start; // Logo links
         }
 
         .logo {
@@ -273,16 +299,39 @@
         }
 
         .items,
-        .cta {
+        .cta,
+        .nav-cta {
             display: none !important;
             flex: 0 0 0 !important;
             width: 0 !important;
             margin: 0 !important;
         }
 
+        .nav-actions {
+            position: absolute; // Absolute ten opzichte van nav-main
+            right: 1.5rem; // Padding vanaf de rechterkant van nav-main
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 0;
+            z-index: 10;
+        }
+
         .toggle {
             display: flex;
             align-items: center;
+            margin-left: 0;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .nav-actions {
+                right: 1.25rem;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .nav-actions {
+                right: 1rem;
+            }
         }
     }
 
@@ -522,7 +571,7 @@ $footer-bg: #282865;
         align-items: flex-end;
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 950px) {
         .nav-inner {
             padding: 0 $padding-base;
         }

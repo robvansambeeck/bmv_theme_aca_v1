@@ -41,7 +41,27 @@
         
         // Algemene H2 en H3 styling voor alle blocks
         h2 {
-            font-size: 1.5rem !important; // 24px - overal evengroot
+            font-size: 3.25rem !important; // Nog iets kleiner (was 3.5rem)
+            font-weight: $font-thin !important;
+            line-height: auto !important;
+            letter-spacing: 0px !important;
+            
+            @media only screen and (max-width: 1100px) {
+                font-size: 2.75rem !important; // Nog iets kleiner (was 3rem)
+            }
+            
+            @media only screen and (max-width: 900px) {
+                font-size: 2.25rem !important; // Nog iets kleiner (was 2.5rem)
+            }
+            
+            @media only screen and (max-width: 800px) {
+                font-size: 1.875rem !important; // Nog iets kleiner (was 2rem)
+            }
+            
+            @media only screen and (max-width: 600px) {
+                font-size: 1.75rem !important; // Nog iets kleiner (was 1.875rem)
+                line-height: 1.3 !important;
+            }
         }
         
         h3 {
@@ -87,9 +107,18 @@
 
     .block-content {
         width: 100%;
+        max-width: 70%; // Minder breed
         display: flex;
         flex-direction: column;
         align-items: center;
+        
+        @media only screen and (max-width: 900px) {
+            max-width: 85%; // Iets breder op kleinere schermen
+        }
+        
+        @media only screen and (max-width: 600px) {
+            max-width: 95%; // Bijna volledig breed op mobiel
+        }
     }
 
     .row {
@@ -113,7 +142,8 @@
             
             @media only screen and (max-width: 600px) {
                 h2 {
-                    font-size: 1.5rem !important;
+                    font-size: 2rem !important; // Zelfde als h1
+                    line-height: 1.3 !important; // Zelfde als h1
                 }
                 
                 h3 {
@@ -1257,11 +1287,12 @@ $cta-register-strip: #1a1a2e;
             font-size: 2rem !important;
             
             h1 {
-                font-size: 2rem !important; // 32px - blijft zoals het is
+                font-size: 1.75rem !important; // Nog iets kleiner (was 1.875rem)
             }
             
             h2 {
-                font-size: 1.5rem !important; // 24px
+                font-size: 1.75rem !important; // Nog iets kleiner (was 1.875rem)
+                line-height: 1.3 !important;
             }
             
             h3 {
@@ -1409,6 +1440,38 @@ $cta-register-strip: #1a1a2e;
     flex-wrap: wrap;
   }
 
+  .filter-output {
+    margin-top: 2rem; // Ruimte tussen filter tabs en cards
+    
+    .block-content {
+      width: 100%;
+    }
+    
+    .cards-courses,
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: stretch;
+        grid-auto-flow: row; // Sorteer van links boven naar rechts boven naar links onder
+    
+        @media only screen and (max-width: 1399px) {
+            grid-template-columns: repeat(2, 1fr); // Vanaf onder 1400px: 2 kolommen
+            gap: 1.5rem;
+        }
+    
+        @media only screen and (max-width: 800px) {
+            grid-template-columns: 1fr !important; // Onder 800px: 1 kolom
+            gap: 1.25rem;
+        }
+    }
+    
+    // Filter item wrapper - zorg dat deze de grid niet breekt
+    .filter-item {
+        display: contents; // Laat de grid direct op de card werken, niet op de wrapper
+    }
+  }
+
   .filter-tab {
     appearance: none;
     border: 0;
@@ -1440,49 +1503,29 @@ $cta-register-strip: #1a1a2e;
     }
 
     
-    .cards-courses {
+    .cards-courses,
+    .card-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         align-items: stretch;
+        grid-auto-flow: row; // Sorteer van links boven naar rechts boven naar links onder
     
-        @media only screen and (max-width: 1400px) and (min-width: 1101px) {
-            grid-template-columns: repeat(3, 1fr);
+        @media only screen and (max-width: 1399px) {
+            grid-template-columns: repeat(2, 1fr); // Vanaf onder 1400px: 2 kolommen
             gap: 1.5rem;
-    
-            & > * { 
-                min-height: auto; 
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
         }
     
-        @media only screen and (min-width: 1401px) {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+        @media only screen and (max-width: 800px) {
+            grid-template-columns: 1fr !important; // Onder 800px: 1 kolom
+            gap: 1.25rem;
         }
     }
     
-        @media only screen and (max-width: 1100px) and (min-width: 801px) {
-            .cards-courses {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                & > * {
-                    min-height: auto;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-            }
-        }
-
-        @media only screen and (max-width: 800px) {
-            .cards-courses {
-                grid-template-columns: 1fr !important;
-                gap: 1.25rem;
-            }
-        }
+    // Filter item wrapper - zorg dat deze de grid niet breekt
+    .filter-item {
+        display: contents; // Laat de grid direct op de card werken, niet op de wrapper
+    }
 
     .filter-tabs {
       gap: 0.5rem;
@@ -1546,6 +1589,14 @@ $cta-register-strip: #1a1a2e;
             margin: 0;
             padding: 0;
             grid-auto-flow: row;
+
+            @media only screen and (max-width: 1000px) {
+                grid-template-columns: repeat(2, 1fr) !important; // 2x2 grid vanaf 1000px
+            }
+
+            @media only screen and (max-width: 550px) {
+                grid-template-columns: 1fr !important; // 1 per rij vanaf 550px
+            }
         }
     }
 
@@ -2126,9 +2177,9 @@ $cta-register-strip: #1a1a2e;
 
     .faq__sidebar h1,
     .faq__sidebar h2 {
-        font-size: clamp(2rem, 2.6vw, 2.75rem);
-        line-height: 1.2;
-        font-weight: 300;
+        font-size: clamp(2rem, 2.6vw, 2.75rem); // Zelfde voor h1 en h2
+        line-height: auto; // Zelfde als h1
+        font-weight: $font-thin; // Zelfde als h1
         margin: 0 0 1.5rem 0;
         color: $color-heading-dark;
 

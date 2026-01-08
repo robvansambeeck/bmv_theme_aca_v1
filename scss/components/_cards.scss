@@ -50,6 +50,8 @@
     gap: 2rem;
     width: 100%;
     grid-template-columns: 1fr; // Mobiel: 1 per rij
+    grid-auto-flow: row; // Sorteer van links boven naar rechts boven naar links onder
+    align-items: stretch;
 
     @media only screen and (min-width: 800px) {
         grid-template-columns: repeat(2, 1fr); // Vanaf 800px: 2 per rij
@@ -60,6 +62,11 @@
     }
 }
 
+// Filter item wrapper - zorg dat deze de grid niet breekt
+.filter-item {
+    display: contents; // Laat de grid direct op de card werken
+}
+
 .card-course {
     background-color: #EAEBF3;
     border-radius: 1rem;
@@ -67,8 +74,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: auto !important; // Verwijder vaste height om overlap te voorkomen
-    min-height: auto !important;
+    height: auto !important;
+    min-height: 500px !important; // Meer height voor de cards
     max-height: none !important;
 
     .card-inner, .card-content {
@@ -82,17 +89,27 @@
         max-height: none !important;
     }
 
+    // Zorg dat container-medium binnen card gecentreerd is en breder
+    .card-inner.container-medium {
+        margin: 0 auto;
+        width: 95%;
+        max-width: 100% !important; // Maak de content volledig breed binnen de card
+    }
+
     .card-img {
         position: relative;
         width: 100%;
         aspect-ratio: 16 / 9; // Geeft een mooie vaste verhouding aan je afbeeldingen
         overflow: hidden;
         flex-shrink: 0;
-        padding: 1.5rem 1.5rem 0;
+        padding: 1.5rem 1.5rem 0; // Meer padding voor meer height
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             display: block;
             border-radius: 1rem;
@@ -112,14 +129,69 @@
     }
 
     .card-info {
-        padding: 1.5rem;
+        padding: 1.5rem; // Meer padding voor meer height
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
         flex: 1;
         height: auto !important;
-        min-height: auto !important;
+        min-height: 200px !important; // Minimaal height voor card-info
         max-height: none !important;
+
+        // Directe h5 selector voor extra specificiteit
+        h5 {
+            margin: 0 !important;
+            padding: 0 !important;
+            color: $color-cta-hover !important; // Paars
+            font-size: 1.75rem !important;
+            font-weight: $font-bold !important;
+            line-height: 1.3 !important;
+        }
+
+        .title-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+
+            h5 {
+                margin: 0 !important;
+                padding: 0 !important;
+                color: $color-cta-hover !important; // Paars
+                font-size: 1.75rem !important;
+                font-weight: $font-bold !important;
+                line-height: 1.3 !important;
+            }
+
+            .level-badge {
+                color: $color-badge-orange !important; // Oranje
+                font-size: 1rem !important;
+                font-weight: $font-medium !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                margin: 0 !important;
+                margin-top: 0.25rem !important;
+                padding: 0 !important;
+            }
+        }
+
+        // Directe level-badge selector voor extra specificiteit
+        .level-badge {
+            color: $color-badge-orange !important; // Oranje
+            font-size: 1rem !important;
+            font-weight: $font-medium !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            margin: 0 !important;
+            margin-top: 0.25rem !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: auto !important;
+            min-height: 1rem !important;
+        }
 
         .title {
             margin: 0;
