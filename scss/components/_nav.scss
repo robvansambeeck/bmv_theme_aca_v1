@@ -7,7 +7,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #ffffff;
+        background-color: #ffffff !important;
         top: 0;
     }
     max-width: $container-base; 
@@ -21,6 +21,7 @@
     max-width: 1600px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #ffffff !important;
     border-top-left-radius: 1.5rem; 
     border-top-right-radius: 1.5rem; 
     border-bottom: none; 
@@ -39,7 +40,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: #ffffff;
+        background: #ffffff!important;
         z-index: -2;
         border-top-left-radius: 1.5rem;
         border-top-right-radius: 1.5rem;
@@ -281,7 +282,8 @@
     }
 
     @media only screen and (max-width: 950px) {
-        position: relative; // Zorg dat nav-main position context geeft
+        position: sticky; // Blijf sticky ook op kleinere schermen
+        top: 0; // Zorg dat sticky werkt
 
         .nav-inner {
             position: relative;
@@ -309,8 +311,8 @@
 
         .nav-actions {
             position: absolute; // Absolute ten opzichte van nav-main
-            right: 1.5rem; // Padding vanaf de rechterkant van nav-main
-            top: 50%;
+            right: 0.7rem; // Meer naar rechts (was 1.5rem)
+            top: 60%;
             transform: translateY(-50%);
             margin-left: 0;
             z-index: 10;
@@ -324,13 +326,13 @@
 
         @media only screen and (max-width: 800px) {
             .nav-actions {
-                right: 1.25rem;
+                right: 0.5rem; // Meer naar rechts (was 1.25rem)
             }
         }
 
         @media only screen and (max-width: 600px) {
             .nav-actions {
-                right: 1rem;
+                right: 0.5rem; // Meer naar rechts (was 1rem)
             }
         }
     }
@@ -425,53 +427,173 @@
 .nav-mobile {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    max-width: $container-base;
+    width: calc(100% - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px; // Zelfde als page-wrapper
+    padding-top: 20px; // Zelfde als page-wrapper
+    background-color: #ffffff !important;
+    border-top-left-radius: $border-radius-base;
+    border-top-right-radius: $border-radius-base;
+    border-bottom-left-radius: $border-radius-base;
+    border-bottom-right-radius: $border-radius-base;
     z-index: $z-nav;
-    height: 100dvh;
+    height: calc(100dvh - 2rem);
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     
     // Start state: verborgen boven het scherm
-    transform: translateY(-100%);
     opacity: 0;
     transition: transform 0.4s ease-out, opacity 0.4s ease-out;
     display: block;
     visibility: hidden;
 
-    // Verberg de tweede X button op mobiel
+    // Mobile menu header met close button
+    .nav-mobile__header {
+        position: relative;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        padding-top: 0.25rem; // Minder padding boven
+    }
+
     .mobile-close {
-        display: none !important;
+        position: absolute;
+        right: 1.5rem; // Zelfde als hamburger menu bij 950px
+        top: -1.2rem; // Meer naar boven
+        transform: none;
+        background: none;
+        border: none;
+        color: $color-heading-dark;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s ease;
+        z-index: 10;
+
+        &:hover,
+        &:focus {
+            color: $color-cta;
         }
+
+        @media only screen and (max-width: 800px) {
+            right: 1.25rem; // Zelfde als hamburger menu bij 800px
+        }
+
+        @media only screen and (max-width: 600px) {
+            right: 1rem; // Zelfde als hamburger menu bij 600px
+        }
+    }
 
     // Open state: smooth slide down
     &.is-open {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
         opacity: 1;
         visibility: visible;
     }
 
-    .menu {
-        padding: $padding-base;
+    .nav-mobile__inner {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-mobile__content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0 $padding-base * 1.5; // Geen padding boven
+        margin-top: -0.5rem; // Negatieve margin om hoger te plaatsen
+    }
+    
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        left: 0;
+        transform: translateY(-100%);
+        height: 100dvh;
+        border-radius: 0;
+        
+        &.is-open {
+            transform: translateY(0);
+        }
+    }
+
+    .menu,
+    .mobile-menu-list {
+        padding: 0 $padding-base; // Geen padding boven en onder
+        margin-top: -0.25rem; // Negatieve margin om hoger te plaatsen
 
         li {
-            list-style: none;
+            list-style: none !important;
         }
 
         a {
-            color: #404040;
+            color: #000000 !important; // Zwart voor normale items (niet current)
             text-decoration: none;
             display: block;
             padding: 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: $font-thin; // Light font weight
+            transition: color 0.05s ease, font-weight 0.05s ease;
+
+            &:hover,
+            &:focus {
+                color: $color-cta !important; // Hover naar CTA paars voor normale items
+                font-weight: $font-medium !important; // Minder dikgedrukt bij hover
+            }
+        }
+        
+        // Specifieke hover voor normale items (niet current)
+        li:not(.current-menu-item):not(.current-menu-parent) > a {
+            &:hover,
+            &:focus {
+                color: $color-cta !important; // Hover naar CTA paars
+                font-weight: $font-medium !important; // Minder dikgedrukt bij hover
+            }
         }
         
         li.current-menu-item > a,
         li.current-menu-parent > a {
-            color: $color-cta;
-            font-weight: $font-bold; 
+            color: $color-cta !important;
+            font-weight: $font-bold !important; // Dikgedrukt voor huidige pagina
+            transition: color 0.05s ease, font-weight 0.05s ease;
+            
+            &:hover,
+            &:focus {
+                color: $color-bg-dark !important; // Hover naar donker paarse bg kleur
+                font-weight: $font-bold !important; // Blijft dikgedrukt bij hover
+            }
         }
     }
+}
+
+// Extra specifieke selectors voor mobile menu hover - normale items
+.nav-mobile .menu li:not(.current-menu-item):not(.current-menu-parent) > a:hover,
+.nav-mobile .menu li:not(.current-menu-item):not(.current-menu-parent) > a:focus,
+.nav-mobile .mobile-menu-list li:not(.current-menu-item):not(.current-menu-parent) > a:hover,
+.nav-mobile .mobile-menu-list li:not(.current-menu-item):not(.current-menu-parent) > a:focus {
+    color: $color-cta !important; // Hover naar CTA paars voor normale items
+    font-weight: $font-medium !important; // Minder dikgedrukt bij hover
+}
+
+.nav-mobile .menu li.current-menu-item > a:hover,
+.nav-mobile .menu li.current-menu-item > a:focus,
+.nav-mobile .menu li.current-menu-parent > a:hover,
+.nav-mobile .menu li.current-menu-parent > a:focus,
+.nav-mobile .mobile-menu-list li.current-menu-item > a:hover,
+.nav-mobile .mobile-menu-list li.current-menu-item > a:focus,
+.nav-mobile .mobile-menu-list li.current-menu-parent > a:hover,
+.nav-mobile .mobile-menu-list li.current-menu-parent > a:focus {
+    color: $color-bg-dark !important; // Hover naar donkere bg kleur
+    font-weight: $font-bold !important; // Dikgedrukt bij hover
 }
 
 body.mobile-menu-open {
@@ -486,7 +608,7 @@ $footer-bg: #282865;
 .nav-footer {
     background-color: $footer-bg;
     width: 100%;
-    padding: 3rem 0 1rem 0;
+    padding: 3rem 0 0.5rem 0; // Minder padding onder om ruimte te maken voor copyright
     position: relative;
     z-index: 2;
     margin-top: 1.5rem;
@@ -527,6 +649,12 @@ $footer-bg: #282865;
                 max-width: 22rem;
                 height: auto;
                 display: block;
+            }
+            
+            @media only screen and (max-width: 900px) {
+                img {
+                    max-width: 18rem; // Kleiner vanaf 900px
+                }
             }
         }
 
@@ -581,40 +709,55 @@ $footer-bg: #282865;
         }
     }
 
-    @media only screen and (max-width: 600px) {
-        padding: 2.5rem 0;
-
-        .nav-inner {
-            padding: 0 $padding-base * 0.75;
-        }
-
+    @media only screen and (max-width: 700px) {
         .nav-content {
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 2rem;
             align-items: center;
         }
 
         .col {
-            &.logo {
-                order: 1;
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            
+            &.col-branding {
+                order: 1; // Logo bovenaan
+                
+                img {
+                    max-width: 16rem; // Nog kleiner op mobiel
+                }
             }
 
-            &.pages {
-                order: 2;
+            &.col-pages {
+                order: 2; // Buttons onder logo
                 align-items: center;
-
             }
 
-            &.legal {
-                order: 3;
+            &.col-legal {
+                order: 3; // Rechts onderaan
                 align-items: center;
-                margin-top: -1rem;
+                text-align: center;
             }
+        }
+
+        .footer-menu {
+            align-items: center;
+            text-align: center;
         }
 
         .footer-menu--pages,
         .footer-menu--legal {
             align-items: center;
+            text-align: center;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        padding: 2.5rem 0;
+
+        .nav-inner {
+            padding: 0 $padding-base * 0.75;
         }
     }
 }
@@ -622,7 +765,7 @@ $footer-bg: #282865;
 .copyright {
     background-color: $footer-bg;
     width: 100%;
-    padding: 1.25rem 0 1.5rem 0;
+    padding: 3rem 0 1.5rem 0; // Meer padding boven voor ruimte
     text-align: center;
     color: #ffffff;
     font-size: 0.875rem;

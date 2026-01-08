@@ -57,22 +57,25 @@ body{
 
 
 .page-wrapper{
-    background-color: #ffffff;
+    background-color: #ffffff!important;
+    border-top-left-radius: $border-radius-base;
+    border-top-right-radius: $border-radius-base;
     border-bottom-left-radius: $border-radius-base;
     border-bottom-right-radius: $border-radius-base;
     overflow: hidden;
     max-width: $container-base; 
     margin-left: auto;
     margin-right: auto;
+    margin-top: -30px;
+    padding-top: 20px;
     
+
     @media only screen and (max-width: 600px) {
         border: none !important; // geen border op page-wrapper op mobiel
         border-top: none !important; // geen lijn boven page-wrapper op mobiel
         border-bottom: none !important;
         box-shadow: none !important;
         outline: none !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
         
         // Zorg dat page-content ook geen lijn heeft
         .page-content {

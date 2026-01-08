@@ -48,19 +48,23 @@
             
             @media only screen and (max-width: 1100px) {
                 font-size: 2.75rem !important; // Nog iets kleiner (was 3rem)
+                text-align: center !important; // Gecentreerd bij media query
             }
             
             @media only screen and (max-width: 900px) {
                 font-size: 2.25rem !important; // Nog iets kleiner (was 2.5rem)
+                text-align: center !important; // Gecentreerd bij media query
             }
             
             @media only screen and (max-width: 800px) {
                 font-size: 1.875rem !important; // Nog iets kleiner (was 2rem)
+                text-align: center !important; // Gecentreerd bij media query
             }
             
             @media only screen and (max-width: 600px) {
                 font-size: 1.75rem !important; // Nog iets kleiner (was 1.875rem)
                 line-height: 1.3 !important;
+                text-align: center !important; // Gecentreerd bij media query
             }
         }
         
@@ -144,6 +148,7 @@
                 h2 {
                     font-size: 2rem !important; // Zelfde als h1
                     line-height: 1.3 !important; // Zelfde als h1
+                    text-align: center !important; // Gecentreerd bij media query
                 }
                 
                 h3 {
@@ -2176,17 +2181,30 @@ $cta-register-strip: #1a1a2e;
     }
 
     .faq__sidebar h1,
-    .faq__sidebar h2 {
+    .faq__sidebar h2,
+    .faq__sidebar-title h1,
+    .faq__sidebar-title h2 {
         font-size: clamp(2rem, 2.6vw, 2.75rem); // Zelfde voor h1 en h2
-        line-height: auto; // Zelfde als h1
+        line-height: 1.3 !important; // Vaste line-height om overlap te voorkomen
         font-weight: $font-thin; // Zelfde als h1
         margin: 0 0 1.5rem 0;
         color: $color-heading-dark;
+        display: block; // Zorg dat het een block element is
 
         strong,
         b {
             color: $color-cta;
             font-weight: 700;
+        }
+    }
+    
+    .faq__sidebar-title {
+        line-height: 1.3 !important; // Vaste line-height voor de title container
+        display: block;
+        
+        h1, h2 {
+            line-height: 1.3 !important; // Vaste line-height
+            margin-bottom: 0.5rem; // Ruimte tussen regels
         }
     }
 

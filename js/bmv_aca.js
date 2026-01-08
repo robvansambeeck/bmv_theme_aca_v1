@@ -312,8 +312,10 @@ if (btn && menu) {
     if (!isOpen) {
       // Open menu - slide down from top
       scrollY = window.scrollY;
+      // Scroll naar boven wanneer menu wordt geopend
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       document.body.classList.add('mobile-menu-open');
-      document.body.style.top = `-${scrollY}px`;
+      document.body.style.top = '0';
       // Force reflow
       void menu.offsetHeight;
       // Trigger animation
