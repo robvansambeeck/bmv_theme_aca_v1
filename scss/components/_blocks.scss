@@ -1520,12 +1520,12 @@ $cta-register-strip: #1a1a2e;
             grid-template-columns: repeat(2, 1fr); // Vanaf onder 1400px: 2 kolommen
             gap: 1.5rem;
         }
-    
+
         @media only screen and (max-width: 800px) {
             grid-template-columns: 1fr !important; // Onder 800px: 1 kolom
-            gap: 1.25rem;
+                gap: 1.25rem;
+            }
         }
-    }
     
     // Filter item wrapper - zorg dat deze de grid niet breekt
     .filter-item {
@@ -1589,12 +1589,12 @@ $cta-register-strip: #1a1a2e;
             display: grid !important;
             grid-template-columns: repeat(4, 1fr) !important;
             gap: $gap-cols;
-            align-items: start; 
+            align-items: start;
             list-style: none;
             margin: 0;
             padding: 0;
             grid-auto-flow: row;
-
+            
             @media only screen and (max-width: 1000px) {
                 grid-template-columns: repeat(2, 1fr) !important; // 2x2 grid vanaf 1000px
             }
@@ -2160,7 +2160,7 @@ $cta-register-strip: #1a1a2e;
         display: grid;
         grid-template-columns: minmax(0, 32%) minmax(0, 68%);
         gap: 5.75rem;
-        align-items: flex-start;    
+        align-items: flex-start;
     }
 
     .faq__sidebar {
@@ -2184,11 +2184,10 @@ $cta-register-strip: #1a1a2e;
     .faq__sidebar h2,
     .faq__sidebar-title h1,
     .faq__sidebar-title h2 {
-        font-size: clamp(2rem, 2.6vw, 2.75rem); // Zelfde voor h1 en h2
-        line-height: 1.3 !important; // Vaste line-height om overlap te voorkomen
-        font-weight: $font-thin; // Zelfde als h1
+        // Gebruik exact dezelfde styling als info block - geen font-size overschrijving
         margin: 0 0 1.5rem 0;
         color: $color-heading-dark;
+        line-height: calc(1em + 10px); // Zelfde als info block
         display: block; // Zorg dat het een block element is
 
         strong,
@@ -2401,6 +2400,26 @@ $cta-register-strip: #1a1a2e;
 
 // Contact block
 .block-contact {
+    // Headers zelf blijven zwart en niet dikgedrukt (zoals standaard h1/h2)
+    h1, h2,
+    .contact-grid__title {
+        color: $color-heading-dark !important; // Zwart
+        font-weight: $font-thin !important; // Niet dikgedrukt (zoals standaard h1/h2)
+        
+        // Alleen strong/b tags binnen headers worden paars en dikgedrukt
+        strong,
+        b {
+            color: $color-cta !important; // Paars
+            font-weight: 700 !important; // Dikgedrukt
+        }
+    }
+
+    // Specifiek voor sterke teksten in de rest van het blok (zoals intro tekst)
+    strong, b {
+        color: $color-cta !important;
+        font-weight: 700 !important;
+    }
+
     .block-inner {
         max-width: $container-medium;
         margin: 0 auto;
@@ -2425,14 +2444,6 @@ $cta-register-strip: #1a1a2e;
         font-size: clamp(2.4rem, 3vw, 3rem);
         line-height: 1.15;
         margin: 0;
-        font-weight: 300;
-        color: $color-heading-dark;
-
-        strong,
-        b {
-            color: $color-cta;
-            font-weight: 700;
-        }
     }
 
     .contact-grid__intro {
@@ -2585,6 +2596,7 @@ $cta-register-strip: #1a1a2e;
             gap: 0.5rem;
             white-space: nowrap;
             text-decoration: none;
+            letter-spacing: 0 !important;
 
             margin-left: auto;
             margin-right: auto;
