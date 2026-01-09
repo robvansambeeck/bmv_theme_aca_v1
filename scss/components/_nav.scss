@@ -491,7 +491,7 @@
         @media only screen and (max-width: 600px) {
             right: 1rem; // Zelfde als hamburger menu bij 600px
         }
-    }
+        }
 
     // Open state: smooth slide down
     &.is-open {
@@ -570,8 +570,8 @@
             &:focus {
                 color: $color-bg-dark !important; // Hover naar donker paarse bg kleur
                 font-weight: $font-bold !important; // Blijft dikgedrukt bij hover
-            }
         }
+    }
     }
 }
 
@@ -655,8 +655,8 @@ $footer-bg: #282865;
                 img {
                     max-width: 18rem; // Kleiner vanaf 900px
                 }
-            }
         }
+    }
 
     .footer-nav {
         width: 100%;

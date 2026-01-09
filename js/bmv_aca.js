@@ -452,6 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!blocks.length) return;
     var obs = getObserver();
     var count = 0;
+    var inViewElements = [];
 
     blocks.forEach(function(block) {
       var container = block.querySelector('.block-content') || block.querySelector('.block-inner');
@@ -471,16 +472,30 @@ document.addEventListener('DOMContentLoaded', () => {
         var rect = el.getBoundingClientRect();
         var isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
+        // Transition instellen voor animatie
+        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        el.style.willChange = 'opacity, transform';
+
         if (isInView) {
-          // direct zichtbaar maken voor content bovenaan (geen animatie delay)
-          revealElement(el);
+          // Elementen die al zichtbaar zijn verzamelen voor stagger animatie
+          inViewElements.push(el);
         } else {
-          // eerst verborgen, observer voor scroll
+          // Elementen die niet zichtbaar zijn: expliciet verbergen en observeren
           hideElement(el);
           obs.observe(el);
         }
       });
     });
+
+    // Stagger animatie voor elementen die al zichtbaar zijn
+    inViewElements.forEach(function(el, index) {
+      setTimeout(function() {
+        revealElement(el);
+      }, index * 100); // 100ms delay tussen elk element
+    });
+
+    // Verwijder de class die elementen verbergt (voorkomt flikkering bij volgende loads)
+    document.body.classList.add('scroll-reveal-ready');
   }
 
   // Run on DOMContentLoaded

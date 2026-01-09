@@ -9,6 +9,21 @@
     margin-bottom: $grid-gap;
 }
 
+// Scroll reveal: verberg elementen voordat JS draait (voorkomt flikkering)
+// Deze class wordt verwijderd door JS wanneer animaties klaar zijn
+body:not(.scroll-reveal-ready) {
+    .block {
+        .block-content, .block-inner {
+            h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, button, img, .row,
+            [class*="title"], [class*="text"], [class*="description"] {
+                opacity: 0;
+                transform: translateY(40px);
+                // Geen transition hier - wordt door JS toegevoegd
+            }
+        }
+    }
+}
+
 // Verwijder alle vaste heights voor tekstcontainers om overlap te voorkomen
 // Alleen specifieke tekstcontainers die tekst bevatten
 .faq__sidebar,
